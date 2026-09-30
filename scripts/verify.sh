@@ -21,12 +21,17 @@ if grep -q ' WARN ' "$log"; then
 fi
 
 echo
-echo "== 2. English only: no CJK anywhere in the sources =="
-# Han + CJK punctuation + full-width forms. A full-width vertical bar (U+FF5C) once slipped in
-# as a table separator; this check is what catches that class of accident.
-if rg -n --hidden "[\p{Han}\x{3000}-\x{303F}\x{FF00}-\x{FFEF}]" \
-     -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' . ; then
-  echo "FAIL: CJK characters found - this repository is English-only" >&2
+echo "== 2. English only: nothing outside ASCII, apart from the allowlist =="
+# The book is written in English, so any character outside ASCII fails - unless it is one of the
+# typographic marks the book actually uses. The old check only covered the CJK ranges, which let
+# other scripts through; a character class is what catches this whole class of accident.
+#   allowed: em dash, en dash, middle dot, ellipsis, guillemet, times, plus-minus,
+#            arrows, box drawing, the status marks, approximation, and the symbol gamma
+allowlist='—–·…»×±→↔►▲─│┌┐└┘✅⚠️❌≈γ'
+if rg -n --hidden "[^\x00-\x7F${allowlist}]" \
+     -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' -g '!mathjax/**' . ; then
+  echo "FAIL: non-English character found (outside ASCII and not on the allowlist above)" >&2
+  echo "      In a table or heading this is usually full-width punctuation pasted by accident." >&2
   exit 1
 fi
 echo "clean"

@@ -39,7 +39,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       # One step, because the checks and the build belong together: scripts/verify.sh runs
-      # mdbook and fails on any warning, then gates the CJK rule, remote assets and the figures.
+      # mdbook and fails on any warning, then gates the English-only character rule, remote
+      # assets and the figures.
       - name: Verify and build
         run: nix develop --command bash scripts/verify.sh
 

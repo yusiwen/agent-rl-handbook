@@ -15,7 +15,7 @@ The book is organised around four questions, which double as its acceptance test
 
 ## Non-negotiables
 
-1. **English everywhere.** Every file in this repository is English: book pages, `book.toml`, `flake.nix`, `.envrc`, `.gitignore`, commit messages, code comments. **No Chinese characters may exist anywhere**, including the full-width punctuation in the CJK compatibility range (U+FF00–U+FFEF, for example the full-width vertical bar U+FF5C) — that character once slipped in as a table separator and broke this rule. Run the check below before finishing any change.
+1. **English everywhere.** Every file in this repository is English: book pages, `book.toml`, `flake.nix`, `.envrc`, `.gitignore`, commit messages, code comments. **No characters outside ASCII may exist anywhere**, apart from the short typographic allowlist the gate carries (em dash, en dash, middle dot, ellipsis, guillemet, times, plus-minus, arrows, box drawing, the ✅/⚠️/❌ status marks, `≈`, and the symbol `γ`). Full-width punctuation is the classic accident — a full-width vertical bar (U+FF5C) once slipped in as a table separator and broke this rule. Run the gate below before finishing any change.
 2. **Written for a beginner.** The reader can write basic Python and has seen a neural network, but knows no RL. Explain every acronym at first use, put plain language before any formula, keep one idea per sentence, and give every method a "what it costs" clause. Full rule set: `src/appendix/conventions.md`.
 3. **Honesty labels.** Every claim is a textbook fact, a paper result (marked "reported, not reproduced"), or a judgement of mine. arXiv IDs that were not checked by hand are marked "ID to verify". Measured numbers are meaningless without the hardware and configuration that produced them — always state both.
 4. **Do not silently rewrite facts.** When something changes (a framework gains `sm_121` support, for example), edit the sentence and keep a clause saying when it changed.
@@ -92,7 +92,7 @@ nix develop --command bash scripts/verify.sh
 git status --short && git diff --stat
 ```
 
-`scripts/verify.sh` runs `mdbook build` and fails on any `WARN` line, then checks: no CJK anywhere in the sources, no remote asset in the built site, and no hardcoded colour in `src/figures/` (only the accent classes and `var(--x, #fallback)` defaults are allowed). It needs mdbook and ripgrep, i.e. the flake dev shell. A build that succeeds says nothing about rendering: for figures and maths, open a page and look.
+`scripts/verify.sh` runs `mdbook build` and fails on any `WARN` line, then checks: no character outside ASCII anywhere in the sources except the typographic allowlist it carries (the vendored `mathjax/` bundle is skipped), no remote asset in the built site, and no hardcoded colour in `src/figures/` (only the accent classes and `var(--x, #fallback)` defaults are allowed). It needs mdbook and ripgrep, i.e. the flake dev shell. A build that succeeds says nothing about rendering: for figures and maths, open a page and look.
 
 The build must print no `WARN` line. mdBook's two HTML warnings (`unclosed HTML tag`, `Saw EOF in state Comment`) both mean a figure got wrapped wrong or contains a blank line.
 
@@ -109,7 +109,7 @@ Report the exact commands you ran and their results. If a check could not run, s
 
 ## Pitfalls already paid for
 
-- **Full-width punctuation is easy to introduce by accident** when writing tables and headers; the CJK check above catches it.
+- **Full-width punctuation is easy to introduce by accident** when writing tables and headers; the character check above catches it (it rejects anything outside ASCII, not just one script).
 - **mdBook 0.5 config keys differ from 0.4** (see the pinning note above).
 - **`nix build` writes `result`** into the repository root — it is a symlink into `/nix/store`, ignored by git, and safe to delete.
 - **In a git repository, flakes only see files in the git index**: new chapter files must be `git add`-ed before `nix develop` / `nix build` can see them.
