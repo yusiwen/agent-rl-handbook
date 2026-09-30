@@ -2,7 +2,7 @@
 
 > **Compute tier**: ✅ | **Status**: stub
 
-## Plain English first
+## First, the gist
 
 There are only a handful of ways to make a model behave better, and they are constantly confused with each other. This chapter draws the map before any maths: what each family of methods is for, where the feedback comes from, and what it costs. One idea matters more than the rest — **RL amplifies what a model can already do; it does not inject new knowledge**. If the model cannot solve a task even once in a while, no amount of training will teach it.
 

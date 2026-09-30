@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ (the Spark is ideal for running evaluations around the clock) | **Status**: stub
 > **Why this chapter exists, and why it matters most**: without it, every training run you do degrades into "it looks better".
 
-## Plain English first
+## First, the gist
 
 A rising reward curve does not prove the model got better — it may only prove the model learned to please the scorer. Evaluation is how you avoid fooling yourself: run the same fixed test many times, report a score *with an error bar*, use judges whose biases you have measured, and keep a regression suite so an improvement stays an improvement. This is the chapter that turns a hobby into engineering.
 

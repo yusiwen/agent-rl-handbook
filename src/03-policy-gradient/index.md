@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ | **Status**: stub
 > **Note**: the full PPO objective is **not** here — it lives in [Chapter 4](../04-alignment-algorithms/index.md). This chapter stops at GAE and answers one question: *where does the gradient come from?*
 
-## Plain English first
+## First, the gist
 
 To improve a model you need a direction to move in. There are two ways to find it: estimate *how good each situation is* (values), or directly nudge whatever the model did more/less depending on how it turned out (policy gradients). This chapter builds both, then combines them — and explains why, for language models, feedback arrives so late that estimating "how good this was" is genuinely hard.
 

@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ (0.5–3B models are comfortable) | **Status**: stub
 > **Project**: [Project 2 · Process feedback and long-trajectory credit assignment](../appendix/projects.md)
 
-## Plain English first
+## First, the gist
 
 When a ten-step agent task fails, it is almost never true that *every* step was wrong. **Credit assignment** is the job of working out which steps deserve the blame (or the praise) — and then turning that judgement into something a training loop can use. The practical trick is to score smaller pieces: a step, a tool call, one turn of the conversation, instead of the whole run. This chapter gives you a map of those options, then walks through one implementation (Reagent) in detail.
 

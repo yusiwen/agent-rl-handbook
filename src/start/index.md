@@ -2,7 +2,7 @@
 
 > **Compute tier**: ✅ | **Status**: stub
 
-## Plain English first
+## First, the gist
 
 Before learning anything, write down two things: *what problem am I trying to solve*, and *what hardware do I have*. Almost every disappointment in this field comes from skipping those two answers — people pick a method first, then discover it needs eight GPUs, or that it solves a problem they do not have.
 

@@ -4,7 +4,7 @@
 > **Project**: [Project 3 · The VeRL training runtime](../appendix/projects.md)
 > **Rule of this book**: this chapter is about **system implementation only**; the meaning of the algorithms is in [Chapter 4](../04-alignment-algorithms/index.md).
 
-## Plain English first
+## First, the gist
 
 Training a real model needs several models alive at once (the one being trained, a frozen copy for reference, a scorer, sometimes a critic), spread across several GPUs, all while generating fresh samples. A "runtime" is the software that keeps that circus organised. This chapter reads one such runtime (VeRL) end to end: how data flows, what the workers do, where the loss is computed — and what to do when it crashes at 3 a.m.
 

@@ -2,7 +2,7 @@
 
 > **Compute tier**: ✅ | **Status**: stub
 
-## Plain English first
+## First, the gist
 
 New RL papers appear every week, and reading them one by one is a losing game. The fix is a *map*: a fixed set of slots ("this is a PPO-improvement paper", "this is an asynchronous-training paper") so a new paper can be filed in thirty seconds instead of understood from scratch. This chapter builds that map, then walks through the six areas where the paper traffic is heaviest.
 

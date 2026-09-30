@@ -2,7 +2,7 @@
 
 > **Compute tier**: ✅ | **Status**: stub
 
-## Plain English first
+## First, the gist
 
 An MDP is a tidy way of writing down a trial-and-error problem: *what I see*, *what I can do*, *what I get for doing it*, *what happens next*, and *how much I care about the future*. Writing an LLM task in this form forces you to answer questions you would otherwise leave fuzzy — how big is one "action", where does the feedback come from, and how long is one episode. Those answers decide which training method you can even use.
 

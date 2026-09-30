@@ -4,7 +4,7 @@
 > **Project**: [Project 6 · Memento-Skills](../appendix/projects.md)
 > **Structure**: the main track (8 lessons) is engineering you can ship. The optional lessons (3) are unsettled research, clearly marked as such.
 
-## Plain English first
+## First, the gist
 
 So far, "getting better" meant changing the model's weights. There is another way: keep the model frozen and let it accumulate **skills** — reusable, auditable pieces of procedure and code — in a library outside the model, then teach it to fetch the right one at the right moment. That is cheaper, reversible, and inspectable. The hard parts are retrieval (finding the right skill) and governance (knowing which version is live). This chapter covers both, then asks the decision question: which capabilities belong in the weights, and which should stay outside?
 

@@ -4,7 +4,7 @@
 > **Projects**: [Project 4 · DeepAnalyze](../appendix/projects.md), [Project 5 · OpenClaw-RL](../appendix/projects.md)
 > **Why these are merged**: the source course splits them into two chapters with the same rhythm. Here they form one cluster, following a single storyline: **single-turn → multi-turn, synchronous → asynchronous**.
 
-## Plain English first
+## First, the gist
 
 This is where the theory becomes a working system. Project 4 takes a small (8B) model and trains it to do data analysis end to end: it writes code, runs it in a sandbox, looks at the output, and produces a report. Project 5 goes one level harder: an agent that calls tools over many turns, trained *while it is being used*, with the sampling, judging and training all running at once.
 

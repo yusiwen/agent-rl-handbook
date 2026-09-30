@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ | **Status**: stub
 > **Rule of this book**: the *meaning* of every algorithm is explained here, once. [Chapter 9](../09-training-runtime/index.md) only covers how a runtime switches between and extends them — it does not repeat the objectives.
 
-## Plain English first
+## First, the gist
 
 By the end of this chapter you will know five names — RLHF, RLAIF, DPO, RLVR, GRPO — and, more importantly, *which problem each one is for*. The short version: PPO is the general-purpose but expensive option; GRPO is a cheaper variant that works when you can score answers automatically; DPO skips the whole "train a judge, then sample from the model" loop and learns straight from preference pairs. Choosing well is a matter of four things: where feedback comes from, how fine-grained the reward is, whether you need fresh samples, and what your cluster costs.
 

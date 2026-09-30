@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ | **Status**: stub
 > **Project**: [Project 1 · Verifiable-reward infrastructure](../appendix/projects.md)
 
-## Plain English first
+## First, the gist
 
 A reward is just a score you give the model's attempt. Reward engineering is deciding *who gives that score, how often, and how precisely*. Give it only at the very end and learning is slow; give it at every step and you must build the scorer yourself; let a model do the scoring and it can be fooled. This chapter walks that trade-off, then builds a real automatic grader (a "verifier") that marks maths, code or logic answers by running a program instead of asking a human.
 

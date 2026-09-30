@@ -53,7 +53,7 @@ These decisions were made deliberately; do not "fix" them back:
 ```text
 # Chapter N · Title
 > **Compute tier**: … | **Status**: …
-## Plain English first
+## First, the gist
 ## What you'll be able to do
 ## Lessons            (- [ ] checklist)
 ## Project            (only if one hangs off this chapter)

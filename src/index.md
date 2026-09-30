@@ -66,7 +66,7 @@ The plan: the Spark is the always-on workbench; heavy experiments are rented by 
 ## How every chapter is built
 
 ```text
-Plain English first  — the chapter in four sentences, no jargon
+First, the gist      — the chapter in four sentences, no jargon
 What you'll be able to do
 Lessons              — a checkable list; tick as you go
 Project              — if a project hangs off this chapter

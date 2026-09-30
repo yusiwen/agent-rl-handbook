@@ -3,7 +3,7 @@
 > **Compute tier**: ⚠️ (generating and filtering needs inference; small scale is fine on the Spark) | **Status**: stub
 > **Why this chapter exists**: the source course has no standalone data chapter, yet bad data is the most common reason "I swapped the algorithm and nothing improved".
 
-## Plain English first
+## First, the gist
 
 Training can only learn from the examples you give it. If every task is either trivially easy or impossibly hard, the model gets no useful signal — a score of 100% or 0% tells it nothing about what to change. So before touching algorithms, run a health check on your task set: how hard is each item, how varied are they, and are any of them secretly copies of your test set?
 

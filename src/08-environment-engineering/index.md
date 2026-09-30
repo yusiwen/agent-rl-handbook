@@ -3,7 +3,7 @@
 > **Compute tier**: ✅ (the Spark is a good place to practise this) | **Status**: stub
 > **Why this chapter exists**: in agent RL, the bottleneck is usually the *environment*, not the algorithm.
 
-## Plain English first
+## First, the gist
 
 The "environment" is whatever the agent acts on: a sandbox, a terminal, a database, a website. Training means running the agent against it thousands of times, so the environment must be fast to start, easy to reset, safe to run in parallel, and honest in what it reports back. When training looks broken, the cause is often an unstable environment pretending to be an algorithm problem.
 

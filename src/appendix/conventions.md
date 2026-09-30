@@ -7,7 +7,7 @@ This handbook is maintained over a long period, so consistency matters more than
 ```text
 # Chapter N · Title
 > Compute tier / status / project / special notes (blockquote)
-## Plain English first
+## First, the gist
 ## What you'll be able to do
 ## Lessons            (- [ ] checklist, tick as you go)
 ## Project            (if one hangs off this chapter)
