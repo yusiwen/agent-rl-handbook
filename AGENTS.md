@@ -25,10 +25,12 @@ The book is organised around four questions, which double as its acceptance test
 ```text
 README.md                 reader-facing intro: what this is, how to build it, license
 LICENSE                   MIT (the house default across this user's repositories)
-book.toml                 mdBook config: language=en, search, fold, navy theme
+book.toml                 mdBook config: language=en, search, fold, navy theme, site-url for Pages
 mathjax/                  vendored MathJax 3 (SVG output) + this book's config — no CDN, works offline
 src/figures/              hand-authored SVG figures, included inline so they follow the theme
 css/figures.css           figure wrapper + caption styling (additional-css)
+scripts/verify.sh         the gate: build with no warnings, English-only, no remote assets
+.github/workflows/pages.yml   build + publish to GitHub Pages on every push to main
 flake.nix / flake.lock    pinned toolchain (mdbook 0.5.4) + reproducible site build
 .envrc                    direnv: NIX_CONFIG experimental-features + `use flake`
 src/SUMMARY.md            the table of contents — keep in step with the home-page map
@@ -83,23 +85,14 @@ mdBook is pinned to >= 0.5 on purpose: 0.5 renamed the `book.toml` key `curly-qu
 ## Verification before finishing any change
 
 ```bash
-# 1. the site still builds
-nix develop --command mdbook build
+# everything the repository insists on, in one command - this is what CI runs
+nix develop --command bash scripts/verify.sh
 
-# 2. no CJK anywhere (expect no output)
-nix develop --command bash -c \
-  'rg -n "[\p{Han}\x{3000}-\x{303F}\x{FF00}-\x{FFEF}]" -g "!book/**" -g "!result/**" .'
-
-# 3. the site must not fetch anything remote (expect 0 and 0)
-rg -o '<script[^>]*src="https?://[^"]*"' book/ | wc -l
-rg -o '<link[^>]*href="https?://[^"]*"' book/ | wc -l
-
-# 4. figures: colour comes from theme variables, only the accent bars may be literal hex
-rg -n '#[0-9a-fA-F]{3,6}' src/figures/ | rg -v 'fig-a-|var\(--[a-z-]+, #' || echo "clean"
-
-# 5. what changed, for review
+# what changed, for review
 git status --short && git diff --stat
 ```
+
+`scripts/verify.sh` runs `mdbook build` and fails on any `WARN` line, then checks: no CJK anywhere in the sources, no remote asset in the built site, and no hardcoded colour in `src/figures/` (only the accent classes and `var(--x, #fallback)` defaults are allowed). It needs mdbook and ripgrep, i.e. the flake dev shell. A build that succeeds says nothing about rendering: for figures and maths, open a page and look.
 
 The build must print no `WARN` line. mdBook's two HTML warnings (`unclosed HTML tag`, `Saw EOF in state Comment`) both mean a figure got wrapped wrong or contains a blank line.
 
@@ -125,6 +118,7 @@ Report the exact commands you ran and their results. If a check could not run, s
 - **Never depend on a CDN for the maths.** mdBook's `mathjax-support` injects MathJax 2.7 from cdnjs and lets it fetch its extensions lazily; when those requests are blocked or offline, the page silently shows raw LaTeX with no error anywhere in the build log. The renderer is therefore vendored in `mathjax/` (single SVG bundle, no font or extension downloads) and loaded via `additional-js`, with `mathjax-support = false`.
 - **No maths in headings or link text.** The sidebar is rendered in the browser from `toc-*.js` after load, so heading maths shows as dollar notation there even when the body renders; `config.js` re-typesets the sidebar on load as a safety net, not as a licence to write formulas in titles.
 - **A figure is not a markdown element.** `<svg>` is not in CommonMark's block-tag list, and a blank line inside the file ends the HTML block early: an included SVG must be blank-line-free and wrapped in `<figure class="book-figure">`, or mdBook warns (`unclosed HTML tag`, `Saw EOF in state Comment`). Colour must come from the theme variables (`--fg`, `--quote-bg`, `--quote-border`, `--sidebar-fg`, `--table-alternate-bg`) and the file must be **included, not referenced as an image** — CSS variables do not cross into `<img>`. Full rules: `src/appendix/conventions.md`.
+- **Never add a `CNAME` file to this repository.** The custom domain `yusiwen.cn` belongs to the user site (`yusiwen.github.io`), and GitHub automatically serves every project site of that account under it, so this book is published at `https://yusiwen.cn/agent-rl/` with no domain configuration here. A `CNAME` file (or `cname` in `book.toml`) would claim the apex domain for this project and fight the user site. If the book ever moves to its own subdomain, that is the moment to set `cname` in `book.toml` and add the DNS record — not before.
 
 ## Keeping this file current
 

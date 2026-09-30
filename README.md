@@ -56,12 +56,24 @@ src/index.md   home page (start reading here)
 AGENTS.md      rules for coding agents working in this repository
 ```
 
+## Publishing
+
+Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/pages.yml`), running `scripts/verify.sh` first — the same gate you run locally — so a page that breaks the rules never reaches the site.
+
+The site is served at **https://yusiwen.cn/agent-rl/** .
+
+The custom domain `yusiwen.cn` belongs to the **user site** (`yusiwen.github.io`). GitHub serves every project site of the same account under that domain, which is why this book appears at `/agent-rl/` with nothing to configure here. For the same reason there is deliberately **no `CNAME` file** in this repository: a CNAME file would claim the apex domain for this project and conflict with the user site. `book.toml` sets `site-url = "/agent-rl/"` so the 404 page and its assets resolve from that subdirectory.
+
+One-time setup in the repository: **Settings → Pages → Source: GitHub Actions**.
+
+To publish under a dedicated subdomain instead, set `cname = "book.yusiwen.cn"` in `book.toml` (mdBook writes the CNAME file for you) and add a DNS `CNAME` record pointing that name at `yusiwen.github.io`.
+
 ## Working on it
 
 - **Everything is English, everywhere.** No Chinese characters in any file, including full-width punctuation.
 - **Written for a beginner.** The full rule set lives in `src/appendix/conventions.md`; contributor and agent rules live in `AGENTS.md`.
 - Claims are labelled honestly: a textbook fact, a paper's reported result ("reported, not reproduced"), or a judgement — and unverified arXiv IDs are marked "ID to verify".
-- Before finishing a change: `mdbook build` must pass and the CJK scan in `AGENTS.md` must be clean.
+- Before finishing a change, run the repository's gate: `nix develop --command bash scripts/verify.sh` (build with no warnings, English-only, no remote assets, figure colours from the theme).
 
 ## License
 
