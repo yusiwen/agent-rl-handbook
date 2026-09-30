@@ -21,16 +21,19 @@ if grep -q ' WARN ' "$log"; then
 fi
 
 echo
-echo "== 2. English only: nothing outside ASCII, apart from the allowlist =="
-# The book is written in English, so any character outside ASCII fails - unless it is one of the
-# typographic marks the book actually uses. The old check only covered the CJK ranges, which let
-# other scripts through; a character class is what catches this whole class of accident.
-#   allowed: em dash, en dash, middle dot, ellipsis, guillemet, times, plus-minus,
-#            arrows, box drawing, the status marks, approximation, and the symbol gamma
-allowlist='—–·…»×±→↔►▲─│┌┐└┘✅⚠️❌≈γ'
-if rg -n --hidden "[^\x00-\x7F${allowlist}]" \
+echo "== 2. English only: nothing outside ASCII and Latin-1, apart from the allowlist =="
+# The book is written in English, so a character outside ASCII fails - unless it is an accented
+# Latin letter or one of the typographic marks the book actually uses. The original check only
+# covered the CJK ranges, which let other scripts through silently.
+#   allowed: Latin-1 Supplement minus its two invisible codes (A1-AC and AE-FF: letters such as
+#            e-acute, u-umlaut, n-tilde, and that block's punctuation), plus em dash, en dash,
+#            ellipsis, arrows, box drawing, the status marks, approximation and gamma.
+#   not allowed: NBSP (A0) and soft hyphen (AD) - invisible, and nearly always pasted by mistake -
+#            and every script outside Latin: Cyrillic, Greek, Arabic, CJK and friends.
+allowlist='—–…→↔►▲─│┌┐└┘✅⚠️❌≈γ'
+if rg -n --hidden "[^\x00-\x7F\x{A1}-\x{AC}\x{AE}-\x{FF}${allowlist}]" \
      -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' -g '!mathjax/**' . ; then
-  echo "FAIL: non-English character found (outside ASCII and not on the allowlist above)" >&2
+  echo "FAIL: character found outside ASCII and Latin-1 (and not on the allowlist above)" >&2
   echo "      In a table or heading this is usually full-width punctuation pasted by accident." >&2
   exit 1
 fi

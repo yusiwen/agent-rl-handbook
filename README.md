@@ -64,7 +64,7 @@ The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
 ## Working on it
 
-- Currently **everything is in English**, and the build enforces it: `scripts/verify.sh` rejects any character that is not English — that is, anything outside ASCII except the handful of typographic marks the book actually uses (em dash, arrows, the ✅/⚠️/❌ tier marks). If you would like to help with a translation, open an issue first: the toolchain has to change before translated text can be merged.
+- Currently **everything is in English**, and the build enforces it: `scripts/verify.sh` rejects any character that is not English — that is, anything outside ASCII and Latin-1 except the typographic marks the book itself uses (em dash, arrows, the ✅/⚠️/❌ tier marks). Accented Latin letters (`é`, `ü`, `ñ`) are allowed, so no contributor gets tripped up by a name. If you would like to help with a translation, open an issue first: the toolchain has to change before translated text can be merged.
 - **Written for a beginner.** The full rule set lives in `src/appendix/conventions.md`; contributor and agent rules live in `AGENTS.md`.
 - Claims are labelled honestly: a textbook fact, a paper's reported result ("reported, not reproduced"), or a judgement — and unverified arXiv IDs are marked "ID to verify".
 - Before finishing a change, run the repository's gate: `nix develop --command bash scripts/verify.sh` (build with no warnings, English-only, no remote assets, figure colours from the theme).
