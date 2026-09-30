@@ -60,9 +60,9 @@ AGENTS.md      rules for coding agents working in this repository
 
 Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/pages.yml`), running `scripts/verify.sh` first — the same gate you run locally — so a page that breaks the rules never reaches the site.
 
-The site is served at **https://yusiwen.cn/agent-rl/** .
+The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
-The custom domain `yusiwen.cn` belongs to the **user site** (`yusiwen.github.io`). GitHub serves every project site of the same account under that domain, which is why this book appears at `/agent-rl/` with nothing to configure here. For the same reason there is deliberately **no `CNAME` file** in this repository: a CNAME file would claim the apex domain for this project and conflict with the user site. `book.toml` sets `site-url = "/agent-rl/"` so the 404 page and its assets resolve from that subdirectory.
+The custom domain `yusiwen.cn` belongs to the **user site** (`yusiwen.github.io`). GitHub serves every project site of the same account under that domain, which is why this book appears at `/agent-rl-handbook/` with nothing to configure here. For the same reason there is deliberately **no `CNAME` file** in this repository: a CNAME file would claim the apex domain for this project and conflict with the user site. `book.toml` sets `site-url = "/agent-rl-handbook/"` so the 404 page resolves from that subdirectory; it must match the repository name.
 
 One-time setup in the repository: **Settings → Pages → Source: GitHub Actions**.
 

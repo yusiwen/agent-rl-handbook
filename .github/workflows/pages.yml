@@ -5,9 +5,9 @@ name: Publish the book
 #
 # Where it appears: the custom domain yusiwen.cn is set on the user site (yusiwen.github.io),
 # and GitHub serves every project site of the same account under it, so this book lands at
-# https://yusiwen.cn/agent-rl/ . Nothing here writes a CNAME file, and it must not: a CNAME file
-# in this repository would claim the apex domain for this project and fight the user site.
-# (For a dedicated subdomain, set `cname` in book.toml and add the DNS record instead.)
+# https://yusiwen.cn/agent-rl-handbook/ . Nothing here writes a CNAME file, and it must not: a
+# CNAME file in this repository would claim the apex domain for this project and fight the user
+# site. (For a dedicated subdomain, set `cname` in book.toml and add the DNS record instead.)
 #
 # One-time setup in the repository: Settings -> Pages -> Source: GitHub Actions.
 

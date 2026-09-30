@@ -17,14 +17,15 @@ additional-js = ["mathjax/config.js", "mathjax/tex-svg.js"]
 additional-css = ["css/figures.css"]
 # GitHub Pages. The custom domain yusiwen.cn is set on the *user* site (yusiwen.github.io),
 # and GitHub serves every project site of that account under it, so this book is published at
-# https://yusiwen.cn/agent-rl/ with no further configuration.
+# https://yusiwen.cn/agent-rl-handbook/ with no further configuration.
 # Do NOT set `cname` here: it writes a CNAME file that claims the apex domain for this
 # repository, which conflicts with the user site. For a dedicated subdomain instead, set
 #   cname = "book.yusiwen.cn"
 # and add a DNS CNAME record pointing there to yusiwen.github.io.
-# site-url is what makes the 404 page and its assets resolve when the site is served from a
-# subdirectory; keep it in step with the repository name.
-site-url = "/agent-rl/"
+# site-url is what makes the 404 page resolve when the site is served from a subdirectory; it
+# must match the repository name exactly (a stale value left the 404 page pointing at a path
+# that does not exist).
+site-url = "/agent-rl-handbook/"
 no-section-label = false
 
 [output.html.fold]
