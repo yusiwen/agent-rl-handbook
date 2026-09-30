@@ -4,7 +4,7 @@ Seven to eight hours a week: about two hours of reading and derivation, five to 
 
 | Week | Content | Milestone check |
 |---|---|---|
-| 1 | Stage 0 + Chapters 1–2 | Your task written as an MDP; compute split decided |
+| 1 | Part 0 + Chapters 1–2 | Your task written as an MDP; compute split decided |
 | 2–3 | Chapters 3–4 | GAE derived by hand; selection table with negative arguments |
 | 4–5 | Chapter 5 + Project 1 | A new verifier marking answers end to end, with its failure boundaries written down |
 | 6–7 | Chapter 6 + Project 2 | A GRPO training log + a credit-assignment design document |

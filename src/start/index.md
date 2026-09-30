@@ -1,4 +1,4 @@
-# Stage 0 · Before You Start
+# Part 0 · Before You Start
 
 > **Compute tier**: ✅ | **Status**: stub
 
@@ -43,4 +43,4 @@ A one-page alignment sheet:
 
 ## Backfill
 
-This stage answers no technical question. Its only job is to pick which of the four questions is *yours*.
+This opening part answers no technical question. Its only job is to pick which of the four questions is *yours*.

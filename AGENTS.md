@@ -30,7 +30,7 @@ flake.nix / flake.lock    pinned toolchain (mdbook 0.5.4) + reproducible site bu
 .envrc                    direnv: NIX_CONFIG experimental-features + `use flake`
 src/SUMMARY.md            the table of contents — keep in step with the home-page map
 src/index.md              home page: the four questions, book map, tiers, progress list
-src/start/                Stage 0
+src/start/                Part 0 (the opening part)
 src/01-landscape/ … src/13-papers/   one chapter per directory, each src/NN-slug/index.md
 src/electives/            optional extra modules
 src/appendix/             project index, compute tiers, 16-week plan, writing rules, glossary
@@ -107,6 +107,7 @@ Report the exact commands you ran and their results. If a check could not run, s
 - **`nix build` writes `result`** into the repository root — it is a symlink into `/nix/store`, ignored by git, and safe to delete.
 - **In a git repository, flakes only see files in the git index**: new chapter files must be `git add`-ed before `nix develop` / `nix build` can see them.
 - **A new chapter means three edits**: the file, `src/SUMMARY.md`, and the book map table on `src/index.md`.
+- **A one-page part must not be nested under a part heading.** mdBook then prints the name twice (sidebar and breadcrumbs showed `Part 0 · Before you start » Part 0 · Before You Start`). List it as a plain link before the first `# Part …` heading, the way Part 0 is listed.
 
 ## Keeping this file current
 

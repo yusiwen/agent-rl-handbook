@@ -25,7 +25,7 @@ If you have never touched Python or PyTorch, do that first — this book will no
 
 ## How to read it
 
-1. **Straight through.** The five parts are a ladder; each part assumes the one before. Chapter 2's MDP exercise comes back in Chapter 6, where you rewrite it.
+1. **Straight through.** The six parts are a ladder; each part assumes the one before. Chapter 2's MDP exercise comes back in Chapter 6, where you rewrite it.
 2. **As a checklist.** Every chapter ends with a deliverable and a "how you know you passed" list. Reading is not finishing — shipping the deliverable is.
 3. **As an index.** Chapter 13 maps 260+ papers. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
 
@@ -33,7 +33,7 @@ If you have never touched Python or PyTorch, do that first — this book will no
 
 | Part | Chapter | Lessons | Compute | Deliverable |
 |---|---|---|---|---|
-| **0 Before you start** | [Stage 0](start/index.md) | 3 | ✅ | A goal-alignment sheet |
+| **0 Before you start** | [Part 0](start/index.md) | 3 | ✅ | A goal-alignment sheet |
 | **1 A shared language** | [1 · The Big Picture](01-landscape/index.md) | 4 | ✅ | A draft decision on whether to use RL |
 | | [2 · From MDP to Post-Training](02-mdp/index.md) | 4 | ✅ | Your task written as an MDP |
 | | [3 · Value Functions → Policy Gradients](03-policy-gradient/index.md) | 6 | ✅ | Hand-derived GAE + a sparsity note |
@@ -78,7 +78,7 @@ Backfill             — which of the four questions did this answer?
 
 ## Progress
 
-- [ ] Stage 0 · Before you start
+- [ ] Part 0 · Before you start
 - [ ] Chapter 1 · The Big Picture and How to Choose an Algorithm
 - [ ] Chapter 2 · From MDP to LLM Post-Training
 - [ ] Chapter 3 · From Value Functions to Policy Gradients

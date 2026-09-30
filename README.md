@@ -34,7 +34,7 @@ The toolchain (mdBook 0.5.4, git, ripgrep, fd, jq) is pinned by `flake.nix`, so 
 
 | Part | Chapters | Theme |
 |---|---|---|
-| Before you start | Stage 0 | What problem are you solving, and with what hardware |
+| Part 0 · Before you start | 3 lessons | What problem are you solving, and with what hardware |
 | 1 · A shared language | 1–3 | The big picture, MDPs, value functions and policy gradients |
 | 2 · Signals | 4–6 | Alignment algorithms, reward engineering, credit assignment |
 | 3 · Making it industrial | 7–9 | Data and tasks, environments and rollouts, the training runtime |

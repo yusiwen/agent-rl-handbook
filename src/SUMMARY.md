@@ -2,11 +2,9 @@
 
 [Home](index.md)
 
+[Part 0 · Before you start](start/index.md)
+
 ---
-
-# Before You Start
-
-- [Stage 0 · Before you start](start/index.md)
 
 # Part 1 · A Shared Language
 
