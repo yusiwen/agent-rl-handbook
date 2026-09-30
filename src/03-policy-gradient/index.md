@@ -23,7 +23,7 @@ To improve a model you need a direction to move in. There are two ways to find i
 - [ ] 5. Policy-gradient theorem → REINFORCE → variance reduction → **GAE (we stop here)**
 - [ ] 6. A bridge: from online RL to offline preference optimisation (setting up DPO in Chapter 4)
 
-### Lesson 1 · Policies, returns and value functions: $V$, $Q$ and the advantage $A$
+### Lesson 1 · Policies, returns and value functions: value, Q-value and advantage
 
 **One policy, three questions.** The policy $\pi_\theta(a \mid s)$ is the thing being trained. The three functions below are three different questions you can ask about it. *(textbook fact)*
 

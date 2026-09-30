@@ -50,8 +50,11 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 
 ## Maths
 
-- Inline: `$...$`. Display: `$$...$$` (MathJax is enabled in `book.toml`).
+- Inline: `$...$`. Display: `$$...$$`.
+- MathJax is **vendored in `mathjax/`** and loaded through `additional-js`; `mathjax-support` in `book.toml` stays **off**. mdBook's built-in support injects MathJax 2.7 from cdnjs, which fetches its extensions lazily — if those requests are blocked, the page silently shows raw LaTeX. The vendored SVG bundle is one file with no subresources, so the site renders offline.
+- **No maths in headings, sidebar entries or link text.** The sidebar is built in the browser after load, so a formula there reads as raw dollar notation. Write the words in the title (`value, Q-value and advantage`) and put the symbol in the sentence.
 - Consistent symbols: policy $\pi_\theta$, return $G_t$, value $V^\pi(s)$, advantage $A^\pi(s,a)$, discount $\gamma$, KL coefficient $\beta$.
+- Keep the delimiters plain: `$...$` outside code spans. A literal dollar sign is written `\$`.
 
 ## Naming and links
 

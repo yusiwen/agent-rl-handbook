@@ -25,7 +25,8 @@ The book is organised around four questions, which double as its acceptance test
 ```text
 README.md                 reader-facing intro: what this is, how to build it, license
 LICENSE                   MIT (the house default across this user's repositories)
-book.toml                 mdBook config: language=en, MathJax, search, fold, navy theme
+book.toml                 mdBook config: language=en, search, fold, navy theme
+mathjax/                  vendored MathJax 3 (SVG output) + this book's config — no CDN, works offline
 flake.nix / flake.lock    pinned toolchain (mdbook 0.5.4) + reproducible site build
 .envrc                    direnv: NIX_CONFIG experimental-features + `use flake`
 src/SUMMARY.md            the table of contents — keep in step with the home-page map
@@ -87,11 +88,17 @@ nix develop --command mdbook build
 nix develop --command bash -c \
   'rg -n "[\p{Han}\x{3000}-\x{303F}\x{FF00}-\x{FFEF}]" -g "!book/**" -g "!result/**" .'
 
-# 3. what changed, for review
+# 3. the site must not fetch anything remote (expect 0 and 0)
+rg -o '<script[^>]*src="https?://[^"]*"' book/ | wc -l
+rg -o '<link[^>]*href="https?://[^"]*"' book/ | wc -l
+
+# 4. what changed, for review
 git status --short && git diff --stat
 ```
 
 Report the exact commands you ran and their results. If a check could not run, say so instead of implying success.
+
+**A successful build says nothing about rendering.** The failure mode is invisible to mdBook: if the maths renderer does not load, the page still builds and simply displays raw `$...$`. For any change that touches a formula or `book.toml`, open a page that contains maths and confirm it typesets — the renderer is local, so this works with the network off.
 
 ## Commits
 
@@ -108,6 +115,8 @@ Report the exact commands you ran and their results. If a check could not run, s
 - **In a git repository, flakes only see files in the git index**: new chapter files must be `git add`-ed before `nix develop` / `nix build` can see them.
 - **A new chapter means three edits**: the file, `src/SUMMARY.md`, and the book map table on `src/index.md`.
 - **A one-page part must not be nested under a part heading.** mdBook then prints the name twice (sidebar and breadcrumbs showed `Part 0 · Before you start » Part 0 · Before You Start`). List it as a plain link before the first `# Part …` heading, the way Part 0 is listed.
+- **Never depend on a CDN for the maths.** mdBook's `mathjax-support` injects MathJax 2.7 from cdnjs and lets it fetch its extensions lazily; when those requests are blocked or offline, the page silently shows raw LaTeX with no error anywhere in the build log. The renderer is therefore vendored in `mathjax/` (single SVG bundle, no font or extension downloads) and loaded via `additional-js`, with `mathjax-support = false`.
+- **No maths in headings or link text.** The sidebar is rendered in the browser from `toc-*.js` after load, so heading maths shows as dollar notation there even when the body renders; `config.js` re-typesets the sidebar on load as a safety net, not as a licence to write formulas in titles.
 
 ## Keeping this file current
 

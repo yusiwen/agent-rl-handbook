@@ -9,7 +9,11 @@ description = "A plain-English handbook for Agent RL: RL basics, alignment algor
 default-theme = "navy"
 preferred-dark-theme = "navy"
 smart-punctuation = false
-mathjax-support = true
+# MathJax is vendored in mathjax/ and loaded by additional-js below. mdBook's built-in
+# mathjax-support injects a MathJax 2.7 script from cdnjs, which renders nothing when
+# that CDN is unreachable or blocked by a content-security-policy. Keep it off.
+mathjax-support = false
+additional-js = ["mathjax/config.js", "mathjax/tex-svg.js"]
 no-section-label = false
 
 [output.html.fold]
