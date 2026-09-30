@@ -23,6 +23,8 @@ The book is organised around four questions, which double as its acceptance test
 ## Layout
 
 ```text
+README.md                 reader-facing intro: what this is, how to build it, license
+LICENSE                   MIT (the house default across this user's repositories)
 book.toml                 mdBook config: language=en, MathJax, search, fold, navy theme
 flake.nix / flake.lock    pinned toolchain (mdbook 0.5.4) + reproducible site build
 .envrc                    direnv: NIX_CONFIG experimental-features + `use flake`
