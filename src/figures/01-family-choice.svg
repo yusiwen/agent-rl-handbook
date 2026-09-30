@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 600" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="Decision tree for choosing an alignment family, sorted by who scores the attempt">
+  <!--
+    Figure 1.1 - "which family?" decision tree.
+    Every colour except the accent bars comes from the host page's theme variables
+    (mdBook sets them per theme class on <html>), so this figure follows the book's theme
+    switch with no second copy and no JavaScript. It must be INCLUDED inline, never
+    referenced with <img>: CSS custom properties do not cross document boundaries.
+    Two rules learned the hard way:
+    - stroke with --quote-border, not --table-border-color: in the navy theme the table
+      border is darker than the card fill and the outline disappears.
+    - keep the viewBox only as wide as the drawing needs. The page scales the figure to
+      the content column (~750px), so a wide viewBox shrinks the type.
+  -->
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-ask   { fill: var(--table-alternate-bg, #162f44); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-title { fill: var(--fg, #dce6f0); font-size: 14px; font-weight: 600; }
+    .fig-sub   { fill: var(--sidebar-fg, #8fa6bd); font-size: 12.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-lbl   { fill: var(--sidebar-fg, #8fa6bd); font-size: 12px; }
+    .fig-num   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11px; font-weight: 600; letter-spacing: .08em; }
+    .fig-edge  { stroke: var(--quote-border, #3c6b8f); stroke-width: 1.25; fill: none; }
+    .fig-head  { fill: var(--quote-border, #3c6b8f); }
+    /* Semantic accents are the only literal colours: mid-tones chosen to read on both the
+       navy and the light theme. */
+    .fig-a-cheap { fill: #3f8f6f; }
+    .fig-a-mid   { fill: #4d86b8; }
+    .fig-a-dear  { fill: #b06a5e; }
+  </style>
+  <defs>
+    <marker id="fig-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fig-head" d="M0,0.5 L7.5,4 L0,7.5 z"/>
+    </marker>
+  </defs>
+  <text class="fig-cap" x="40" y="20">WHICH FAMILY? — SORTED BY WHO SCORES THE ATTEMPT</text>
+  <!-- start -->
+  <rect class="fig-ask" x="40" y="34" width="320" height="56" rx="12"/>
+  <text class="fig-title" x="62" y="68">Your task, and a signal you can build</text>
+  <!-- questions -->
+  <rect class="fig-ask" x="40" y="130" width="320" height="64" rx="12"/>
+  <text class="fig-num" x="62" y="152">Q1</text>
+  <text class="fig-title" x="62" y="176">Can a program check the answer?</text>
+  <rect class="fig-ask" x="40" y="258" width="320" height="64" rx="12"/>
+  <text class="fig-num" x="62" y="280">Q2</text>
+  <text class="fig-title" x="62" y="304">Can you describe "better" in words?</text>
+  <rect class="fig-ask" x="40" y="386" width="320" height="64" rx="12"/>
+  <text class="fig-num" x="62" y="408">Q3</text>
+  <text class="fig-title" x="62" y="432">Do you already have ranked pairs?</text>
+  <!-- outcomes: the accent bar on the left edge encodes the cost of that family -->
+  <rect class="fig-card" x="440" y="128" width="350" height="68" rx="12"/>
+  <rect class="fig-a-cheap" x="440" y="128" width="3" height="68" rx="1.5"/>
+  <text class="fig-title" x="462" y="156">RLVR with GRPO</text>
+  <text class="fig-sub" x="462" y="176">the cheapest loop — no critic</text>
+  <rect class="fig-card" x="440" y="256" width="350" height="68" rx="12"/>
+  <rect class="fig-a-mid" x="440" y="256" width="3" height="68" rx="1.5"/>
+  <text class="fig-title" x="462" y="284">AI feedback</text>
+  <text class="fig-sub" x="462" y="304">RLAIF / Constitutional AI — a model scores</text>
+  <rect class="fig-card" x="440" y="384" width="350" height="68" rx="12"/>
+  <rect class="fig-a-cheap" x="440" y="384" width="3" height="68" rx="1.5"/>
+  <text class="fig-title" x="462" y="412">DPO</text>
+  <text class="fig-sub" x="462" y="432">offline — no sampling, no reward model</text>
+  <rect class="fig-card" x="440" y="496" width="350" height="68" rx="12"/>
+  <rect class="fig-a-dear" x="440" y="496" width="3" height="68" rx="1.5"/>
+  <text class="fig-title" x="462" y="524">PPO with a reward model</text>
+  <text class="fig-sub" x="462" y="544">the general machine — four models in memory</text>
+  <!-- edges -->
+  <path class="fig-edge" d="M200 90 V 124" marker-end="url(#fig-arrow)"/>
+  <path class="fig-edge" d="M360 162 H 434" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="372" y="154">yes</text>
+  <path class="fig-edge" d="M200 194 V 252" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="209" y="228">no</text>
+  <path class="fig-edge" d="M360 290 H 434" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="372" y="282">yes</text>
+  <path class="fig-edge" d="M200 322 V 380" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="209" y="356">no</text>
+  <path class="fig-edge" d="M360 418 H 434" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="372" y="410">yes</text>
+  <path class="fig-edge" d="M200 450 V 530 H 434" marker-end="url(#fig-arrow)"/>
+  <text class="fig-lbl" x="209" y="486">no</text>
+  <text class="fig-sub" x="40" y="586">Cost rises down every branch: milliseconds → minutes → GPU hours.</text>
+</svg>

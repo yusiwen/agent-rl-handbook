@@ -56,6 +56,25 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 - Consistent symbols: policy $\pi_\theta$, return $G_t$, value $V^\pi(s)$, advantage $A^\pi(s,a)$, discount $\gamma$, KL coefficient $\beta$.
 - Keep the delimiters plain: `$...$` outside code spans. A literal dollar sign is written `\$`.
 
+## Figures
+
+Figures are **hand-authored SVG files in `src/figures/`**, named `NN-slug.svg` after the chapter that owns them, pulled into a page with mdBook's include directive and wrapped in a `<figure>`:
+
+```markdown
+<figure class="book-figure">{{#include ../figures/01-family-choice.svg}}</figure>
+
+*Figure 1.1 — choosing a family. Each question you answer "no" moves you one step down a more expensive ladder.*
+```
+
+Four rules, all of which cost a broken build when ignored:
+
+1. **Colour comes from the theme variables**, never from literals: `--fg` for text, `--sidebar-fg` for muted text, `--quote-bg` for cards, `--quote-border` for card outlines and connectors, `--table-alternate-bg` for the secondary card shade. One file then serves every theme, including the reader's own theme switch. Use `--quote-border`, **not** `--table-border-color`: in the navy theme the table border is *darker* than the card fill, and the outline vanishes.
+2. **Include the file, never reference it as an image.** CSS custom properties do not cross into `<img>` or `<object>`, so a figure referenced as an image loses the theme entirely. Inline it.
+3. **No blank lines inside the file.** `<svg>` is not one of CommonMark's block tags, so the wrapper `<figure>` is what makes the fragment a single HTML block; a blank line inside ends that block early and mdBook warns about unbalanced HTML (or reports `Saw EOF in state Comment`). Also keep the viewBox only as wide as the drawing needs — the page scales a figure to the content column (~750 px), so a wide viewBox shrinks the type.
+4. **Labels are plain ASCII text, and no LaTeX inside a figure.** MathJax does not enter SVG; write `V(s)`, `A(s,a)` or words instead. The only literal colours allowed are the semantic accent bars (`.fig-a-cheap`, `.fig-a-mid`, `.fig-a-dear`), mid-tones chosen to read on both themes.
+
+Captions are ordinary italic markdown on the line after the figure, numbered `Figure <chapter>.<n>`. `css/figures.css` styles the wrapper and the caption.
+
 ## Naming and links
 
 - Files and directories: English lowercase slugs with numeric prefixes (for example `09-training-runtime/index.md`).

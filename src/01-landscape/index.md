@@ -53,6 +53,10 @@ Two details are worth noticing on first reading, because beginners meet them as 
 - **GRPO removes the critic.** Instead of learning how good a situation is (a value network, which is the fourth model in the table), it scores several attempts at the same question and compares them *with each other*. Cheaper in memory, noisier. The full derivation is in [Chapter 4](../04-alignment-algorithms/index.md).
 - **SFT is not a fifth family.** It is the floor all four stand on. Every method here assumes the model already follows instructions.
 
+<figure class="book-figure">{{#include ../figures/01-family-choice.svg}}</figure>
+
+*Figure 1.1 — choosing a family. Each question you answer "no" moves you one step down a more expensive ladder: a program that answers in milliseconds, then a model that answers in seconds, then GPU hours of sampling.*
+
 **Eight years, four dates.** The sequence explains why the four families look so different. *(dates and attributions are from the papers listed under Reading)*
 
 | When | What appeared | Why it mattered |
