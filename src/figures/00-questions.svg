@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 370" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The four questions this book circles, each with the chapters that answer it">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11px; letter-spacing: .12em; }
+    .fig-chip  { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-a-acc { fill: #4d86b8; }
+  </style>
+  <text class="fig-cap" x="40" y="20">THE FOUR QUESTIONS — AND WHERE THIS BOOK ANSWERS THEM</text>
+  <rect class="fig-card" x="40" y="44" width="170" height="256" rx="12"/>
+  <rect class="fig-card" x="226" y="44" width="170" height="256" rx="12"/>
+  <rect class="fig-card" x="412" y="44" width="170" height="256" rx="12"/>
+  <rect class="fig-card" x="598" y="44" width="170" height="256" rx="12"/>
+  <text class="fig-cap" x="56" y="74">Q1</text>
+  <text class="fig-cap" x="242" y="74">Q2</text>
+  <text class="fig-cap" x="428" y="74">Q3</text>
+  <text class="fig-cap" x="614" y="74">Q4</text>
+  <text class="fig-t" x="56" y="100">When do I need</text>
+  <text class="fig-t" x="56" y="118">reinforcement learning</text>
+  <text class="fig-t" x="56" y="136">at all?</text>
+  <text class="fig-t" x="242" y="100">How do I design</text>
+  <text class="fig-t" x="242" y="118">the reward?</text>
+  <text class="fig-t" x="428" y="100">How do I debug a</text>
+  <text class="fig-t" x="428" y="118">long multi-turn</text>
+  <text class="fig-t" x="428" y="136">failure?</text>
+  <text class="fig-t" x="614" y="100">Where does my</text>
+  <text class="fig-t" x="614" y="118">training system</text>
+  <text class="fig-t" x="614" y="136">lie to me?</text>
+  <rect class="fig-chip" x="56" y="164" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="56" y="200" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="56" y="236" width="64" height="26" rx="6"/>
+  <text class="fig-s" x="88" y="181" text-anchor="middle">Ch 1</text>
+  <text class="fig-s" x="88" y="217" text-anchor="middle">Ch 4</text>
+  <text class="fig-s" x="88" y="253" text-anchor="middle">Ch 13</text>
+  <rect class="fig-chip" x="242" y="164" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="242" y="200" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="242" y="236" width="64" height="26" rx="6"/>
+  <text class="fig-s" x="274" y="181" text-anchor="middle">Ch 5</text>
+  <text class="fig-s" x="274" y="217" text-anchor="middle">Ch 6</text>
+  <text class="fig-s" x="274" y="253" text-anchor="middle">Ch 12</text>
+  <rect class="fig-chip" x="428" y="164" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="428" y="200" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="428" y="236" width="64" height="26" rx="6"/>
+  <text class="fig-s" x="460" y="181" text-anchor="middle">Ch 2</text>
+  <text class="fig-s" x="460" y="217" text-anchor="middle">Ch 8</text>
+  <text class="fig-s" x="460" y="253" text-anchor="middle">Ch 10</text>
+  <rect class="fig-chip" x="614" y="164" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="614" y="200" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="614" y="236" width="64" height="26" rx="6"/>
+  <rect class="fig-chip" x="614" y="272" width="64" height="26" rx="6"/>
+  <text class="fig-s" x="646" y="181" text-anchor="middle">Ch 3</text>
+  <text class="fig-s" x="646" y="217" text-anchor="middle">Ch 7</text>
+  <text class="fig-s" x="646" y="253" text-anchor="middle">Ch 9</text>
+  <text class="fig-s" x="646" y="289" text-anchor="middle">Ch 11</text>
+  <text class="fig-s" x="40" y="330">Use it when you are stuck: a reward that gets gamed is a Q2 problem (Chapters 5 and 6); a run that crawls is a Q4 problem (Chapter 9).</text>
+  <text class="fig-s" x="40" y="352">The four questions are the spine of the book, and this part is the page where you decide which one is yours.</text>
+</svg>

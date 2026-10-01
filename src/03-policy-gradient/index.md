@@ -20,7 +20,7 @@ To improve a model you need a direction to move in. There are two ways to find i
 - [ ] 1. Policies, returns and value functions: $V$, $Q$ and the advantage $A$
 - [ ] 2. The Bellman equations: why a return can be written recursively
 - [ ] 3. Three ways to solve an RL problem: dynamic programming → Monte Carlo → temporal difference (TD)
-- [ ] 4. Value methods vs policy methods vs actor-critic — and where the off-policy line (Q-learning, DQN) sits
+- [ ] 4. Value methods vs policy methods vs actor-critic — and where the off-policy line sits: Q-learning and DQN (deep Q-networks)
 - [ ] 5. Policy-gradient theorem → REINFORCE → variance reduction → **GAE (we stop here)**
 - [ ] 6. A bridge: from online RL to offline preference optimisation (Chapter 4 takes it from here)
 

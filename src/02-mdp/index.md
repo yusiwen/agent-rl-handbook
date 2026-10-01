@@ -85,7 +85,7 @@ Chapter 1 said the preference stage exists because supervised fine-tuning (SFT) 
 
 **The practical pipeline.** SFT first, until the model sometimes succeeds. Then the preference stage, to make success reliable. The order is not a fashion: RL on a model that never succeeds has nothing to amplify, and SFT on top of RL is how "distillation of your own best trajectories" works when you need to freeze the gains. Both halves appear again in [Chapter 4](../04-alignment-algorithms/index.md).
 
-### Lesson 3 · The MDP five-tuple, explained slowly — and why POMDP shows up
+### Lesson 3 · The MDP five-tuple, explained slowly — and why partial observability shows up
 
 **The five-tuple.** A task is an MDP (Markov decision process) if you can write it as $(S, A, P, R, \gamma)$. *(textbook fact)* The letters are unhelpful on first contact, so here they are twice: in plain words, and in an agent task.
 
