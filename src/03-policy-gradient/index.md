@@ -41,6 +41,10 @@ To improve a model you need a direction to move in. There are two ways to find i
 > In a two-option situation, the policy currently gets $Q(s, a_1) = 0.2$ and $Q(s, a_2) = 0.4$ on average, with $V(s) = 0.35$. Then $A(s,a_1) = -0.15$ and $A(s,a_2) = +0.05$: $a_1$ is worse than this policy's own average, $a_2$ marginally better.
 > The **values themselves** would have told you "this situation is bad". Only the advantages tell you *which way to move*.
 
+<figure class="book-figure">{{#include ../figures/03-value-advantage.svg}}</figure>
+
+*Figure 3.1 — three moves from one situation, with the bars measured from $V(s)$ rather than from zero. The first two are the pair from the illustration above; what is left after subtracting the baseline is the advantage.*
+
 **Two ways to obtain them, and what each costs.** *(textbook fact, plus my judgement on the LLM consequences)*
 
 | Route | How you get $V$ or $Q$ | What it costs |
@@ -164,6 +168,10 @@ $$
 - $\gamma$ — how much the future counts.
 - $\lambda$ — how far into the future you trust the critic's estimates rather than the actual rewards.
 - $V$ — the critic, the second network from Lesson 1.
+
+<figure class="book-figure">{{#include ../figures/03-gae-horizon.svg}}</figure>
+
+*Figure 3.2 — the $\lambda$ dial: the same eight surprises, weighted three ways. $\lambda \approx 0.95$ is the compromise the implementations ship, and it is what lets the advantage keep a long memory without trusting the critic alone.*
 
 **What the dial does.** *(textbook fact for the extremes; my judgement for the practice)*
 

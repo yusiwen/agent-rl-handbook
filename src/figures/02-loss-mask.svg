@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 300" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="One episode of five turns: each turn holds the model's own tokens and the tool's output, only the model's tokens are trained on, and a single reward arrives at the end">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; stroke-dasharray: 3 3; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-num   { fill: var(--fg, #dce6f0); font-size: 17px; font-weight: 700; }
+    .fig-axis  { stroke: var(--quote-border, #274357); stroke-width: 1; fill: none; }
+    .fig-a-pos { fill: #3f8f6f; }
+    .fig-a-neg { fill: #b06a5e; }
+    .fig-a-acc { fill: #4d86b8; }
+  </style>
+  <text class="fig-cap" x="40" y="20">ONE EPISODE = ONE TASK — MANY TURNS, ONE REWARD</text>
+  <text class="fig-s" x="78" y="46" text-anchor="middle">turn 1</text>
+  <text class="fig-s" x="206" y="46" text-anchor="middle">turn 2</text>
+  <text class="fig-s" x="334" y="46" text-anchor="middle">turn 3</text>
+  <text class="fig-s" x="462" y="46" text-anchor="middle">turn 4</text>
+  <text class="fig-s" x="590" y="46" text-anchor="middle">turn 5</text>
+  <rect class="fig-card" x="40" y="54" width="76" height="56" rx="10"/>
+  <rect class="fig-alt" x="120" y="54" width="34" height="56" rx="8"/>
+  <rect class="fig-card" x="168" y="54" width="76" height="56" rx="10"/>
+  <rect class="fig-alt" x="248" y="54" width="34" height="56" rx="8"/>
+  <rect class="fig-card" x="296" y="54" width="76" height="56" rx="10"/>
+  <rect class="fig-alt" x="376" y="54" width="34" height="56" rx="8"/>
+  <rect class="fig-card" x="424" y="54" width="76" height="56" rx="10"/>
+  <rect class="fig-alt" x="504" y="54" width="34" height="56" rx="8"/>
+  <rect class="fig-card" x="552" y="54" width="76" height="56" rx="10"/>
+  <rect class="fig-alt" x="632" y="54" width="34" height="56" rx="8"/>
+  <text class="fig-s" x="78" y="86" text-anchor="middle">model</text>
+  <text class="fig-s" x="206" y="86" text-anchor="middle">model</text>
+  <text class="fig-s" x="334" y="86" text-anchor="middle">model</text>
+  <text class="fig-s" x="462" y="86" text-anchor="middle">model</text>
+  <text class="fig-s" x="590" y="86" text-anchor="middle">model</text>
+  <path class="fig-axis" d="M666 82 H 690"/>
+  <rect class="fig-alt" x="694" y="54" width="76" height="56" rx="12"/>
+  <text class="fig-num" x="732" y="82" text-anchor="middle">+1</text>
+  <text class="fig-s" x="732" y="98" text-anchor="middle">at the end</text>
+  <path class="fig-axis" d="M40 126 H 666"/>
+  <path class="fig-axis" d="M40 120 V 126 M666 120 V 126"/>
+  <text class="fig-s" x="353" y="144" text-anchor="middle">one trajectory: five turns, about 2,000 model tokens, 1,000 tool tokens, one number of feedback</text>
+  <rect class="fig-card" x="40" y="170" width="26" height="16" rx="4"/>
+  <text class="fig-s" x="76" y="183">trained on — the policy's own tokens</text>
+  <rect class="fig-alt" x="420" y="170" width="26" height="16" rx="4"/>
+  <text class="fig-s" x="456" y="183">masked out of the loss — tool output, prompts, user messages</text>
+  <text class="fig-s" x="40" y="234">Train on the tool's tokens and the model learns to imitate the tool instead of using it.</text>
+  <text class="fig-s" x="40" y="256">That is why every training framework carries a mask alongside the tokens it hands to the optimiser.</text>
+</svg>

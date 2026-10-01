@@ -139,6 +139,10 @@ Most production systems use a hybrid: the objective is defined over tokens (beca
 
 Two thousand decisions, one number of feedback. That ratio is the credit-assignment problem, and it is why Part 3 of this book exists rather than skipping straight to the algorithms.
 
+<figure class="book-figure">{{#include ../figures/02-loss-mask.svg}}</figure>
+
+*Figure 2.1 — one episode of five turns. The model's own tokens are the only ones trained on; the tool's output is masked out of the loss; and a single reward arrives at the end of the whole task, not at the end of each turn.*
+
 **The loss mask, concretely.** A trajectory contains tokens from three sources: the system prompt, the environment (tool outputs, files, user messages) and the model itself. Only the last group is your policy, so only the last group may contribute to the loss. Failing to mask tool output teaches the model to *imitate the tool* — and it will happily do that. *(my judgement on the failure mode; the mechanism is standard practice)* This is why a training framework's data structure carries a mask alongside the tokens, and why [Chapter 9](../09-training-runtime/index.md) spends time on exactly that structure.
 
 **Deciding where the episode ends is a design decision with a bill.** *(my judgement)*

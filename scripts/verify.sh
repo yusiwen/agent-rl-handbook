@@ -27,10 +27,13 @@ echo "== 2. English only: nothing outside ASCII and Latin-1, apart from the allo
 # covered the CJK ranges, which let other scripts through silently.
 #   allowed: Latin-1 Supplement minus its two invisible codes (A1-AC and AE-FF: letters such as
 #            e-acute, u-umlaut, n-tilde, and that block's punctuation), plus em dash, en dash,
-#            ellipsis, arrows, box drawing, the status marks, approximation and gamma.
+#            ellipsis, arrows, box drawing, the status marks, approximation, and the Greek
+#            letters this book uses as notation (gamma, lambda, delta, pi, theta, beta, tau -
+#            a figure cannot typeset LaTeX, so its labels need the symbols directly).
 #   not allowed: NBSP (A0) and soft hyphen (AD) - invisible, and nearly always pasted by mistake -
-#            and every script outside Latin: Cyrillic, Greek, Arabic, CJK and friends.
-allowlist='—–…→↔►▲─│┌┐└┘✅⚠️❌≈γ'
+#            and every script outside Latin apart from those notation letters: Cyrillic, Arabic,
+#            CJK and friends.
+allowlist='—–…→↔►▲─│┌┐└┘✅⚠️❌≈γλδπθβτ'
 if rg -n --hidden "[^\x00-\x7F\x{A1}-\x{AC}\x{AE}-\x{FF}${allowlist}]" \
      -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' -g '!mathjax/**' . ; then
   echo "FAIL: character found outside ASCII and Latin-1 (and not on the allowlist above)" >&2

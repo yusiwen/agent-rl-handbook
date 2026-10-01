@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 380" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The advantage as a weighted sum of the surprises that follow it: lambda zero keeps only the first, lambda one keeps all of them equally, and about 0.95 is what implementations ship">
+  <style>
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-axis  { stroke: var(--quote-border, #274357); stroke-width: 1; fill: none; }
+    .fig-a-pos { fill: #3f8f6f; }
+    .fig-a-acc { fill: #4d86b8; }
+    .fig-a-weak { fill: var(--quote-border, #274357); }
+  </style>
+  <text class="fig-cap" x="40" y="20">THE ADVANTAGE AS A DECAYING SUM OF THE SURPRISES THAT FOLLOW</text>
+  <text class="fig-t" x="138" y="66" text-anchor="end">λ = 0</text>
+  <text class="fig-s" x="530" y="66">trust the critic almost entirely</text>
+  <rect class="fig-a-acc" x="150" y="44" width="28" height="56" rx="4"/>
+  <rect class="fig-a-weak" x="196" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="242" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="288" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="334" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="380" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="426" y="98" width="28" height="2"/>
+  <rect class="fig-a-weak" x="472" y="98" width="28" height="2"/>
+  <path class="fig-axis" d="M134 100 H 520"/>
+  <text class="fig-t" x="138" y="156" text-anchor="end">λ = 0.95</text>
+  <text class="fig-s" x="530" y="156">what the implementations ship</text>
+  <rect class="fig-a-pos" x="150" y="134" width="28" height="56" rx="4"/>
+  <rect class="fig-a-pos" x="196" y="137" width="28" height="53" rx="4"/>
+  <rect class="fig-a-pos" x="242" y="139" width="28" height="51" rx="4"/>
+  <rect class="fig-a-pos" x="288" y="142" width="28" height="48" rx="4"/>
+  <rect class="fig-a-pos" x="334" y="144" width="28" height="46" rx="4"/>
+  <rect class="fig-a-pos" x="380" y="147" width="28" height="43" rx="4"/>
+  <rect class="fig-a-pos" x="426" y="149" width="28" height="41" rx="4"/>
+  <rect class="fig-a-pos" x="472" y="151" width="28" height="39" rx="4"/>
+  <path class="fig-axis" d="M134 190 H 520"/>
+  <text class="fig-t" x="138" y="246" text-anchor="end">λ = 1</text>
+  <text class="fig-s" x="530" y="246">trust only the rewards that happened</text>
+  <rect class="fig-a-acc" x="150" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="196" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="242" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="288" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="334" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="380" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="426" y="224" width="28" height="56" rx="4"/>
+  <rect class="fig-a-acc" x="472" y="224" width="28" height="56" rx="4"/>
+  <path class="fig-axis" d="M134 280 H 520"/>
+  <text class="fig-s" x="164" y="298" text-anchor="middle">δt</text>
+  <text class="fig-s" x="210" y="298" text-anchor="middle">δt+1</text>
+  <text class="fig-s" x="256" y="298" text-anchor="middle">δt+2</text>
+  <text class="fig-s" x="302" y="298" text-anchor="middle">δt+3</text>
+  <text class="fig-s" x="348" y="298" text-anchor="middle">δt+4</text>
+  <text class="fig-s" x="394" y="298" text-anchor="middle">δt+5</text>
+  <text class="fig-s" x="440" y="298" text-anchor="middle">δt+6</text>
+  <text class="fig-s" x="486" y="298" text-anchor="middle">δt+7</text>
+  <text class="fig-s" x="40" y="336">Each bar is one step's surprise: what happened, minus what the critic expected. The advantage is their weighted sum.</text>
+  <text class="fig-s" x="40" y="358">λ = 0 keeps only the first (cheap, biased by the critic's error); λ = 1 weights them all equally (honest, noisy).</text>
+</svg>
