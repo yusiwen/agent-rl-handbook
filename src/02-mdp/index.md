@@ -18,7 +18,7 @@ An MDP is a tidy way of writing down a trial-and-error problem: *what I see*, *w
 
 - [ ] 1. The engine of RL: from the interaction loop to expected return
 - [ ] 2. Why SFT stops being enough: five classes of problems it cannot fix
-- [ ] 3. The MDP five-tuple, explained slowly — and why POMDP shows up
+- [ ] 3. The MDP five-tuple, explained slowly — and why partial observability (POMDP) shows up
 - [ ] 4. Trajectory, episode and state in agent settings: **many turns = one long episode, state = context + environment**
 
 ### Lesson 1 · The engine of RL: from the interaction loop to expected return
@@ -51,7 +51,7 @@ $$
 2. It makes the sum finite when the episode never ends, so the arithmetic does not diverge.
 3. It is a knob for *how far ahead* the agent plans. $\gamma = 0$ gives a greedy agent that only sees the next reward; $\gamma$ close to 1 gives a patient one that optimises the far future.
 
-**The objective.** The agent's behaviour is a **policy**: a rule that turns a situation into a probability for each action, written $\pi_\theta(a \mid s)$. For a language model, that is exactly the softmax over the next token, and $\theta$ is the model's weights — which is why "training an LLM with RL" means "adjusting the weights so that better-scoring text becomes more likely". Training maximises the expected return:
+**The objective.** The agent's behaviour is a **policy**: a rule that turns a situation into a probability for each action, written $\pi_\theta(a \mid s)$. For a language model (LLM), that is exactly the softmax over the next token, and $\theta$ is the model's weights — which is why "training an LLM with RL" means "adjusting the weights so that better-scoring text becomes more likely". Training maximises the expected return:
 
 $$
 J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\left[ G \right]
@@ -61,7 +61,7 @@ The expectation symbol $\mathbb{E}$ is doing real work here: you cannot control 
 
 **The tension the loop creates: explore or exploit.** If you always take the action that currently looks best, you never find out whether a different action was better. If you always try something new, you never use what you learned. Every RL algorithm is a compromise between the two, and every compromise costs samples. *(textbook fact)*
 
-**What this lesson is for.** Everything in the rest of this book — advantage, KL penalties, group-relative baselines — is machinery for estimating $J(\theta)$ reliably from a small number of expensive attempts. The notation above is the vocabulary those chapters assume.
+**What this lesson is for.** Everything in the rest of this book — advantage, KL (Kullback-Leibler) penalties, group-relative baselines — is machinery for estimating $J(\theta)$ reliably from a small number of expensive attempts. The notation above is the vocabulary those chapters assume.
 
 ### Lesson 2 · Why SFT stops being enough: five classes of problems it cannot fix
 

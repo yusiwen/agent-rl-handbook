@@ -6,7 +6,7 @@
 
 ## First, the gist
 
-There are only a handful of ways to make a model behave better, and they are constantly confused with each other. This chapter draws the map before any maths: what each family of methods is for, where the feedback comes from, and what it costs. One idea matters more than the rest — **RL amplifies what a model can already do; it does not inject new knowledge**. If the model cannot solve a task even once in a while, no amount of training will teach it.
+There are only a handful of ways to make a model behave better, and they are constantly confused with each other. This chapter draws the map before any maths: what each family of methods is for, where the feedback comes from, and what it costs. One idea matters more than the rest — **RL (reinforcement learning) amplifies what a model can already do; it does not inject new knowledge**. If the model cannot solve a task even once in a while, no amount of training will teach it.
 
 ## What you'll be able to do
 
@@ -19,7 +19,7 @@ There are only a handful of ways to make a model behave better, and they are con
 - [ ] 1. Eight years of alignment in one pass: the four families
 - [ ] 2. Where does the feedback come from? Agents, search, vision, emotion
 - [ ] 3. Amplifier vs injector: does RL have a ceiling? (Payoff: what belongs to sampling at inference time, and what genuinely needs training)
-- [ ] 4. A first intuition for compute cost: rollouts dominate, multi-turn multiplies, and sometimes RL is the wrong purchase
+- [ ] 4. A first intuition for compute cost: rollouts dominate (and sometimes RL is the wrong purchase)
 
 ### Lesson 1 · Eight years of alignment in one pass: the four families
 
@@ -43,10 +43,10 @@ This book is about stage 3. The whole field calls it "alignment", "post-training
 
 | Family | Who provides the score | Famous names | What it costs |
 |---|---|---|---|
-| 1. Preference-based RL | Humans rank two answers; a **reward model** (a second model trained to imitate those rankings) learns to give the score | RLHF, PPO | Four models alive at once (policy, frozen reference, reward model, critic), heavy sampling, fiddly to stabilise |
-| 2. AI feedback / scalable oversight | A **model** judges, guided by written principles | RLAIF, Constitutional AI | Cheap labels, but the judge's biases *become* your reward; the judge must be audited against humans |
-| 3. Direct preference optimisation | The **preference pairs themselves** are the loss; no reward model is trained and nothing is sampled during training | DPO | Offline: it cannot explore or discover anything the pairs do not already contain; needs fresh pairs; weaker where correctness is checkable |
-| 4. Verifiable-reward RL | A **program** scores: check the final answer, run the unit tests, validate the schema | RLVR, GRPO | Only usable where a checker exists; invites reward hacking (the model pleases the checker instead of doing the task) |
+| 1. Preference-based RL | Humans rank two answers; a **reward model** (a second model trained to imitate those rankings) learns to give the score | RLHF (reinforcement learning from human feedback), PPO (proximal policy optimisation) | Four models alive at once (policy, frozen reference, reward model, critic), heavy sampling, fiddly to stabilise |
+| 2. AI feedback / scalable oversight | A **model** judges, guided by written principles | RLAIF (reinforcement learning from AI feedback), Constitutional AI | Cheap labels, but the judge's biases *become* your reward; the judge must be audited against humans |
+| 3. Direct preference optimisation | The **preference pairs themselves** are the loss; no reward model is trained and nothing is sampled during training | DPO (direct preference optimisation) | Offline: it cannot explore or discover anything the pairs do not already contain; needs fresh pairs; weaker where correctness is checkable |
+| 4. Verifiable-reward RL | A **program** scores: check the final answer, run the unit tests, validate the schema | RLVR (reinforcement learning with verifiable rewards), GRPO (group relative policy optimisation) | Only usable where a checker exists; invites reward hacking (the model pleases the checker instead of doing the task) |
 
 Two details are worth noticing on first reading, because beginners meet them as separate topics later:
 
@@ -183,9 +183,9 @@ A one-page draft: "my task → should I use RL at all → if yes, which family".
 
 ## How you know you passed
 
-- For each of the four families, you can say in one sentence what it fixes and what it costs.
-- You can translate "RL is an amplifier" into a concrete statement about your own task.
-- You can name a task where RL would be wasted money, and explain why.
+- Your one-pager names **one** family and the feedback source you will actually build for it. "We will figure out the reward later" is not an answer.
+- It carries a pass@k number you measured on your own task, and says which $k$ you used.
+- It names one case where RL would be wasted money — your own task, or one you considered — and says what you would do instead.
 
 ## Reading
 

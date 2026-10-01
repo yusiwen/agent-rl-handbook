@@ -1,6 +1,6 @@
 # Part 0 · Before You Start
 
-> **Compute tier**: ✅ | **Status**: stub
+> **Compute tier**: ✅ | **Status**: draft — the orientation is written; the three lessons stay a map rather than prose, by design
 
 ## First, the gist
 
@@ -13,7 +13,7 @@ Before learning anything, write down two things: *what problem am I trying to so
 
 ## Lessons
 
-- [ ] 1. Why Agent RL is the dividing line in large-model work
+- [ ] 1. Why Agent RL (reinforcement learning) is the dividing line in large-model work
 - [ ] 2. The map, part 1: RL basics and reward engineering
 - [ ] 3. The map, part 2: the industrial battlefield and the judgement framework
 
@@ -40,6 +40,15 @@ A one-page alignment sheet:
 - Who this material suits and who it does not (you need Python, PyTorch basics, some fine-tuning experience).
 - What the companion course materials are, and why this handbook — not the materials — is the main text.
 - Mobile app, payments, community chat, resource-centre links.
+
+## Reading
+
+Nothing technical yet — this part is yours to fill in. Four reference pages in the appendix are worth skimming before you start:
+
+- The [glossary](../appendix/glossary.md) defines every term the book uses, in two columns: the formal meaning, and the same thing in plain words.
+- The [compute tiers](../appendix/compute-tiers.md) is the hardware ladder behind every chapter's ✅ / ⚠️ / ❌ label.
+- The [project index](../appendix/projects.md) maps each hands-on project to the chapter that builds it.
+- The [16-week plan](../appendix/schedule.md) turns the parts and chapters into a schedule, with checkpoints.
 
 ## Backfill
 

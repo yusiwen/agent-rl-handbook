@@ -17,6 +17,12 @@ This handbook is maintained over a long period, so consistency matters more than
 ## Backfill           (which of the four questions did this answer?)
 ```
 
+The `## Lessons` checklist item and its `### Lesson N` heading must open with the same clause. The item may add a parenthetical promise — a payoff, or what the lesson sets up — but the heading stays short. A reader who ticks item 4 should land on a section that is recognisably item 4.
+
+**Titles and roadmaps are labels, not uses.** A chapter title, or a line that deliberately stays in plain words ("a trial-and-error problem" rather than "an MDP"), may name an acronym before the section that defines it. Every technical use after that definition point must have the expansion behind it.
+
+**Two terms are book-level and are expanded once for the whole book**: `RL` (reinforcement learning), on the home page, and `LLM` (large language model), at its first technical use in Chapter 2. Chapters do not repeat those two expansions; every other acronym is expanded at its first use in each chapter, and re-expanded in a chapter that leans on it for the first time.
+
 ## Plain-language rules
 
 The audience is a beginner with basic Python and some fine-tuning experience. That means:
@@ -38,10 +44,17 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 | Reagent-U (define on first use: U = Unified Feedback Integration) | Reagent U / REAGENT-U |
 | PPO, GRPO, DPO | variant names of your own invention |
 | rollout, worker, checkpoint, verifier | home-made translations of them |
+| loss mask | "loss filter", "training mask" |
+| turn, episode, trajectory | "round" for turn; "session" for episode (a session is not an episode) |
+| advantage, critic, reference model | translated variants; "teacher model" for reference model |
+| pass@k | invented spellings such as "pass rate at k" |
+| reward hacking | "reward cheating", "gaming the metric" |
+| KL (Kullback-Leibler) | expanding it inconsistently, or leaving it unexplained on first use |
 
 ## Citations and honesty
 
 - Papers: give the title plus the arXiv ID. **If the ID has not been checked by hand, mark it "ID to verify".**
+- **A verified ID is verified once.** When a paper is cited in more than one chapter, reuse the entry and say where it was verified (for example "verified in Chapter 1's Reading, 2026-09-30") instead of checking it again. Re-check only when the citation itself changes.
 - Claims come in exactly three kinds, and must not be blended:
   - **Textbook fact** — settled, textbook-level (for example the Bellman equation derivation)
   - **Paper result** — cite it, and mark "reported, not reproduced"

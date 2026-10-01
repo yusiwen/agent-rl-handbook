@@ -2,7 +2,8 @@
 
 > **Compute tier**: ✅ (this chapter trains nothing; it is derivation on paper)
 > **Status**: draft — all six lessons have prose, no numbers measured on hardware yet
-> **Note**: the full PPO objective is **not** here — it lives in [Chapter 4](../04-alignment-algorithms/index.md). This chapter stops at GAE and answers one question: *where does the gradient come from?*
+> **Note**: the full PPO (proximal policy optimisation) objective is **not** here — it lives in [Chapter 4](../04-alignment-algorithms/index.md). This chapter stops at GAE (generalised advantage estimation) and answers one question: *where does the gradient come from?*
+> **Rule of this book**: the meaning of every algorithm is explained once, in [Chapter 4](../04-alignment-algorithms/index.md). This chapter is the machinery underneath them.
 
 ## First, the gist
 
@@ -21,7 +22,7 @@ To improve a model you need a direction to move in. There are two ways to find i
 - [ ] 3. Three ways to solve an RL problem: dynamic programming → Monte Carlo → temporal difference (TD)
 - [ ] 4. Value methods vs policy methods vs actor-critic — and where the off-policy line (Q-learning, DQN) sits
 - [ ] 5. Policy-gradient theorem → REINFORCE → variance reduction → **GAE (we stop here)**
-- [ ] 6. A bridge: from online RL to offline preference optimisation (setting up DPO in Chapter 4)
+- [ ] 6. A bridge: from online RL to offline preference optimisation (Chapter 4 takes it from here)
 
 ### Lesson 1 · Policies, returns and value functions: value, Q-value and advantage
 
@@ -47,7 +48,7 @@ To improve a model you need a direction to move in. There are two ways to find i
 | Model-based | You know the environment's transition probabilities and compute the expectation exactly | Requires a known model — rarely available; in a real sandbox with real tools, never |
 | Learned | Train a second network (the **critic**) to predict it from experience | Memory for a second model, a second training loop, and a new source of noise: when the critic is wrong, the policy is steered wrong |
 
-**Why this is genuinely hard for a language model.** A value for a *situation* in a game is a useful summary, because many games return to similar situations. A conversation, by contrast, is almost never revisited: every context is unique, and the value must be estimated at every token position of a half-written answer. The critic is therefore being asked to judge incomplete work, very far from any reward. *(my judgement, and the boundary: this is the main reason the field went looking for critic-free methods such as GRPO in [Chapter 4](../04-alignment-algorithms/index.md))*
+**Why this is genuinely hard for a language model.** A value for a *situation* in a game is a useful summary, because many games return to similar situations. A conversation, by contrast, is almost never revisited: every context is unique, and the value must be estimated at every token position of a half-written answer. The critic is therefore being asked to judge incomplete work, very far from any reward. *(my judgement, and the boundary: this is the main reason the field went looking for critic-free methods such as GRPO (group relative policy optimisation) in [Chapter 4](../04-alignment-algorithms/index.md))*
 
 ### Lesson 2 · The Bellman equations: why a return can be written recursively
 
@@ -116,7 +117,7 @@ The difference is one word: **max**. Instead of averaging over the current polic
 - **On-policy**: the data must come from the policy being trained. Improve the policy, and your data is stale — so you must generate fresh samples after each update. PPO and GRPO are on-policy, which is exactly why their rollout cost dominates ([Chapter 1](../01-landscape/index.md), Lesson 4).
 - **Off-policy**: the data may come from somewhere else — an older version of the policy, a different policy, a human, a fixed dataset. Q-learning and DQN use a replay buffer for this reason, and it is what makes them sample-efficient.
 
-**Where DPO sits.** DPO is trained on a *fixed set of preference pairs* collected from some other policy. That is off-policy by construction, and it is the source of both its cheapness and its ceiling: no sampling infrastructure, but also no exploration. *(my judgement, with the derivation deferred to [Chapter 4](../04-alignment-algorithms/index.md))*
+**Where DPO (direct preference optimisation) sits.** DPO is trained on a *fixed set of preference pairs* collected from some other policy. That is off-policy by construction, and it is the source of both its cheapness and its ceiling: no sampling infrastructure, but also no exploration. *(my judgement, with the derivation deferred to [Chapter 4](../04-alignment-algorithms/index.md))*
 
 ### Lesson 5 · Policy-gradient theorem → REINFORCE → variance reduction → GAE
 
@@ -134,7 +135,7 @@ That is the whole idea. The reward acts as a weight on the gradient of a log-pro
 
 **Where the log comes from (the log-derivative trick).** Start from $J(\theta) = \sum_s d(s)\sum_a \pi_\theta(a \mid s) Q^\pi(s,a)$ and differentiate. The product rule hits $\pi_\theta$, and the identity $\nabla \pi_\theta = \pi_\theta \nabla \log \pi_\theta$ turns that derivative back into an expectation, which you can estimate by sampling. That substitution is the entire reason policy gradients are practical: it moves the derivative off an unknown function and onto something you can compute.
 
-**REINFORCE: use the return as the weight.** Replace the unknown $Q^\pi(s,a)$ with the sampled return $G_t$:
+**REINFORCE: use the return as the weight.** The name is historical — it comes from Williams's 1992 paper (see Reading); what it means here is simple: replace the unknown $Q^\pi(s,a)$ with the sampled return $G_t$:
 
 $$
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^{N} \sum_{t} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\, G_t
@@ -205,9 +206,9 @@ The practical reading, and the seed for the next chapter's backfill question: **
 
 ## How you know you passed
 
-- You can write the Bellman expectation equation, the REINFORCE gradient and the GAE $\lambda$-return from memory.
-- You can explain "LLM tasks are naturally sparse" in your own words — the reason is where the feedback lands, not how much of it there is.
-- You can define on-policy vs off-policy and place PPO, DPO and GRPO on the correct side.
+- Your derivation runs from the Bellman equation to the GAE $\lambda$-return, and marks at each variance-reduction step which source of noise that step removes.
+- For your own task, you can say whether the advantage estimate is limited mainly by the critic's error or by sampling noise — and what you would change first.
+- Your sparsity note names a number: roughly how many tokens separate the first decision from the first reward in your task.
 
 ## Reading
 

@@ -46,7 +46,7 @@ A one-page selection table that **must include the negative argument**:
 
 ## Reading
 
-- To fill in: InstructGPT, DPO, DeepSeekMath (GRPO), Constitutional AI, DeepSeek-R1.
+- *Training language models to follow instructions with human feedback* (InstructGPT, arXiv:2203.02155), *Direct Preference Optimization* (arXiv:2305.18290), *DeepSeekMath* (GRPO, arXiv:2402.03300), *Constitutional AI* (arXiv:2212.08073) and *DeepSeek-R1* (arXiv:2501.12948) — titles and IDs verified in [Chapter 1](../01-landscape/index.md)'s Reading on 2026-09-30. Reuse them; add the newer work (KTO, ORPO, SimPO, DAPO) here and verify only what is new.
 
 ## Backfill
 

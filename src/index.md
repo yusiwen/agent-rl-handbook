@@ -49,7 +49,7 @@ If you have never touched Python or PyTorch, do that first — this book will no
 | | [13 · Papers and Judgement](13-papers/index.md) | 8 | ✅ | A "where does this paper sit" notebook |
 | | [Extra modules](electives/index.md) | 4 blocks | ✅ | — |
 
-Roughly 100 lessons: about 20–22 hours of reading, plus 60–100 hours of hands-on work. See the [16-week plan](appendix/schedule.md).
+The map above lists **100 lessons** in total: about 20–22 hours of reading, plus 60–100 hours of hands-on work. See the [16-week plan](appendix/schedule.md).
 
 ## How hard is the compute?
 
