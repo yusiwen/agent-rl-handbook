@@ -17,6 +17,8 @@ This handbook is maintained over a long period, so consistency matters more than
 ## Backfill           (which of the four questions did this answer?)
 ```
 
+**The section names are fixed; extra sections are allowed after them.** A chapter that needs a split — Chapter 12's shippable main track against its unsettled research zone, for example — labels the boundary inside `## Lessons`, or gives the second half a section of its own *after* it. Renaming a standard section (Chapter 12's was once `## Main track`) makes one chapter navigate differently from the other twelve and drops that page out of the skeleton check.
+
 The `## Lessons` checklist item and its `### Lesson N` heading must open with the same clause. The item may add a parenthetical promise — a payoff, or what the lesson sets up — but the heading stays short. A reader who ticks item 4 should land on a section that is recognisably item 4.
 
 **Titles and roadmaps are labels, not uses.** A chapter title, or a line that deliberately stays in plain words ("a trial-and-error problem" rather than "an MDP"), may name an acronym before the section that defines it. Every technical use after that definition point must have the expansion behind it.

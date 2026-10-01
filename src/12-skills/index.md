@@ -15,7 +15,7 @@ So far, "getting better" meant changing the model's weights. There is another wa
 - Version and audit skills so a bad edit can be rolled back.
 - Decide, per capability, between training it into the weights and keeping it external.
 
-## Main track
+## Lessons
 
 - [ ] 1. What an agent skill actually is: five shapes and five boundaries
 - [ ] 2. A problem/solution map: seven pain points against eight families of fixes
@@ -26,7 +26,9 @@ So far, "getting better" meant changing the model's weights. There is another wa
 - [ ] 7. Project 6c: authoring your own skill — better descriptions, scripting, stable execution
 - [ ] 8. The decision framework: data, latency, scenario, ecosystem — **train it into the weights, or keep it outside?**
 
-## Optional (research zone: results are not settled — read as a roadmap)
+## Optional: the research zone
+
+*(Lessons 9 to 11 are research results, not settled engineering — the same warning this chapter's metadata carries. Read them as a roadmap, not as instructions.)*
 
 - [ ] 9. SkillRL: hub-and-spoke co-evolution and its four paths
 - [ ] 10. EvoSkill / Trace2Skill / SkillClaw: three ways to put guardrails on a self-evolving agent
