@@ -68,6 +68,8 @@ These decisions were made deliberately; do not "fix" them back:
 ## Backfill           (which of the four questions did this answer?)
 ```
 
+**The section names are fixed; extra sections are allowed after them.** A chapter that needs a split — Chapter 12's shippable main track against its unsettled research zone — labels the boundary inside `## Lessons`, or gives the second half a section of its own *after* it. Renaming a standard section (Chapter 12's was once `## Main track`) makes one chapter navigate differently from the other twelve, breaks what the home page promises about how every chapter is built, and drops that page out of the skeleton check. Reasoning and wording: `src/appendix/conventions.md`.
+
 ## Toolchain and commands
 
 The toolchain is pinned by the Nix flake; `mdbook` is **not** assumed to exist system-wide.
@@ -100,11 +102,38 @@ Report the exact commands you ran and their results. If a check could not run, s
 
 **A successful build says nothing about rendering.** The failure mode is invisible to mdBook: if the maths renderer does not load, the page still builds and simply displays raw `$...$`. For any change that touches a formula or `book.toml`, open a page that contains maths and confirm it typesets — the renderer is local, so this works with the network off.
 
+## Reviews: where a finding has to end up
+
+A review that finds a defect and changes nothing will meet that defect again. Every finding lands in one of three places:
+
+1. **A rule** in `src/appendix/conventions.md`, when the fix is a judgement call.
+2. **A check that runs** — `scripts/verify.sh` (what CI enforces) or the review probe (the structural rules) — when the defect can be recognised mechanically.
+3. **A pitfall** in the list below, when the cause was the process rather than the prose.
+
+Two consequences, both already paid for:
+
+- **A rule that only exists as text does not survive.** "Expand every acronym at first use" was on the conventions page from Chapter 1, and the Part 1 review still found eighteen violations across three chapters, because nothing ran it.
+- **When a check and the text disagree, decide which one is wrong first.** Twice the checker was the buggy party — a script that read the home-page map row by row, and an acronym scan that counted a chapter title quoted inside a link. Editing prose to satisfy a broken check makes the book worse.
+
+### Ledger: what the reviews actually found
+
+| Defect the review found | Rule it produced | Where it is enforced |
+|---|---|---|
+| Acronyms unexpanded at first use, in all three chapters of Part 1 | explain before you use | review probe: `first used unexpanded`, run before a chapter counts as done |
+| `## How you know you passed` restated `## What you'll be able to do` | the passed-list tests the deliverable | reading — no mechanical form, so the reviewer owns it |
+| A checklist item and its `### Lesson N` heading drifted apart after an edit | item and heading open with the same clause | review probe: `item N opens … but heading opens …` |
+| Part 0 carried prose while its status still said `stub` | a stale status is a finding in itself | review probe: `status says stub but N lesson heading(s) exist` |
+| The terminology table was missing ten terms Part 1 was already using | a term is registered in the same commit | review probe: `uses '…' but it is not registered` |
+| "Roughly 100 lessons" beside a map that adds up to exactly 100 | counts are claims | review probe: approximate inventory count, homepage included |
+| Chapter 12 renamed `## Lessons` to `## Main track` | the section names are fixed; extra sections go after them | review probe: missing skeleton section |
+| Part 1 explained mechanisms with no figure anywhere | — (judgement: a mechanism without a picture is invisible) | review probe reports figures per page |
+| A verification check never tested against the defect it looks for | negative-test a check before trusting it | writing workflow: inject the defect into a copy, and assert the injection landed |
+
 ## Commits
 
 - Conventional Commits, English, imperative subject: `docs(book): …`, `build(nix): …`, `chore: …`.
 - One logical change per commit; stage first and show `git diff --stat` when the user wants to review.
-- There is no remote configured yet; do not push.
+- The remote is `origin` (`yusiwen/agent-rl-handbook`). A push to `main` runs CI, and a green run publishes the site to `https://yusiwen.cn/agent-rl-handbook/`; check the run before calling a change live. (Until 2026-10-01 this line read "There is no remote configured yet; do not push" — true when written, stale once publishing was set up.)
 - `book/`, `result/` and `.direnv/` are ignored — if a generated file shows up as untracked, the ignore rules are wrong, not the file.
 
 ## Pitfalls already paid for
@@ -123,4 +152,4 @@ Report the exact commands you ran and their results. If a check could not run, s
 
 ## Keeping this file current
 
-Update `AGENTS.md` when the language rule, the chapter skeleton, the toolchain, or a locked design decision changes. Move anything longer than a few lines into `src/appendix/conventions.md` and leave a pointer here.
+Update `AGENTS.md` when the language rule, the chapter skeleton, the toolchain, or a locked design decision changes, and add a row to the review ledger whenever a review turns up a new class of defect. Move anything longer than a few lines into `src/appendix/conventions.md` and leave a pointer here.

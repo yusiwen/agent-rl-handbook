@@ -102,7 +102,7 @@ Captions are ordinary italic markdown on the line after the figure, numbered `Fi
 
 - Add new material to an existing chapter rather than opening a new one; if a new chapter really is needed, update `SUMMARY.md` and the map on the home page in the same change.
 - When a fact changes (a framework gains sm_121 support, for example), **edit the sentence and keep one clause saying when it changed** — never delete silently.
-- A term a chapter introduces joins the table above (or the [glossary](glossary.md)) **in the same commit**, with the variants not to use. The Part 1 review found eight terms in use — `loss mask`, `pass@k`, `critic`, `reference model`, `advantage`, `turn`, `episode`, `trajectory`, `KL`, `reward hacking` — and none of them registered anywhere, so a reader had nowhere to look them up. The review probe now reports a page that uses one of them without registering it.
+- A term a chapter introduces joins the table above (or the [glossary](glossary.md)) **in the same commit**, with the variants not to use. The Part 1 review found ten terms in use — `loss mask`, `pass@k`, `critic`, `reference model`, `advantage`, `turn`, `episode`, `trajectory`, `KL`, `reward hacking` — and none of them registered anywhere, so a reader had nowhere to look them up. The review probe now reports a page that uses one of them without registering it.
 
 ### Making the reviews stick
 
@@ -114,6 +114,6 @@ Every finding from a review has to end up in one of three places, or it comes ba
 
 Three habits follow from that, and each of them has already paid for itself:
 
-- **A rule that only exists as text does not survive.** "Expand every acronym at first use" was written into this page with Chapter 1, and the Part 1 review still found eighteen violations across the three chapters, because nothing ran it. The check does not have to be perfect; it has to exist and be run before the chapter is called done.
+- **A rule that only exists as text does not survive.** "Expand every acronym at first use" was written into this page with Chapter 1, and the Part 1 review still had to add twelve expansions across the three chapters, because nothing ran it. The check does not have to be perfect; it has to exist and be run before the chapter is called done.
 - **When a check and the text disagree, decide which one is wrong first.** Twice the checker was the buggy party: a lesson-count script that read the home-page map row by row, and an acronym scan that counted a chapter title quoted inside a link. "Fixing" the prose to satisfy a broken check would have made the book worse. A check that fires is a hypothesis, not a verdict.
 - **Edit labels in pairs, and sweep rather than spot-fix.** Item ↔ lesson heading, status ↔ what the page actually contains, section name ↔ the fixed skeleton, page ↔ home-page map row, part label ↔ every other copy of it. Every structural defect found so far was one half of a pair updated without the other: a chapter's Lesson 3 heading drifted away from its checklist item when the item gained a parenthetical, and Chapter 12 dropped out of the skeleton check by renaming a standard section. A label that lives in one place usually lives in five (`SUMMARY.md`, the page H1, the home-page map, the progress list, the hygiene docs): grep the old string across the tracked tree and require zero hits before calling a rename done.
