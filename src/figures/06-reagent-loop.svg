@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The credit-assignment loop the project closes: rollouts scored cheaply by a rule, an expensive critique model applied only to the uncertain middle, a fusion step producing one reward, and a GRPO update feeding the next round of rollouts">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-edge  { stroke: var(--quote-border, #3c6b8f); stroke-width: 1.25; fill: none; }
+    .fig-a-cheap { fill: #3f8f6f; }
+    .fig-a-dear  { fill: #a97a3c; }
+    .fig-a-flow  { fill: #4d86b8; }
+  </style>
+  <text class="fig-cap" x="40" y="20">THE LOOP THE PROJECT CLOSES — CHEAP SCORE FIRST, CRITIQUE ONLY WHERE IT MATTERS</text>
+  <rect class="fig-card" x="40" y="56" width="175" height="52" rx="8"/>
+  <text class="fig-t" x="54" y="78">Policy</text>
+  <text class="fig-s" x="54" y="96">turn boundaries recorded</text>
+  <rect class="fig-a-cheap" x="225" y="70" width="6" height="24" rx="3"/>
+  <rect class="fig-card" x="231" y="56" width="169" height="52" rx="8"/>
+  <text class="fig-t" x="245" y="78">Rule reward</text>
+  <text class="fig-s" x="245" y="96">cheap, every sample</text>
+  <rect class="fig-card" x="410" y="56" width="175" height="52" rx="8"/>
+  <text class="fig-t" x="424" y="78">Uncertain band</text>
+  <text class="fig-s" x="424" y="96">where the outcome is open</text>
+  <rect class="fig-a-dear" x="595" y="70" width="6" height="24" rx="3"/>
+  <rect class="fig-card" x="601" y="56" width="169" height="52" rx="8"/>
+  <text class="fig-t" x="615" y="78">Agent-RRM</text>
+  <text class="fig-s" x="615" y="96">trace + critique + score</text>
+  <path class="fig-edge" d="M215 82 H 225"/>
+  <path class="fig-edge" d="M400 82 H 410"/>
+  <path class="fig-edge" d="M585 82 H 595"/>
+  <polygon class="fig-a-flow" points="225,82 215,78 215,86"/>
+  <polygon class="fig-a-flow" points="410,82 400,78 400,86"/>
+  <polygon class="fig-a-flow" points="595,82 585,78 585,86"/>
+  <path class="fig-edge" d="M685 108 V 202 H 585"/>
+  <polygon class="fig-a-flow" points="585,202 595,198 595,206"/>
+  <rect class="fig-alt" x="410" y="176" width="175" height="52" rx="8"/>
+  <text class="fig-t" x="424" y="198">Fusion</text>
+  <text class="fig-s" x="424" y="216">weights + conflict policy</text>
+  <path class="fig-edge" d="M410 202 H 215"/>
+  <polygon class="fig-a-flow" points="215,202 225,198 225,206"/>
+  <rect class="fig-card" x="40" y="176" width="175" height="52" rx="8"/>
+  <text class="fig-t" x="54" y="198">GRPO update</text>
+  <text class="fig-s" x="54" y="216">group-relative advantages</text>
+  <path class="fig-edge" d="M127 176 V 108"/>
+  <polygon class="fig-a-flow" points="127,108 123,118 131,118"/>
+  <text class="fig-s" x="136" y="146">next round</text>
+  <text class="fig-s" x="40" y="258">Breakpoints that answer most questions: the advantage spread, the fusion terms, the turn boundaries.</text>
+  <text class="fig-s" x="40" y="296">green: free to produce   -   amber: the expensive judge, run on a budget</text>
+  <text class="fig-s" x="40" y="312">Everything is scored; only the uncertain middle is critiqued.</text>
+</svg>

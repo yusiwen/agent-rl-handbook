@@ -72,6 +72,14 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Verifier service | A reward function turned into a contract: schema, queue, timeout policy, cache, version | Where a cheap reward's real cost lives ([Chapter 5](../05-reward-engineering/index.md), Lesson 8) |
 | Replayable dataset | Every `(task, completion, mark, verifier version)` row, stored | Lets an old run be re-scored without retraining; without the version it proves nothing |
 | Best-of-n verification | Sampling several answers and ranking them with a verifier or reward model instead of training | Test-time compute buying accuracy; it needs a scorer that is better than the model |
+| Step boundary | Where one step in a trajectory ends and the next begins | Your modelling choice, not a fact about the task: change the segmentation and every score means something else ([Chapter 6](../06-credit-assignment/index.md), Lesson 1) |
+| Turn boundary | The recorded line between the policy's action and the environment's response | Turn-level credit needs it recorded in the trace; nothing reconstructs it later |
+| RRM (reasoning reward model) | A reward model that emits a reasoning trace, a focused critique and an overall score | Agent-RRM is the named implementation the project builds on (Reagent, [Chapter 6](../06-credit-assignment/index.md)) |
+| Reagent-C / Reagent-R / Reagent-U | Three ways to use a reasoning reward model: critique in the prompt, score as the reward, or both merged | In-context refinement, a dense model reward, or unified feedback integration — the last is the project's target |
+| Reward fusion | Merging a rule reward and a model reward into one number | The weights encode a trade-off; write them down and log both terms separately ([Chapter 5](../05-reward-engineering/index.md), Lesson 5) |
+| Critique-augmented sampling | Spending the expensive judge only on the samples whose outcome is still uncertain | Makes a dense multi-signal reward affordable; watch that the gate does not become a surface the policy can play |
+| Advantage spread | The within-group variation an update needs in order to learn | No spread, no signal: an all-correct or all-wrong group teaches nothing ([Chapter 4](../04-alignment-algorithms/index.md), Lesson 4) |
+| Echo Trap | The multi-turn collapse where reasoning degenerates into repetitive templates and entropy dies | Reported for multi-turn agent training; it looks like a bug and is a property of the setting |
 
 ## Systems and engineering
 
