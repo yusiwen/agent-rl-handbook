@@ -15,19 +15,19 @@ Seven to eight hours a week: about two hours of reading and derivation, five to 
 | 14–15 | Chapter 12 + Project 6 | A skill service running continuously on the Spark |
 | 16 | Chapter 13 + extras | The pinboard notebook takes shape |
 
-## Stage checkpoints
+## Milestone checkpoints
 
-Ask these once per stage, and write the answers into that chapter's "backfill" section:
+Ask these once per milestone, and write the answers into that chapter's "backfill" section:
 
-- [ ] **Stage 1 (Chapters 1–3)**: can I write any agent task as an MDP with a reward draft?
-- [ ] **Stage 2 (Chapters 4–6)**: can I say where my reward comes from, how fine-grained it is, and how it could be gamed?
-- [ ] **Stage 3 (Chapters 7–9)**: can I estimate an experiment's GPU-hours and memory, and say where the bottleneck is?
-- [ ] **Stage 4 (Chapters 10–11)**: can a third party reproduce — or disprove — my result?
-- [ ] **Stage 5 (Chapters 12–13)**: can I place a new paper and decide whether to follow it in five minutes?
+- [ ] **Milestone 1 (Chapters 1–3)**: can I write any agent task as an MDP with a reward draft?
+- [ ] **Milestone 2 (Chapters 4–6)**: can I say where my reward comes from, how fine-grained it is, and how it could be gamed?
+- [ ] **Milestone 3 (Chapters 7–9)**: can I estimate an experiment's GPU-hours and memory, and say where the bottleneck is?
+- [ ] **Milestone 4 (Chapters 10–11)**: can a third party reproduce — or disprove — my result?
+- [ ] **Milestone 5 (Chapters 12–13)**: can I place a new paper and decide whether to follow it in five minutes?
 
 ## Rhythm rules
 
 1. **Deliverables first.** Reading is not learning; shipping the deliverable ends a chapter.
-2. **Do not skip Stage 3.** Chapters 7 and 8 look like "engineering detail" and get skipped — they are exactly where "I changed the algorithm and nothing happened" comes from.
+2. **Do not skip Milestone 3.** Chapters 7 and 8 look like "engineering detail" and get skipped — they are exactly where "I changed the algorithm and nothing happened" comes from.
 3. **Do not postpone Chapter 11.** Start building the evaluation script as soon as Project 3 is done; before that, every comparison you make is untrustworthy.
 4. **Backfill the four questions every chapter.** It is the book's completeness check: if one question stays blank for a long time, the studying has drifted.
