@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The four questions asked in order: a program that checks the answer leads to GRPO with a verifier, preference pairs lead to the DPO family, affordable rollouts lead to PPO with a reward model, and no to all three means building the data first">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 13px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-edge  { stroke: var(--quote-border, #3c6b8f); stroke-width: 1.25; fill: none; }
+    .fig-a-direct  { fill: #3f8f6f; }
+    .fig-a-pairs   { fill: #4d86b8; }
+    .fig-a-rl      { fill: #a97a3c; }
+    .fig-a-none    { fill: #b06a5e; }
+  </style>
+  <text class="fig-cap" x="40" y="20">FOUR QUESTIONS, ASKED IN ORDER - WHERE THE SCORE COMES FROM DECIDES THE METHOD</text>
+  <rect class="fig-alt" x="40" y="46" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="56" y="70">1. Can a program check it?</text>
+  <text class="fig-s" x="56" y="88">tests, exact match, a schema</text>
+  <rect class="fig-alt" x="40" y="136" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="56" y="160">2. Do you have comparisons?</text>
+  <text class="fig-s" x="56" y="178">a file of chosen / rejected pairs</text>
+  <rect class="fig-alt" x="40" y="226" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="56" y="250">3. Can you afford rollouts?</text>
+  <text class="fig-s" x="56" y="268">fresh samples, and a reward model</text>
+  <path class="fig-edge" d="M290 71 H 330"/>
+  <path class="fig-edge" d="M290 161 H 330"/>
+  <path class="fig-edge" d="M290 251 H 330"/>
+  <path class="fig-edge" d="M165 96 V 136"/>
+  <path class="fig-edge" d="M165 186 V 226"/>
+  <text class="fig-s" x="300" y="64">yes</text>
+  <text class="fig-s" x="300" y="154">yes</text>
+  <text class="fig-s" x="300" y="244">yes</text>
+  <text class="fig-s" x="174" y="120">no</text>
+  <text class="fig-s" x="174" y="210">no</text>
+  <path class="fig-edge" d="M165 276 V 296"/>
+  <text class="fig-s" x="174" y="290">no</text>
+  <rect class="fig-a-direct" x="330" y="54" width="6" height="34" rx="3"/>
+  <rect class="fig-card" x="336" y="46" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="352" y="70">GRPO with a verifier</text>
+  <text class="fig-s" x="352" y="88">spend the effort on coverage, not the algorithm</text>
+  <rect class="fig-a-pairs" x="330" y="144" width="6" height="34" rx="3"/>
+  <rect class="fig-card" x="336" y="136" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="352" y="160">The DPO family, offline first</text>
+  <text class="fig-s" x="352" y="178">refresh the pairs when the margin saturates</text>
+  <rect class="fig-a-rl" x="330" y="234" width="6" height="34" rx="3"/>
+  <rect class="fig-card" x="336" y="226" width="250" height="50" rx="8"/>
+  <text class="fig-t" x="352" y="250">PPO with a reward model</text>
+  <text class="fig-s" x="352" y="268">four models in memory; rollouts dominate</text>
+  <rect class="fig-a-none" x="330" y="292" width="6" height="22" rx="3"/>
+  <text class="fig-t" x="352" y="302">None of the three: build the data or the checker first</text>
+  <text class="fig-s" x="352" y="312">no method can score what nothing can measure</text>
+</svg>

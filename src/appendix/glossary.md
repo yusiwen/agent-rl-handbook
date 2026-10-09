@@ -15,6 +15,11 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Advantage, $A^\pi(s,a)$ | How much better an action is than the average action | The quantity PPO and GRPO actually use; GRPO compares against the group's average |
 | GAE | Generalised advantage estimation | A dial between noisy-but-unbiased and stable-but-biased; derivation ends in [Chapter 3](../03-policy-gradient/index.md) |
 | On-policy / off-policy | Learning from data the current policy just produced vs. from older data | Decides how fresh your samples must be |
+| Critic | A learned estimate of the value of a state, used as the baseline for the advantage | A second trained model, and a second source of error; GRPO removes it |
+| Reference model | A frozen copy of the model training started from, used to measure drift | The leash in the KL penalty; not the same thing as a "teacher" |
+| Clip ratio (probability ratio) | The new policy's probability of an action divided by the sampling policy's | How much the policy has moved since the data was collected; the thing PPO clips |
+| PPO | Proximal policy optimisation: a clipped surrogate objective plus a KL penalty | The general-purpose optimiser of this field, and the expensive one; the objective lives in [Chapter 4](../04-alignment-algorithms/index.md) |
+| Pass@k | The probability that at least one of $k$ samples is correct | The precondition for learning: RL amplifies what already happens sometimes |
 
 ## Alignment algorithms
 
@@ -22,14 +27,28 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 |---|---|---|
 | SFT | Supervised fine-tuning on example answers | Teaches format and basic skill; cannot teach preference or long-horizon judgement |
 | RLHF | Human-feedback RL: SFT → reward model → PPO with a KL penalty | Four models in play: policy, reward model, critic, reference |
+| HHH | Helpful, honest and harmless: the usual decomposition of "aligned" | Three goals that pull against each other, so they need a reward to trade between them |
 | Reward model (RM) | A model trained to predict which answer a human would prefer | An automatic judge, and therefore also an automatically hackable judge |
 | KL penalty | A term that keeps the trained policy close to a reference policy | Stops the model drifting into nonsense while chasing the score |
+| KL controller | A control loop that adjusts the KL coefficient toward a target divergence | The coefficient is tuned during training, not fixed once |
 | RLAIF | RL from AI feedback instead of human labels | Constitutional AI is the best-known implementation |
 | DPO | Direct preference optimisation: skip the reward model and the sampling loop | **Offline preference optimisation** with an implicit reward |
+| Bradley-Terry model | A pairwise comparison model: the probability one item beats another is a sigmoid of their score difference | The standard way to turn "A is better than B" into a likelihood |
+| Implicit reward | In DPO, the quantity $\beta \log (\pi_\theta / \pi_{\text{ref}})$ | The policy is secretly the reward model — that is what "direct" means |
 | RLVR | RL with verifiable rewards | Maths and code: a program checks the answer, no human needed |
 | GRPO | Group relative policy optimisation: sample a group, compare within it, drop the critic | Cheaper than PPO; suits verifiable tasks |
+| RLOO | REINFORCE leave-one-out: the baseline is the mean of the other samples | Keeps the group idea, drops the spread normalisation |
+| DAPO | An open RL system whose recipe includes clip-higher, dynamic sampling and token-level loss | The patches that keep a group informative and overlong answers in check |
+| GSPO | Group sequence policy optimisation: the importance ratio is per sequence, not per token | The clip acts on the whole answer, which suits long reasoning traces |
+| Dr. GRPO | The GRPO recipe with the spread and length normalisations removed | A paper that names two biases in GRPO and deletes them; "doctor" is a joke about fixing the objective |
+| KTO | Model alignment with a prospect-theory loss over single labelled examples | Preference tuning without pairs; failures can be made to weigh more than successes |
+| ORPO | Odds-ratio preference optimisation: the preference penalty is folded into SFT | One stage instead of two, and no reference model |
+| SimPO | Simple preference optimisation: a length-normalised, reference-free implicit reward | No reference model, plus a margin between chosen and rejected |
+| LLM-as-a-judge | Using a language model to score or rank outputs | A measurement instrument with known biases: position, verbosity, self-preference |
 | Reward hacking | The model optimises the score instead of the goal | Defences: KL limits, model ensembles, adversarial examples, production monitoring |
 | Over-optimisation | Reward keeps rising while real quality falls | The classic curve once a judge has been hacked |
+| Entropy collapse | The policy becomes nearly deterministic, so exploration stops | Shows up as falling entropy and identical samples — not as a bad reward curve |
+| Sycophancy | Agreeing with the user beyond what the evidence supports, because agreement was rewarded | A trap in the evaluator, not in the model's code |
 
 ## Rewards and credit assignment
 
