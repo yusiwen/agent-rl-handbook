@@ -60,6 +60,18 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Credit assignment | Deciding which actions are responsible for the final outcome | A map of the options is in [Chapter 6](../06-credit-assignment/index.md) |
 | Next-state signal | Using the environment's next state as feedback | The key mechanism in multi-turn tool settings |
 | Pass rate | The share of attempts that succeed on a task | Below 0.1 or above 0.9, there is almost no learning signal left |
+| Reward granularity | How many decisions inside one attempt get their own score | The choice behind every other decision in [Chapter 5](../05-reward-engineering/index.md): dense teaches faster and costs more |
+| Reward shaping | Adding a guidance term to the reward to make learning easier | Provably harmless only when the term is the difference of a potential between states (the shaping theorem) |
+| Process supervision | Scoring each step rather than only the final answer | Buys credit assignment; the labels are the expensive part |
+| Pseudo-label (agreement) | Taking the majority answer across several samples as if it were a label | Free, and only as good as the model's own consistency |
+| Implicit process reward | A per-token dense signal read off the policy's own log-ratio against a reference | No labels and no trained PRM; PRIME is the named route, and it amplifies the model's own preferences |
+| Reward-model refresh | Re-collecting comparisons from the current policy and retraining the reward model | A trigger (agreement dropping), not a calendar |
+| Reward-model agreement | The rate at which a reward model matches held-out human or gold labels | The measurement that decides whether it is still good; loss is not a substitute |
+| Hack canary | A task item known to be gameable, watched as an early warning | Cheaper and more sensitive than waiting for the gold metric to move |
+| Failure boundary | The written list of where a verifier gives the wrong signal | The deliverable of Project 1; a verifier without one is an untested verifier |
+| Verifier service | A reward function turned into a contract: schema, queue, timeout policy, cache, version | Where a cheap reward's real cost lives ([Chapter 5](../05-reward-engineering/index.md), Lesson 8) |
+| Replayable dataset | Every `(task, completion, mark, verifier version)` row, stored | Lets an old run be re-scored without retraining; without the version it proves nothing |
+| Best-of-n verification | Sampling several answers and ranking them with a verifier or reward model instead of training | Test-time compute buying accuracy; it needs a scorer that is better than the model |
 
 ## Systems and engineering
 

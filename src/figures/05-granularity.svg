@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The same five-turn episode scored four ways: one number at the end, one per turn, one per step, and a value for every token, with what each costs to produce">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-axis  { stroke: var(--quote-border, #274357); stroke-width: 1; fill: none; }
+    .fig-dash  { stroke: var(--quote-border, #274357); stroke-width: 1; stroke-dasharray: 3 5; fill: none; }
+    .fig-line  { stroke: var(--quote-border, #3c6b8f); stroke-width: 1.25; fill: none; }
+    .fig-a-you { fill: #4d86b8; }
+    .fig-a-free { fill: #3f8f6f; }
+  </style>
+  <text class="fig-cap" x="40" y="20">ONE EPISODE, SCORED FOUR WAYS — WHAT EACH ROW COSTS TO PRODUCE</text>
+  <path class="fig-dash" d="M324 44 V 266"/>
+  <path class="fig-dash" d="M438 44 V 266"/>
+  <path class="fig-dash" d="M552 44 V 266"/>
+  <path class="fig-dash" d="M666 44 V 266"/>
+  <text class="fig-t" x="40" y="58">Per episode</text>
+  <text class="fig-s" x="40" y="74">one number, for all of it</text>
+  <rect class="fig-a-you" x="756" y="46" width="24" height="30" rx="5"/>
+  <text class="fig-t" x="40" y="122">Per turn</text>
+  <text class="fig-s" x="40" y="138">needs an oracle for partial work</text>
+  <rect class="fig-a-you" x="312" y="110" width="24" height="30" rx="5"/>
+  <rect class="fig-a-you" x="426" y="110" width="24" height="30" rx="5"/>
+  <rect class="fig-a-you" x="540" y="110" width="24" height="30" rx="5"/>
+  <rect class="fig-a-you" x="654" y="110" width="24" height="30" rx="5"/>
+  <rect class="fig-a-you" x="756" y="110" width="24" height="30" rx="5"/>
+  <text class="fig-t" x="40" y="186">Per step</text>
+  <text class="fig-s" x="40" y="202">labels cost more than the training</text>
+  <rect class="fig-a-you" x="248" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="295" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="342" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="389" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="436" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="483" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="530" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="577" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="624" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="671" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="718" y="174" width="12" height="30" rx="4"/>
+  <rect class="fig-a-you" x="765" y="174" width="12" height="30" rx="4"/>
+  <text class="fig-t" x="40" y="250">Per token</text>
+  <text class="fig-s" x="40" y="266">free - the model already has it</text>
+  <rect class="fig-a-free" x="210" y="238" width="570" height="30" rx="6"/>
+  <path class="fig-axis" d="M210 288 H 780"/>
+  <text class="fig-s" x="495" y="283" text-anchor="middle">one episode: five turns, about 2,000 tokens, one attempt</text>
+  <text class="fig-s" x="40" y="308">blue: a judgement you produce   -   green: already in the model</text>
+</svg>

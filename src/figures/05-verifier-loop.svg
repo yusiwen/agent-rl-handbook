@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The verifier loop as a service: task definition, model calls, automatic marking and reward recovery, with the replayable dataset storing every mark and three named places where the signal goes wrong">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-edge  { stroke: var(--quote-border, #3c6b8f); stroke-width: 1.25; fill: none; }
+    .fig-dash  { stroke: var(--quote-border, #274357); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+    .fig-a-break { fill: #b06a5e; }
+    .fig-a-flow  { fill: #4d86b8; }
+  </style>
+  <text class="fig-cap" x="40" y="20">THE VERIFIER LOOP — AND THE THREE PLACES THE SIGNAL GOES WRONG</text>
+  <rect class="fig-card" x="40" y="46" width="165" height="52" rx="8"/>
+  <text class="fig-t" x="54" y="68">1 Task definition</text>
+  <text class="fig-s" x="54" y="86">prompt + the marking rule</text>
+  <rect class="fig-card" x="225" y="46" width="165" height="52" rx="8"/>
+  <text class="fig-t" x="239" y="68">2 Model calls</text>
+  <text class="fig-s" x="239" y="86">batched completions</text>
+  <rect class="fig-card" x="410" y="46" width="165" height="52" rx="8"/>
+  <text class="fig-t" x="424" y="68">3 Marking</text>
+  <text class="fig-s" x="424" y="86">a score and a reason</text>
+  <rect class="fig-card" x="595" y="46" width="165" height="52" rx="8"/>
+  <text class="fig-t" x="609" y="68">4 Reward recovery</text>
+  <text class="fig-s" x="609" y="86">the number the trainer sees</text>
+  <path class="fig-edge" d="M205 72 H 225"/>
+  <path class="fig-edge" d="M390 72 H 410"/>
+  <path class="fig-edge" d="M575 72 H 595"/>
+  <polygon class="fig-a-flow" points="225,72 215,68 215,76"/>
+  <polygon class="fig-a-flow" points="410,72 400,68 400,76"/>
+  <polygon class="fig-a-flow" points="595,72 585,68 585,76"/>
+  <path class="fig-edge" d="M760 72 H 786 V 134 H 24 V 72 H 40"/>
+  <polygon class="fig-a-flow" points="40,72 50,68 50,76"/>
+  <text class="fig-s" x="405" y="128" text-anchor="middle">next batch of tasks</text>
+  <path class="fig-dash" d="M492 98 V 152"/>
+  <rect class="fig-alt" x="330" y="152" width="325" height="52" rx="8"/>
+  <text class="fig-t" x="344" y="174">Replayable dataset</text>
+  <text class="fig-s" x="344" y="192">task, completion, mark, verifier version</text>
+  <rect class="fig-a-break" x="40" y="222" width="6" height="52" rx="3"/>
+  <rect class="fig-card" x="46" y="222" width="224" height="52" rx="8"/>
+  <text class="fig-t" x="60" y="244">The checker</text>
+  <text class="fig-s" x="60" y="262">edge cases; a parse failure scored as zero</text>
+  <rect class="fig-a-break" x="293" y="222" width="6" height="52" rx="3"/>
+  <rect class="fig-card" x="299" y="222" width="224" height="52" rx="8"/>
+  <text class="fig-t" x="313" y="244">The plumbing</text>
+  <text class="fig-s" x="313" y="262">timeouts, dropped items, partial writes</text>
+  <rect class="fig-a-break" x="546" y="222" width="6" height="52" rx="3"/>
+  <rect class="fig-card" x="552" y="222" width="224" height="52" rx="8"/>
+  <text class="fig-t" x="566" y="244">The dataset</text>
+  <text class="fig-s" x="566" y="262">version drift between marking and training</text>
+  <text class="fig-s" x="40" y="302">A cheap reward is not free: it moves the cost from labelling to infrastructure - where it is visible, testable and versioned.</text>
+</svg>
