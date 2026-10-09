@@ -58,23 +58,29 @@ To improve a model you need a direction to move in. There are two ways to find i
 
 **The identity, in plain words.** The return you will get from here is *the reward you just received*, plus *the return you will get from the next state*, faded by the discount. Written for the value function: *(textbook fact)*
 
+<div class="math-display">
 $$
 V^\pi(s) = \mathbb{E}_\pi\left[ r_{t+1} + \gamma V^\pi(s_{t+1}) \mid s_t = s \right]
 $$
+</div>
 
 **Why this is legitimate, in three lines.** The step that looks like sleight of hand is just the definition of the return, split at the first term:
 
+<div class="math-display">
 $$
 G_t = r_{t+1} + \gamma\left( r_{t+2} + \gamma r_{t+3} + \cdots \right) = r_{t+1} + \gamma G_{t+1}
 $$
+</div>
 
 The bracket is the definition of $G_{t+1}$, unchanged. Taking the expectation of both sides gives the Bellman equation. Two assumptions do the remaining work: the expectation is linear (so you may split it), and the **Markov property** holds (so the tail's expected value depends only on the next state, not on the whole history). Remove the Markov property and the identity silently becomes false — which is why [Chapter 2](../02-mdp/index.md) insisted the state be "enough".
 
 **The optimality version.** For the best possible policy: *(textbook fact)*
 
+<div class="math-display">
 $$
 V^*(s) = \max_a \mathbb{E}\left[ r_{t+1} + \gamma V^*(s_{t+1}) \right]
 $$
+</div>
 
 The difference is one word: **max**. Instead of averaging over the current policy's moves, you pick the best one. This single change is what makes the equation non-linear, and it is the reason a family of algorithms (value iteration, Q-learning) exists rather than one formula.
 
@@ -127,9 +133,11 @@ The difference is one word: **max**. Instead of averaging over the current polic
 
 **The theorem, and the one sentence that makes it click.** *(textbook fact; the original policy-gradient theorem is Sutton et al., under Reading)*
 
+<div class="math-display">
 $$
 \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}\left[ \nabla_\theta \log \pi_\theta(a \mid s)\, Q^\pi(s,a) \right]
 $$
+</div>
 
 Read that as an instruction, not as mathematics:
 
@@ -141,9 +149,11 @@ That is the whole idea. The reward acts as a weight on the gradient of a log-pro
 
 **REINFORCE: use the return as the weight.** The name is historical — it comes from Williams's 1992 paper (see Reading); what it means here is simple: replace the unknown $Q^\pi(s,a)$ with the sampled return $G_t$:
 
+<div class="math-display">
 $$
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^{N} \sum_{t} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\, G_t
 $$
+</div>
 
 It is unbiased, it needs no critic, and the variance is brutal — a single sample of $G_t$ carries the luck of the entire episode. *(textbook fact)*
 
@@ -155,15 +165,19 @@ It is unbiased, it needs no critic, and the variance is brutal — a single samp
 
 **GAE in four lines.** Define the **TD error** first: the surprise at step $t$, meaning "what I got plus what I now think the next state is worth" minus "what I expected here".
 
+<div class="math-display">
 $$
 \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
 $$
+</div>
 
 Then the advantage estimate is a geometrically decayed sum of those surprises:
 
+<div class="math-display">
 $$
 \hat{A}_t^{\mathrm{GAE}(\gamma,\lambda)} = \sum_{l=0}^{\infty} (\gamma\lambda)^{l}\, \delta_{t+l}
 $$
+</div>
 
 - $\gamma$ — how much the future counts.
 - $\lambda$ — how far into the future you trust the critic's estimates rather than the actual rewards.

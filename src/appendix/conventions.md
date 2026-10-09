@@ -47,6 +47,7 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 | RLHF, RLAIF, RLVR (spell out on first use) | invented abbreviations that match no paper |
 | Reagent-U (define on first use: U = Unified Feedback Integration) | Reagent U / REAGENT-U |
 | PPO, GRPO, DPO | variant names of your own invention |
+| KTO, ORPO, SimPO, RLOO, DAPO, GSPO, Dr. GRPO (spell out on first use) | shortened, translated or invented spellings of them |
 | rollout, worker, checkpoint, verifier | home-made translations of them |
 | loss mask | "loss filter", "training mask" |
 | turn, episode, trajectory | "round" for turn; "session" for episode (a session is not an episode) |
@@ -70,6 +71,8 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 - Inline: `$...$`. Display: `$$...$$`.
 - MathJax is **vendored in `mathjax/`** and loaded through `additional-js`; `mathjax-support` in `book.toml` stays **off**. mdBook's built-in support injects MathJax 2.7 from cdnjs, which fetches its extensions lazily — if those requests are blocked, the page silently shows raw LaTeX. The vendored SVG bundle is one file with no subresources, so the site renders offline.
 - **No maths in headings, sidebar entries or link text.** The sidebar is built in the browser after load, so a formula there reads as raw dollar notation. Write the words in the title (`value, Q-value and advantage`) and put the symbol in the sentence.
+- **Wrap every display block in `<div class="math-display">`.** Markdown parses the source inside a `$$` block as ordinary text, and `_` is its emphasis character: in `\hat{r}_\theta ... \pi_\theta` the first underscore can open emphasis and the second can close it, so a tag lands in the middle of the LaTeX and MathJax silently leaves that one equation as raw source. The build log says nothing, and an unwrapped block is harmless in one paragraph and broken in the next, depending only on the subscripts. An HTML block is passed through untouched, which is why the wrapper is the fix. `scripts/verify.sh` counts blocks against wrappers and fails if a tag has been inserted before a LaTeX command.
+- **Counting that maths rendered is not counting that all of it rendered.** The browser check is the number of `mjx-container` elements against the number of `$…$` and `$$…$$` expressions in the source. Part 1's review saw a non-zero count and called the maths verified; two chapters were quietly missing equations at the time, and one chapter lost four more.
 - Consistent symbols: policy $\pi_\theta$, return $G_t$, value $V^\pi(s)$, advantage $A^\pi(s,a)$, discount $\gamma$, KL coefficient $\beta$.
 - Keep the delimiters plain: `$...$` outside code spans. A literal dollar sign is written `\$`.
 

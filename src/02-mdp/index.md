@@ -37,9 +37,11 @@ Two words carry the whole picture. The **agent** is the thing that chooses; the 
 
 **What is actually being maximised.** Not the reward you happened to collect, but the reward you collect *on average, over many attempts*. One number is defined to make that precise — the **return**, the sum of all rewards from this moment on, with later rewards faded by a discount factor:
 
+<div class="math-display">
 $$
 G_t = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \cdots
 $$
+</div>
 
 - $G_t$ — the return from step $t$ onwards.
 - $r_{t+k}$ — the reward received $k$ steps after now.
@@ -53,9 +55,11 @@ $$
 
 **The objective.** The agent's behaviour is a **policy**: a rule that turns a situation into a probability for each action, written $\pi_\theta(a \mid s)$. For a language model (LLM), that is exactly the softmax over the next token, and $\theta$ is the model's weights — which is why "training an LLM with RL" means "adjusting the weights so that better-scoring text becomes more likely". Training maximises the expected return:
 
+<div class="math-display">
 $$
 J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\left[ G \right]
 $$
+</div>
 
 The expectation symbol $\mathbb{E}$ is doing real work here: you cannot control which attempt the model produces on a given day, so you control the *distribution* of attempts instead. Every method in this book is a way of estimating or improving that expectation without seeing all possible attempts.
 

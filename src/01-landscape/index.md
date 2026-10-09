@@ -140,9 +140,11 @@ Learn **RLVR first**, then DPO, then PPO. The reasoning is about feedback latenc
 
 **The multiplier, in words, then in symbols.** Cost per iteration is driven by four numbers multiplied together: how many prompts you use, how many attempts you make per prompt, how many turns an attempt takes, and how long each turn is.
 
+<div class="math-display">
 $$
 \text{generated tokens per iteration} \approx \text{prompts} \times \text{samples per prompt} \times \text{turns} \times \text{tokens per turn}
 $$
+</div>
 
 Every factor is easy to raise by accident. Eight samples is standard. An agent task with tool calls is easily four to ten turns. Multiply them and a modest-looking run has already grown two orders of magnitude past a single completion.
 

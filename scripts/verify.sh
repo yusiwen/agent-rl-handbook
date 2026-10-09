@@ -63,4 +63,30 @@ fi
 echo "clean"
 
 echo
+echo "== 5. display maths: wrapped, and never touched by Markdown =="
+# Markdown parses the source inside a $$ block as ordinary text, and an underscore pair such as
+# \hat{r}_\theta ... \pi_\theta is then read as emphasis. The tag lands in the middle of the LaTeX and
+# MathJax silently leaves that one equation unrendered - the page still looks right at a glance, and
+# nothing in the build log says so. Hence a check rather than a habit, in two halves: the cause, and
+# the symptom.
+#   (a) every display block is wrapped in <div class="math-display">. Markdown passes an HTML block
+#       through untouched, so inside the wrapper the cause cannot occur - which is the point of the
+#       wrapper. This half catches a new block written without it.
+#   (b) no tag sits immediately before a LaTeX command in the built page. This half catches anything
+#       the wrapper does not cover, and would have caught the four equations lost in Chapter 4.
+blocks=$(( $( { rg -N -o '^\$\$$' -g '*.md' src/ || true; } | wc -l | tr -d ' ') / 2 ))
+# Counted on lines that are *only* the wrapper: the conventions page names this class in prose, and a
+# check that counts a mention of a thing as the thing is a check that fails for the wrong reason.
+wrapped=$( { rg -N -o '^<div class="math-display">$' -g '*.md' src/ || true; } | wc -l | tr -d ' ')
+if [ "$blocks" -ne "$wrapped" ]; then
+  echo "FAIL: $blocks display block(s) in src/ but $wrapped wrapped - wrap every \$\$ block in <div class=\"math-display\">" >&2
+  exit 1
+fi
+if rg -n -g '*.html' -e '<(em|strong)>\\[a-zA-Z]{2,}' book/ ; then
+  echo "FAIL: Markdown inserted a tag inside a maths block - MathJax leaves that equation unrendered" >&2
+  exit 1
+fi
+echo "clean ($blocks display block(s), all intact)"
+
+echo
 echo "all checks passed"
