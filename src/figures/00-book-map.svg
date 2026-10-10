@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 412" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="The book on one page: six parts and thirteen chapters in a ladder on the left, the six projects they lead to on the right, with each part carrying its compute tier">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-alt   { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 13px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-a-here   { fill: #3f8f6f; }
+    .fig-a-shrink { fill: #a97a3c; }
+    .fig-a-none   { fill: #4d86b8; }
+  </style>
+  <text class="fig-cap" x="40" y="20">THE WHOLE BOOK ON ONE PAGE - SIX PARTS, THIRTEEN CHAPTERS, SIX PROJECTS</text>
+  <rect class="fig-alt" x="40" y="56" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="74">Part 0 - Before you start</text>
+  <text class="fig-s" x="56" y="90">The four questions, and your own goal</text>
+  <circle class="fig-a-here" cx="404" cy="77" r="5"/>
+  <rect class="fig-alt" x="40" y="106" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="124">Part 1 - A shared language</text>
+  <text class="fig-s" x="56" y="140">Ch 1 The big picture - Ch 2 MDP - Ch 3 Policy gradients</text>
+  <circle class="fig-a-here" cx="368" cy="127" r="5"/>
+  <circle class="fig-a-here" cx="386" cy="127" r="5"/>
+  <circle class="fig-a-here" cx="404" cy="127" r="5"/>
+  <rect class="fig-alt" x="40" y="156" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="174">Part 2 - Signals: rewards and credit</text>
+  <text class="fig-s" x="56" y="190">Ch 4 Alignment and PPO - Ch 5 Rewards - Ch 6 Credit</text>
+  <circle class="fig-a-here" cx="368" cy="177" r="5"/>
+  <circle class="fig-a-here" cx="386" cy="177" r="5"/>
+  <circle class="fig-a-here" cx="404" cy="177" r="5"/>
+  <rect class="fig-alt" x="40" y="206" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="224">Part 3 - Making it industrial</text>
+  <text class="fig-s" x="56" y="240">Ch 7 Data - Ch 8 Environment - Ch 9 Runtime</text>
+  <circle class="fig-a-shrink" cx="368" cy="227" r="5"/>
+  <circle class="fig-a-here" cx="386" cy="227" r="5"/>
+  <circle class="fig-a-shrink" cx="404" cy="227" r="5"/>
+  <rect class="fig-alt" x="40" y="256" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="274">Part 4 - End to end</text>
+  <text class="fig-s" x="56" y="290">Ch 10 Two projects - Ch 11 Evaluation</text>
+  <circle class="fig-a-shrink" cx="386" cy="277" r="5"/>
+  <circle class="fig-a-here" cx="404" cy="277" r="5"/>
+  <rect class="fig-alt" x="40" y="306" width="380" height="42" rx="8"/>
+  <text class="fig-t" x="56" y="324">Part 5 - Frontier and judgement</text>
+  <text class="fig-s" x="56" y="340">Ch 12 Skills - Ch 13 The paper map</text>
+  <circle class="fig-a-none" cx="386" cy="327" r="5"/>
+  <circle class="fig-a-here" cx="404" cy="327" r="5"/>
+  <text class="fig-cap" x="450" y="56">SIX PROJECTS, IN THE ORDER THEY BUILD</text>
+  <rect class="fig-card" x="450" y="66" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="83">1 - Verifiers</text>
+  <text class="fig-s" x="466" y="98">Chapter 5 - runs on the reference machine</text>
+  <rect class="fig-card" x="450" y="112" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="129">2 - Reagent</text>
+  <text class="fig-s" x="466" y="144">Chapter 6 - runs on the reference machine</text>
+  <rect class="fig-card" x="450" y="158" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="175">3 - VeRL</text>
+  <text class="fig-s" x="466" y="190">Chapter 9 - shrink it first</text>
+  <rect class="fig-card" x="450" y="204" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="221">4 - DeepAnalyze</text>
+  <text class="fig-s" x="466" y="236">Chapter 10 - shrink it first</text>
+  <rect class="fig-card" x="450" y="250" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="267">5 - OpenClaw-RL</text>
+  <text class="fig-s" x="466" y="282">Chapter 10 - wants several GPUs by default</text>
+  <rect class="fig-card" x="450" y="296" width="320" height="40" rx="8"/>
+  <text class="fig-t" x="466" y="313">6 - Memento-Skills</text>
+  <text class="fig-s" x="466" y="328">Chapter 12 - no weight updates involved</text>
+  <text class="fig-s" x="40" y="378">Dot colour: green = runs comfortably on the reference machine, amber = shrink it first, blue = no weight updates involved.</text>
+  <text class="fig-s" x="40" y="398">Come back when you are lost: the left column says what to read next, the right column says what to build, and Chapter 13 files the next paper.</text>
+</svg>

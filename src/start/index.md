@@ -107,6 +107,12 @@ The four questions, and the chapters that answer them:
 
 *Figure 0.1 — the four questions this book circles, and where each is answered. It is a routing table, not a reading order: come back to it on the day something is broken and you cannot tell what.*
 
+The same book, drawn the other way round — the parts you climb, and the projects they lead to:
+
+<figure class="book-figure">{{#include ../figures/00-book-map.svg}}</figure>
+
+*Figure 0.2 — the whole book on one page: six parts, thirteen chapters, six projects, and each chapter's compute tier. Read the left column as a ladder and the right column as the payoff; [compute tiers](../appendix/compute-tiers.md) explains what each dot commits you to.*
+
 ## Deliverable
 
 A one-page alignment sheet:
@@ -139,6 +145,7 @@ Nothing technical yet — this part is yours to fill in. Four reference pages in
 - The [compute tiers](../appendix/compute-tiers.md) is the hardware ladder behind every chapter's ✅ / ⚠️ / ❌ label.
 - The [project index](../appendix/projects.md) maps each hands-on project to the chapter that builds it.
 - The [16-week plan](../appendix/schedule.md) turns the parts and chapters into a schedule, with checkpoints.
+- [The paper map](../appendix/paper-map.md) is the book's one living page: 73 papers filed on eight shelves, plus the slots still waiting to be filled.
 
 ## Backfill
 

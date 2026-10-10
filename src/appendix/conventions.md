@@ -37,7 +37,7 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 6. **Keep English technical terms in English.** Do not translate `rollout`, `checkpoint`, `loss mask` — translated variants make searching and matching against papers impossible.
 7. **Analogies are welcome, but only one per concept**, and they must not contradict the mathematics.
 8. **Say where a name comes from**, in the lesson where it first appears, whenever the name is not self-explanatory: REINFORCE (Williams, 1992), the "group" in GRPO, the "direct" in DPO, GAE. One clause is enough. A name a reader cannot decode is a name they cannot search for — the Part 1 review found REINFORCE used five times with no explanation of what the word means.
-9. **Counts are claims.** "Roughly 100 lessons" is a claim about a number nobody counted. Count it and write the number ("100 lessons in total"). The same applies to "six parts", "five lessons", "260+ papers": if it is written down, it was counted.
+9. **Counts are claims.** "Roughly 100 lessons" is a claim about a number nobody counted. Count it and write the number ("100 lessons in total"). The same applies to "six parts", "five lessons", "eight shelves": if it is written down, it was counted.
 
 ## Terminology
 
@@ -86,12 +86,13 @@ Figures are **hand-authored SVG files in `src/figures/`**, named `NN-slug.svg` a
 *Figure 1.1 — choosing a family. Each question you answer "no" moves you one step down a more expensive ladder.*
 ```
 
-Four rules, all of which cost a broken build when ignored:
+Five rules, each of which breaks something when ignored:
 
 1. **Colour comes from the theme variables**, never from literals: `--fg` for text, `--sidebar-fg` for muted text, `--quote-bg` for cards, `--quote-border` for card outlines and connectors, `--table-alternate-bg` for the secondary card shade. One file then serves every theme, including the reader's own theme switch. Use `--quote-border`, **not** `--table-border-color`: in the navy theme the table border is *darker* than the card fill, and the outline vanishes.
 2. **Include the file, never reference it as an image.** CSS custom properties do not cross into `<img>` or `<object>`, so a figure referenced as an image loses the theme entirely. Inline it.
 3. **No blank lines inside the file.** `<svg>` is not one of CommonMark's block tags, so the wrapper `<figure>` is what makes the fragment a single HTML block; a blank line inside ends that block early and mdBook warns about unbalanced HTML (or reports `Saw EOF in state Comment`). Also keep the viewBox only as wide as the drawing needs — the page scales a figure to the content column (~750 px), so a wide viewBox shrinks the type.
 4. **Labels are plain ASCII text, and no LaTeX inside a figure.** MathJax does not enter SVG; write `V(s)`, `A(s,a)` or words instead. The only literal colours allowed are the semantic accent bars (`.fig-a-cheap`, `.fig-a-mid`, `.fig-a-dear`), mid-tones chosen to read on both themes.
+5. **Keep every label inside the viewBox, by estimate rather than by eye.** An SVG clips what runs past the edge: a caption one clause too long is cut in half on the page, and nothing in the build says so. `figcheck` reports it as W311, estimating each label's width from its class's font size. When it fires, shorten the label or split it across two lines — widening the viewBox only shrinks every other label, which is what W307 exists to complain about. This rule came out of a real defect: a column title read "…ON EACH OTHI" on the rendered page while the build, the colour check and the geometry check were all green.
 
 Captions are ordinary italic markdown on the line after the figure, numbered `Figure <chapter>.<n>`. `css/figures.css` styles the wrapper and the caption.
 
@@ -104,6 +105,7 @@ Captions are ordinary italic markdown on the line after the figure, numbered `Fi
 ## Keeping it honest over time
 
 - Add new material to an existing chapter rather than opening a new one; if a new chapter really is needed, update `SUMMARY.md` and the map on the home page in the same change.
+- **A paper is filed on [the paper map](paper-map.md) in the same commit that cites it**, with the date its ID was checked against the arXiv API. The map is the book's only living page. Every other page states what it knew on the day it was written, so a count on any of them has to be recounted when the page grows.
 - When a fact changes (a framework gains sm_121 support, for example), **edit the sentence and keep one clause saying when it changed** — never delete silently.
 - A term a chapter introduces joins the table above (or the [glossary](glossary.md)) **in the same commit**, with the variants not to use. The Part 1 review found ten terms in use — `loss mask`, `pass@k`, `critic`, `reference model`, `advantage`, `turn`, `episode`, `trajectory`, `KL`, `reward hacking` — and none of them registered anywhere, so a reader had nowhere to look them up. The review probe now reports a page that uses one of them without registering it.
 

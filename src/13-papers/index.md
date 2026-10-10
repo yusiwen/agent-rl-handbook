@@ -40,7 +40,7 @@ Verdict: follow. Why: directly relevant to my verifiable task, cheap to implemen
 
 ## Reading
 
-- To fill in: the concrete taxonomy of the paper map (8 top-level categories, 40+ sub-topics).
+- The map itself: [the paper map](../appendix/paper-map.md) - 73 papers filed on eight shelves, with the slots that are still empty named.
 
 ## Backfill
 

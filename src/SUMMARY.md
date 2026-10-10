@@ -40,6 +40,7 @@
 # Appendix
 
 - [Index of the Six Projects](appendix/projects.md)
+- [The Paper Map](appendix/paper-map.md)
 - [Compute Tiers and How to Split the Work](appendix/compute-tiers.md)
 - [Study Plan (16 Weeks)](appendix/schedule.md)
 - [Writing and Formatting Rules](appendix/conventions.md)

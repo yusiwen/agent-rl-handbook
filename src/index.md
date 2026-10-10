@@ -23,11 +23,18 @@ You are in the right place if:
 
 If you have never touched Python or PyTorch, do that first — this book will not teach you to program.
 
+**Who this book is not for.** Four honest exclusions, so nobody spends a month finding out:
+
+- **You want to build with prompts and APIs only.** This book is about training and the systems around it. The prompt-and-tool layer appears here as something an agent acts through, never as the subject.
+- **You want an overview in half an hour.** Part 1 is short, but the book is built around deliverables: every chapter ends with something to produce, not a summary to read.
+- **You want a checkpoint to download.** Nothing here ships weights. The deliverable is a method, and a set of logs you produced yourself.
+- **You want a course.** No lectures, no support group, no schedule kept by someone else. This is one long text and its reference pages.
+
 ## How to read it
 
 1. **Straight through.** The six parts are a ladder; each part assumes the one before. Chapter 2's MDP exercise comes back in Chapter 6, where you rewrite it.
 2. **As a checklist.** Every chapter ends with a deliverable and a "how you know you passed" list. Reading is not finishing — shipping the deliverable is.
-3. **As an index.** Chapter 13 maps 260+ papers. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
+3. **As an index.** [The paper map](appendix/paper-map.md) files 73 papers on eight shelves, and Chapter 13 teaches you to use it. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
 
 ## Book map
 
@@ -50,6 +57,16 @@ If you have never touched Python or PyTorch, do that first — this book will no
 | | [Extra modules](electives/index.md) | 4 blocks | ✅ | — |
 
 The map above lists **100 lessons** in total: about 20–22 hours of reading, plus 60–100 hours of hands-on work. See the [16-week plan](appendix/schedule.md).
+
+## Why the book is shaped this way
+
+Three shape decisions, because they explain most of the distance between this handbook and the course outline it grew out of: *(my judgement, and the reason for each)*
+
+1. **Thirteen chapters, not eleven.** The source course keeps its data, environment and evaluation material inside the project chapters. They are separate chapters here, because in the field they are separate jobs — and because the reader who skips them is exactly the reader whose run "changed nothing" ([Chapter 7](07-data-and-tasks/index.md)).
+2. **One skeleton for every chapter.** Gist, abilities, lessons, deliverable, "how you know you passed", reading, backfill. Repetitive on purpose: any chapter can be picked up on its own, and all four questions get re-answered as you go ([the rules](appendix/conventions.md)).
+3. **Reported is not reproduced.** A number borrowed from a paper is labelled *reported, not reproduced*, and every ID on [the paper map](appendix/paper-map.md) carries the date it was checked. This book therefore claims fewer results than a course blurb would — and the ones it does claim, you can check.
+
+The reading *order* was a separate set of choices, written out in [Part 0](start/index.md), Lesson 2. The picture version of both is [Figure 0.2](start/index.md).
 
 ## How hard is the compute?
 
@@ -110,4 +127,5 @@ The toolchain is pinned by the Nix flake (mdBook 0.5.4), so every machine gets t
 - Every claim is tagged: a **textbook fact**, a **paper's reported result** (marked "reported, not reproduced"), or **my own judgement**.
 - Numbers (throughput, memory, runtime) are meaningless without the hardware and configuration that produced them, so both are always written down.
 - Anything I have not verified myself is marked "to verify" — never stated as settled truth.
+- The one page that keeps changing is [the paper map](appendix/paper-map.md), which carries the date each ID was checked. Every other page states what it knew on the day it was written.
 - Every term is defined in the [glossary](appendix/glossary.md); formatting conventions live in [writing and formatting rules](appendix/conventions.md).
