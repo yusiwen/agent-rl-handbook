@@ -73,6 +73,7 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
   - **Paper result** — cite it, and mark "reported, not reproduced"
   - **My judgement** — label it as a judgement, and give the counterexample or boundary
 - Measured numbers (throughput, memory, wall-clock) are invalid unless the hardware and configuration are stated with them.
+- **A hardware claim has to survive the book's own arithmetic.** Before a tier or budget table says what fits in the reference machine's memory, add it up the way Chapter 4 does (about 14 GB per billion parameters for a mixed-precision full fine-tune, and the ledger there is the one to reuse), and count the pool as shared with the operating system, the resident services and the activations. The compute-tiers row claiming an 8B full fine-tune fits did neither: it contradicted Chapter 4's own ledger, which puts a 7B policy at 98 GB.
 
 ## Maths
 

@@ -4,7 +4,7 @@
 
 | Dimension | Specification | What it means for studying |
 |---|---|---|
-| Memory | 128 GB **unified** (shared between CPU and GPU) | ✅ The big win: an 8B full fine-tune (weights + optimiser + gradients) fits, and four models can live in memory at once — impossible on a 24 GB card |
+| Memory | 128 GB **unified** (shared between CPU and GPU) | ⚠️ *Corrected 2026-10-14.* The pool is large, and 0.6-3B full fine-tuning is comfortable in it: a 3B policy costs about 42 GB of weights, gradients and optimiser state on Chapter 4's ledger of roughly 14 GB per billion parameters. What this row used to claim — that an **8B full fine-tune** fits — is wrong by that same ledger: an 8B policy is about 112 GB, close to 119 GB with an fp32 master copy, before activations, the operating system and any service you left running (the vLLM container alone measured 3.9 GiB on this machine). Eight billion parameters is a LoRA or QLoRA target here, not a full fine-tune, and offloading to CPU memory buys nothing on a machine whose CPU and GPU share one pool. The enduring win is serving: four 8B-class models at bf16 are roughly 60 GB of weights and fit at once — impossible on a 24 GB card |
 | Bandwidth | ≈ 273 GB/s (LPDDR5X; NVIDIA has not published an official figure) | ⚠️ The real bottleneck. An H100 is 3.35 TB/s and a 4090 is 1 TB/s. RL is rollout-heavy, so throughput lands an order of magnitude lower |
 | Architecture | **aarch64 + sm_121** | ⚠️ The awkward zone: official images are mostly x86_64, so you need native aarch64 installs or GB10-specific images |
 | OS | DGX OS (Ubuntu 24.04 LTS) | GPU access from Docker goes through CDI (`/var/run/cdi/nvidia.yaml`) |
