@@ -1,6 +1,6 @@
 # The Paper Map
 
-> **Status**: growing. **73 papers on eight shelves, in 41 slots** - plus 8 slots still empty (49 slots in total). Every ID on this page was checked against the arXiv API on **2026-10-09**.
+> **Status**: growing. **76 papers on eight shelves, in 42 slots** - plus 7 slots still empty (49 slots in total). Every ID on this page was checked against the arXiv API: the 73 rows filed on **2026-10-09**, and the three added on **2026-10-14**.
 > **What this page is for**: filing, not reading. Its job is to answer "have I seen this shape of paper before, and is it worth my evening?" in about thirty seconds.
 
 ## First, the gist
@@ -32,9 +32,9 @@ Then the paper goes on one shelf. If it seems to belong on two, it goes where **
 | **4** | One objective, no reward model, no rollouts - and five years of patching it. | 4 | 5 |
 | **5** | The shelf that produced the current default: score what a program can check. | 5 | 10 |
 | **6** | Building the scorer, and the long list of ways it gets fooled. | 6 | 13 |
-| **7** | Where the reward has to be attached to a sequence of decisions, not one answer. | 6 | 11 |
+| **7** | Where the reward has to be attached to a sequence of decisions, not one answer. | 7 | 14 |
 | **8** | The frontier shelf: everything that is neither a reward question nor an algorithm question. | 6 | 12 |
-| **Total** | | **41** | **73** |
+| **Total** | | **42** | **76** |
 
 ## Shelf 1: Foundations and the policy-gradient line
 
@@ -75,12 +75,12 @@ Then the paper goes on one shelf. If it seems to belong on two, it goes where **
 
 **The limits of imitation**
 
-- LIMA: Less Is More for Alignment, `2305.11206` - 1,000 curated examples beat bulk instruction data: surface form is cheap to copy *Used in Ch 2, Ch 4.*
+- LIMA: Less Is More for Alignment, `2305.11206` - 1,000 curated examples beat bulk instruction data: surface form is cheap to copy *Used in Ch 2, Ch 4, Ch 7.*
 - The False Promise of Imitating Proprietary LLMs, `2305.15717` - imitation copies style, not capability - and the gap shows up on hard tasks *Used in Ch 2, Ch 4.*
 
 **What SFT cannot teach**
 
-- SFT Memorizes, RL Generalizes: A Comparative Study of Foundation Model Post-training, `2501.17161` - the cleanest statement of the difference, with the experiments behind it *Used in Ch 2.*
+- SFT Memorizes, RL Generalizes: A Comparative Study of Foundation Model Post-training, `2501.17161` - the cleanest statement of the difference, with the experiments behind it *Used in Ch 2, Ch 7.*
 
 **Open post-training recipes**
 
@@ -154,13 +154,13 @@ Then the paper goes on one shelf. If it seems to belong on two, it goes where **
 
 **Verifiable rewards can mislead**
 
-- Spurious Rewards: Rethinking Training Signals in RLVR, `2506.10947` - on some models a wrong reward still improves the benchmark - so the gain was not the reward *Used in Ch 4, Ch 5.*
+- Spurious Rewards: Rethinking Training Signals in RLVR, `2506.10947` - on some models a wrong reward still improves the benchmark - so the gain was not the reward *Used in Ch 4, Ch 5, Ch 7.*
 
 **Group methods for agents, and rewards for tool use**
 
 - Group-in-Group Policy Optimization for LLM Agent Training, `2505.10978` - credit at two granularities: turn and step *Used in Ch 6.*
 - ToolRL: Reward is All Tool Learning Needs, `2504.13958` - reward design for tool calls, not only for final answers *Used in Ch 6.*
-- ReTool: Reinforcement Learning for Strategic Tool Use in LLMs, `2504.11536` - cold-start SFT plus an outcome reward teaches when to run code *Used in Ch 1, Ch 10.*
+- ReTool: Reinforcement Learning for Strategic Tool Use in LLMs, `2504.11536` - cold-start SFT plus an outcome reward teaches when to run code *Used in Ch 1, Ch 7, Ch 10.*
 
 ## Shelf 6: Reward modelling and robustness
 
@@ -230,6 +230,12 @@ Then the paper goes on one shelf. If it seems to belong on two, it goes where **
 
 - Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection, `2302.12173` - tool output and retrieved text are untrusted input *Used in Extras.*
 
+**Programmatic task and environment synthesis**
+
+- Endless Terminals: Scaling RL Environments for Terminal Agents, `2601.16443` - a four-stage generator (task descriptions, validated containers, completion tests, solvability filter) that produced 3,255 terminal tasks, trained on with vanilla PPO and a binary reward *Used in Ch 7.*
+- EnvScaler: Scaling Tool-Interactive Environments for LLM Agent via Programmatic Synthesis, `2601.05808` - environment skeletons, then task scenarios generated together with rule-based validators: the task and its check arrive together *Used in Ch 7.*
+- Procedural Environment Generation for Tool-Use Agents (RandomWorld), `2506.11045` - interactive tools and compositional tool-use data generated procedurally; downstream performance scales with the amount of generated data *Used in Ch 7.*
+
 ## Shelf 8: Systems, inference-time effort, memory and skills
 
 *The frontier shelf: everything that is neither a reward question nor an algorithm question.*
@@ -274,7 +280,6 @@ The names in this table are the papers this book has not read yet. When one of t
 | 3 | Judge calibration: making a judge agree with a small human sample |
 | 5 | Reward shaping for long-horizon agent tasks |
 | 6 | Reward hacking in agent settings (as opposed to single-turn) |
-| 7 | Programmatic task and environment synthesis |
 | 8 | Staleness and weight synchronisation, with the throughput accounting |
 | 8 | Evaluation variance: multiple seeds and confidence intervals |
 | 8 | Regression suites for RL pipelines |
@@ -284,13 +289,14 @@ The names in this table are the papers this book has not read yet. When one of t
 Three rules keep it useful:
 
 1. **One line per paper, written when it is filed.** A paper is filed by adding its line to a shelf - title, ID, one clause on what it settles. If the clause will not fit in one sentence, the paper has not been understood well enough to file yet.
-2. **Every ID carries the date it was checked.** An ID recalled from memory can point at an unrelated paper, and a wrong citation is worse than a missing one. All 73 rows here were checked against the arXiv API on 2026-10-09; a row added later carries its own date. See [the citation rules](conventions.md).
+2. **Every ID carries the date it was checked.** An ID recalled from memory can point at an unrelated paper, and a wrong citation is worse than a missing one. All 76 rows here were checked against the arXiv API - the 73 filed on 2026-10-09, and the three added on 2026-10-14; a row added later carries its own date. See [the citation rules](conventions.md).
 3. **A new paper is filed in the same commit that mentions it.** A paper discussed in a chapter but missing from this page is a paper that will be filed twice, or not at all.
 
-**The one number to keep honest.** The source course's own map counts 260+ papers. This page holds 73, every one of them checked, and it is meant to be filled in over the years. A smaller map you can trust beats a larger one you cannot check - and the empty slots above say exactly where the next ones go.
+**The one number to keep honest.** The source course's own map counts 260+ papers. This page holds 76, every one of them checked, and it is meant to be filled in over the years. A smaller map you can trust beats a larger one you cannot check - and the empty slots above say exactly where the next ones go.
 
 **Titles, labels and links.** The titles here are the papers' own, shortened where a subtitle adds nothing; the ID is the pointer, and pasting it into arXiv lands on the paper. A paper that also appears in a chapter's Reading list carries the same ID there, and the "used in" line says which chapters lean on it.
 
 ## Change log
 
+- **2026-10-14** - Chapter 7 cites three papers on programmatic task and environment synthesis, so they are filed here and the shelf-7 slot named "Programmatic task and environment synthesis" is filled: 76 papers in 42 slots, 7 empty. The three IDs were checked against the arXiv API on the same date. Four rows already on the map gained Chapter 7 in their "used in" line (LIMA, SFT Memorizes RL Generalizes, Spurious Rewards, ReTool).
 - **2026-10-09** - page created: 73 papers filed on eight shelves, 41 slots filled, 8 named as empty. All 69 IDs already cited in the chapters were re-checked against the arXiv API, and 4 were added and checked for the first time (OpenClaw-RL, RLAnything, and the two self-distillation papers it builds on).

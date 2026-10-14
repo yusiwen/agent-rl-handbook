@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="A histogram of 22 measured tasks by how many of 8 attempts each model got right, at two temperatures: ten tasks sit at zero solved and five at eight solved, with a thin middle, and the two temperatures disagree about the middle">
+  <style>
+    .fig-card  { fill: var(--quote-bg, #13293d); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-band  { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-n     { fill: var(--sidebar-fg, #8fa6bd); font-size: 10.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-axis  { stroke: var(--quote-border, #274357); stroke-width: 1; fill: none; }
+    .fig-a-t07 { fill: #4d86b8; }
+    .fig-a-t12 { fill: #3f8f6f; }
+  </style>
+  <text class="fig-cap" x="96" y="20">WHERE A TASK SET LIVES - 22 CANDIDATES, BY HOW MANY OF 8 ATTEMPTS EACH GOT RIGHT</text>
+  <rect class="fig-band" x="166" y="56" width="490" height="184" rx="6"/>
+  <text class="fig-s" x="411" y="48" text-anchor="middle">the trainable band: pass rate 0.1 to 0.9</text>
+  <rect class="fig-a-t07" x="102" y="60" width="26" height="180" rx="4"/>
+  <text class="fig-n" x="115" y="56" text-anchor="middle">10</text>
+  <rect class="fig-a-t12" x="134" y="114" width="26" height="126" rx="4"/>
+  <text class="fig-n" x="147" y="110" text-anchor="middle">7</text>
+  <rect class="fig-a-t12" x="274" y="168" width="26" height="72" rx="4"/>
+  <text class="fig-n" x="287" y="164" text-anchor="middle">4</text>
+  <rect class="fig-a-t07" x="242" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="255" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t12" x="274" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="287" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t07" x="312" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="325" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t12" x="344" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="357" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t07" x="382" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="395" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t12" x="414" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="427" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t07" x="452" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="465" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t07" x="522" y="204" width="26" height="36" rx="4"/>
+  <text class="fig-n" x="535" y="200" text-anchor="middle">2</text>
+  <rect class="fig-a-t12" x="554" y="204" width="26" height="36" rx="4"/>
+  <text class="fig-n" x="567" y="200" text-anchor="middle">2</text>
+  <rect class="fig-a-t07" x="592" y="222" width="26" height="18" rx="3"/>
+  <text class="fig-n" x="605" y="218" text-anchor="middle">1</text>
+  <rect class="fig-a-t12" x="624" y="204" width="26" height="36" rx="4"/>
+  <text class="fig-n" x="637" y="200" text-anchor="middle">2</text>
+  <rect class="fig-a-t07" x="662" y="150" width="26" height="90" rx="4"/>
+  <text class="fig-n" x="675" y="146" text-anchor="middle">5</text>
+  <rect class="fig-a-t12" x="694" y="168" width="26" height="72" rx="4"/>
+  <text class="fig-n" x="707" y="164" text-anchor="middle">4</text>
+  <path class="fig-axis" d="M96 240 H 726"/>
+  <text class="fig-n" x="131" y="256" text-anchor="middle">0</text>
+  <text class="fig-n" x="201" y="256" text-anchor="middle">1</text>
+  <text class="fig-n" x="271" y="256" text-anchor="middle">2</text>
+  <text class="fig-n" x="341" y="256" text-anchor="middle">3</text>
+  <text class="fig-n" x="411" y="256" text-anchor="middle">4</text>
+  <text class="fig-n" x="481" y="256" text-anchor="middle">5</text>
+  <text class="fig-n" x="551" y="256" text-anchor="middle">6</text>
+  <text class="fig-n" x="621" y="256" text-anchor="middle">7</text>
+  <text class="fig-n" x="691" y="256" text-anchor="middle">8</text>
+  <text class="fig-s" x="411" y="276" text-anchor="middle">tasks solved, out of 8 attempts each (temperature 0.7 and 1.2, same 22 tasks)</text>
+  <text class="fig-n" x="115" y="296" text-anchor="middle">a wall: no gradient</text>
+  <text class="fig-n" x="691" y="296" text-anchor="middle">free: no gradient</text>
+  <rect class="fig-a-t07" x="96" y="308" width="14" height="10" rx="2"/>
+  <text class="fig-n" x="116" y="317">temperature 0.7</text>
+  <rect class="fig-a-t12" x="248" y="308" width="14" height="10" rx="2"/>
+  <text class="fig-n" x="268" y="317">temperature 1.2</text>
+</svg>

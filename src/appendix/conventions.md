@@ -55,6 +55,14 @@ The audience is a beginner with basic Python and some fine-tuning experience. Th
 | pass@k | invented spellings such as "pass rate at k" |
 | reward hacking | "reward cheating", "gaming the metric" |
 | KL (Kullback-Leibler) | expanding it inconsistently, or leaving it unexplained on first use |
+| cold start, cold-start SFT | "warm-up", "bootstrap data" |
+| label protocol | "answer format", "output parsing" |
+| pass-rate filtering | "difficulty filtering", "band filtering" |
+| trainable band | "the sweet spot", "the useful middle" |
+| rejection sampling | "best-of-n filtering", "self-filtering" |
+| self-play data | "self-generated data" for the loop; self-play is the regenerating loop, not one batch |
+| task family | "task category", "task type" |
+| decontamination, a contaminated item | "cleaning the test set", "leakage removal" |
 
 ## Citations and honesty
 

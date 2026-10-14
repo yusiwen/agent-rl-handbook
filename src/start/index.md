@@ -145,7 +145,7 @@ Nothing technical yet — this part is yours to fill in. Four reference pages in
 - The [compute tiers](../appendix/compute-tiers.md) is the hardware ladder behind every chapter's ✅ / ⚠️ / ❌ label.
 - The [project index](../appendix/projects.md) maps each hands-on project to the chapter that builds it.
 - The [16-week plan](../appendix/schedule.md) turns the parts and chapters into a schedule, with checkpoints.
-- [The paper map](../appendix/paper-map.md) is the book's one living page: 73 papers filed on eight shelves, plus the slots still waiting to be filled.
+- [The paper map](../appendix/paper-map.md) is the book's one living page: 76 papers filed on eight shelves, plus the slots still waiting to be filled.
 
 ## Backfill
 

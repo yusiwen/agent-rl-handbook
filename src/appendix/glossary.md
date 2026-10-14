@@ -81,6 +81,19 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Advantage spread | The within-group variation an update needs in order to learn | No spread, no signal: an all-correct or all-wrong group teaches nothing ([Chapter 4](../04-alignment-algorithms/index.md), Lesson 4) |
 | Echo Trap | The multi-turn collapse where reasoning degenerates into repetitive templates and entropy dies | Reported for multi-turn agent training; it looks like a bug and is a property of the setting |
 
+## Data and tasks
+
+| Term | What it formally means | In plain words / notes |
+|---|---|---|
+| Task family | A group of items that share a task shape and a scorer | Word problems, code tasks and logic puzzles are three families with three verifiers ([Chapter 7](../07-data-and-tasks/index.md)) |
+| Trainable band | The pass-rate region where a policy sometimes succeeds and sometimes fails | 0.1 to 0.9 by convention, and the edge is set by your sample count; both ends give a gradient of zero |
+| Pass-rate filtering | Keeping the items whose pass rate falls inside the trainable band | The measured counterpart of Chapter 4's zero-variance group ([Chapter 7](../07-data-and-tasks/index.md), Lesson 4) |
+| Cold start | A small supervised stage that teaches the shape of a scorable attempt before RL starts | RL learns nothing from a policy that never produces a scoreable answer, because every group is flat |
+| Label protocol | What the verifier accepts as a declared answer, written down next to the reward | Part of the reward, not the prompt: in Project 1's numeric verifier the answer must be declared, and the final line carries exactly one number |
+| Rejection sampling | Sampling several attempts per task and keeping the ones the verifier passes | Cheap supervised data, and biased toward the tasks and styles the policy already handles |
+| Self-play data | The attempts are regenerated from the current policy each round, on a fixed task set | A loop rather than a corpus; it needs an automatic scorer, or it is a diary ([Chapter 6](../06-credit-assignment/index.md), Lesson 6) |
+| Decontamination | Measuring and removing the overlap between a training set and the evaluation set | A script you can re-run, never a visual inspection: a checker that has never been shown to fire has not been verified |
+
 ## Systems and engineering
 
 | Term | What it formally means | In plain words / notes |

@@ -40,7 +40,7 @@ Verdict: follow. Why: directly relevant to my verifiable task, cheap to implemen
 
 ## Reading
 
-- The map itself: [the paper map](../appendix/paper-map.md) - 73 papers filed on eight shelves, with the slots that are still empty named.
+- The map itself: [the paper map](../appendix/paper-map.md) - 76 papers filed on eight shelves, with the slots that are still empty named.
 
 ## Backfill
 
