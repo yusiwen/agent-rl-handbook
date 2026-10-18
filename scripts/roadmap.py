@@ -129,8 +129,10 @@ def manual_block(existing: str | None) -> str:
 
 def render(existing: str | None, projects_root: Path) -> str:
     chapters_rows = chapters()
-    project_rows = projects(projects_root)
-    counts = run_counts(projects_root)
+    # Guarded, not just guarded-for-display: CI checks out the book alone, and an eager call here
+    # crashed the gate on a directory that does not exist there.
+    project_rows = projects(projects_root) if projects_root.exists() else []
+    counts = run_counts(projects_root) if projects_root.exists() else {}
 
     written = sum(1 for row in chapters_rows if row["state"] == "written")
     skeleton = sum(1 for row in chapters_rows if row["state"] == "skeleton")
