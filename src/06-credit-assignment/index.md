@@ -1,6 +1,6 @@
 # Chapter 6 · Credit Assignment: From Token to Turn
 
-> **Compute tier**: ✅ (0.5–3B models are comfortable) | **Status**: draft — all six lessons have prose; the project's runs have not been executed yet
+> **Status**: draft — all six lessons have prose; the project's loop has been built and run offline (fusion, per-turn feedback, group-relative advantages, and a next round sampled from the policy the previous round produced), while its agent supervised fine-tuning (SFT) and inference-service stages are not built yet.
 > **Project**: [Project 2 · Process feedback and long-trajectory credit assignment](../appendix/projects.md)
 
 ## First, the gist
@@ -176,6 +176,10 @@ The paper's motivation is this chapter's problem in one sentence: outcome-only s
 
 **What it costs.** *(my judgement)* Two models to serve (policy and RRM), a rollout service, a container per task family, a fusion rule to maintain, and a training run whose wall-clock is dominated by generation. This is the most expensive project in the book's first half, and it is the one that pays for every later chapter: [Chapter 9](../09-training-runtime/index.md) is this loop industrialised, and [Chapter 10](../10-end-to-end-projects/index.md) is it pointed at a real task.
 
+**What the loop measured.** *(my own measurements, 2026-10-14; the loop is `p2-reagent` in the companion repository, two simulated task families, a tabular policy, eight samples per task, six rounds, the rule-only stage)* The first slice is the loop with the fusion point returning only the rule terms - the sequencing rule above, taken literally. Reward went from 0.158 to 0.679 and the solved share from 4% to 58%. The share of groups with a usable advantage stayed at 100% until a group was fully mastered, at which point its flatness is the correct answer rather than a defect. Mean entropy fell from 1.90 to 0.84 nats with no single round halving it, so no Echo Trap. Two of the three tasks were learned in six rounds and the three-turn one was not; that is the state of the demo rather than something to tune away. Adding the scripted judge cost 15 judge calls out of 48 attempts through the budget, and produced 38 rule-versus-critic disagreements - including a judge that called a confidently wrong early `done` "a considered decision" while the rule scored it 0.0.
+
+Four of this chapter's failure modes were then reproduced *by accident* on the way there, and each one is now a test. A turn score that rewarded **activity** taught the policy to repeat a harmless action until the turn cap: the Echo Trap, arriving early. A **mean over turns** let padding beat acting, because two neutral turns plus a wrong report outscored the right action plus a wrong report. A **distance-to-goal** score rewarded the ledger task's distractor over the correct first move. And a **menu that omitted the task's own action** made that task impossible, so the loop was "failing to learn" a broken environment. That list is the argument for the sequencing rule above: with the judge in place first, all four would have looked like a bad judge.
+
 ## Project
 
 **Project 2 · Process feedback and long-trajectory credit assignment** — deploy an RRM, run agent SFT, fuse rule and model rewards, and close the loop with GRPO plus an inference service. Full description and the six-project map: [the project index](../appendix/projects.md).
@@ -215,7 +219,7 @@ The project this chapter builds:
 
 Credit assignment at each level of the map:
 
-- **Turn-level reward assignment** — Tao et al., *TRACE: Turn-level Reward Assignment via Credit Estimation for Long-Horizon Agents*, arXiv:2607.13988 — verified. The stub carried this as "ID to verify"; the ID is correct.
+- **Turn-level reward assignment** — Tao et al., *TRACE: Turn-level Reward Assignment via Credit Estimation for Long-Horizon Agents*, arXiv:2607.13988 — verified. The stub flagged this entry's identifier as needing verification; it is correct.
 - **Step-level advantages without a PRM** — Feng et al., *Group-in-Group Policy Optimization for LLM Agent Training* (GiGPO), arXiv:2505.10978 — verified. The Step row of the map, and Lesson 4's second finding.
 - **Turn-level credit with an explicit boundary** — Zhou et al., *SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks*, arXiv:2503.15478 — verified.
 - **Attribution as middleware** — Luo et al., *Agent Lightning: Train ANY AI Agents with Reinforcement Learning*, arXiv:2508.03680 — verified. The Turn row's plumbing route.

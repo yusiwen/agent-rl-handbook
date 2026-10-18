@@ -1,6 +1,6 @@
 # Chapter 5 · Reward Engineering and Verifiers
 
-> **Compute tier**: ✅ | **Status**: draft — all nine lessons have prose; the project's own runs have not been executed yet
+> **Compute tier**: ✅ | **Status**: draft — all nine lessons have prose; the project has since been built and run (four verifiers, 21 of 21 tasks covered, marking deterministic on every gate run, the two code tasks judged by a real container), and the numbers it produced are in Lesson 9 and the project README.
 > **Project**: [Project 1 · Verifiable-reward infrastructure](../appendix/projects.md)
 > **Rule of this book**: [Chapter 4](../04-alignment-algorithms/index.md) settled *where* a score comes from. This chapter is about designing that score so it measures the goal, and building the machinery that produces it.
 
@@ -242,6 +242,15 @@ The second half of the chapter is about the case where a program can do the scor
 | What a timeout scores | An undefined choice here becomes a silent reward |
 
 **What "done" looks like, for real.** *(my judgement)* Not "the code runs". The verifier marks a fresh batch with the same result it gave last time, the dataset contains both passing and failing examples (a verifier that never says no has not been tested), three cheating routes are written down with the monitor that would catch each, and the loop prints the recovered rewards end to end.
+
+**What the project measured.** *(my own measurements, 2026-10-13 and 2026-10-14; the harness is `p1-verifiers` in the companion repository)* The suite that [Chapter 7](../07-data-and-tasks/index.md) then tests a task set with was built here, and four of its numbers belong to this lesson rather than to that one:
+
+- **Coverage is 21 of 21 tasks**, and the gate asserts it. A task nothing can score is a ceiling on what training can add, so an edit that drops one fails the check instead of quietly lowering the ceiling.
+- **Marking is deterministic, and the determinism is asserted.** The same 42 attempts are marked 21 passing and 21 failing on every run of `check_p1.py`. That is the "same marking twice" requirement from *How you know you passed*, written as a number that moves if the rule changes.
+- **The two `unit_test` tasks are judged by a real container** - `16` attempts in the full run, with `--network=none` and a memory cap. On a machine without a container runtime the run stops with an error rather than scoring zero, because "this machine cannot run the tests" is not the model's fault.
+- **Where each verifier lies is written down per verifier**, and one of those boundaries was measured rather than guessed. The numeric verifier used to score any number it found on the last line, which made it a *format* test wearing an arithmetic test's clothes: requiring the answer to be declared moved one task from 0 of 4 to 4 of 4 and a different one from 4 of 4 to 0 of 4. Both movements are recorded in Chapter 7, Lesson 4, because they turned out to be facts about the task set rather than about the marking.
+
+The run records and the gate are in the project; the numbers above come from running it, not from reading it.
 
 ## Project
 
