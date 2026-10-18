@@ -89,4 +89,11 @@ fi
 echo "clean ($blocks display block(s), all intact)"
 
 echo
+echo "== 6. the roadmap matches the repositories =="
+# The roadmap is generated, not maintained: if this fails, run `python3 scripts/roadmap.py`. A
+# hand-kept checklist is the one document guaranteed to be wrong, and this repository has already
+# published one that was.
+python3 scripts/roadmap.py --check
+
+echo
 echo "all checks passed"
