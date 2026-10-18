@@ -1,6 +1,6 @@
 # The Paper Map
 
-> **Status**: growing. **76 papers on eight shelves, in 42 slots** - plus 7 slots still empty (49 slots in total). Every ID on this page was checked against the arXiv API: the 73 rows filed on **2026-10-09**, and the three added on **2026-10-14**.
+> **Status**: growing. **79 papers on eight shelves, in 42 slots** - plus 7 slots still empty (49 slots in total). Every ID on this page was checked against its arXiv abstract page: the 73 rows filed on **2026-10-09**, three added on **2026-10-14**, and three added on **2026-10-18**.
 > **What this page is for**: filing, not reading. Its job is to answer "have I seen this shape of paper before, and is it worth my evening?" in about thirty seconds.
 
 ## First, the gist
@@ -268,6 +268,9 @@ Then the paper goes on one shelf. If it seems to belong on two, it goes where **
 
 - MemGPT: Towards LLMs as Operating Systems, `2310.08560` - the model as an operating system, with memory managed outside it *Used in Extras.*
 - Memento-Skills: Let Agents Design Agents, `2603.18743` - skills discovered, verified and written back while the weights stay frozen *Used in Ch 12.*
+- EvoSkill: Automated Skill Discovery for Multi-Agent Systems, `2603.02766` - separates creating a skill from editing one, and bounds growth with an elite pool *Used in Ch 12.*
+- Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills, `2603.25158` - distils lessons local to one trajectory into skills that transfer *Used in Ch 12.*
+- SkillClaw: Let Skills Evolve Collectively with Agentic Evolver, `2604.08377` - skills evolve across users rather than inside one agent's history *Used in Ch 12.*
 - Lost in the Middle: How Language Models Use Long Contexts, `2307.03172` - long context is not uniform attention - where you put the skill matters *Used in Extras.*
 
 ## Slots that are still empty
@@ -289,7 +292,7 @@ The names in this table are the papers this book has not read yet. When one of t
 Three rules keep it useful:
 
 1. **One line per paper, written when it is filed.** A paper is filed by adding its line to a shelf - title, ID, one clause on what it settles. If the clause will not fit in one sentence, the paper has not been understood well enough to file yet.
-2. **Every ID carries the date it was checked.** An ID recalled from memory can point at an unrelated paper, and a wrong citation is worse than a missing one. All 76 rows here were checked against the arXiv API - the 73 filed on 2026-10-09, and the three added on 2026-10-14; a row added later carries its own date. See [the citation rules](conventions.md).
+2. **Every ID carries the date it was checked.** An ID recalled from memory can point at an unrelated paper, and a wrong citation is worse than a missing one. All 79 rows here were checked against the source abstract page - the 73 filed on 2026-10-09, three added on 2026-10-14, and three added on 2026-10-18; a row added later carries its own date. See [the citation rules](conventions.md).
 3. **A new paper is filed in the same commit that mentions it.** A paper discussed in a chapter but missing from this page is a paper that will be filed twice, or not at all.
 
 **The one number to keep honest.** The source course's own map counts 260+ papers. This page holds 76, every one of them checked, and it is meant to be filled in over the years. A smaller map you can trust beats a larger one you cannot check - and the empty slots above say exactly where the next ones go.
@@ -297,6 +300,8 @@ Three rules keep it useful:
 **Titles, labels and links.** The titles here are the papers' own, shortened where a subtitle adds nothing; the ID is the pointer, and pasting it into arXiv lands on the paper. A paper that also appears in a chapter's Reading list carries the same ID there, and the "used in" line says which chapters lean on it.
 
 ## Change log
+
+- **2026-10-18** - Chapter 12 cited three papers with the placeholder "arXiv ID to verify"; the IDs are now resolved and filed on shelf 8 beside Memento-Skills: 79 papers in 42 slots, 7 empty. Each ID was opened on its arXiv abstract page and its title matched before the row was written - the search API was returning empty responses that day, so the lookup went through search results and then to the source, which is the order the citation rules ask for.
 
 - **2026-10-14** - Chapter 7 cites three papers on programmatic task and environment synthesis, so they are filed here and the shelf-7 slot named "Programmatic task and environment synthesis" is filled: 76 papers in 42 slots, 7 empty. The three IDs were checked against the arXiv API on the same date. Four rows already on the map gained Chapter 7 in their "used in" line (LIMA, SFT Memorizes RL Generalizes, Spurious Rewards, ReTool).
 - **2026-10-09** - page created: 73 papers filed on eight shelves, 41 slots filled, 8 named as empty. All 69 IDs already cited in the chapters were re-checked against the arXiv API, and 4 were added and checked for the first time (OpenClaw-RL, RLAnything, and the two self-distillation papers it builds on).

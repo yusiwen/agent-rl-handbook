@@ -49,9 +49,9 @@ So far, "getting better" meant changing the model's weights. There is another wa
 ## Reading
 
 - Memento-Skills (read-execute-reflect-write loop, base model frozen): arXiv:2603.18743
-- EvoSkill (separates create from edit; uses an elite pool to bound growth): arXiv ID to verify
-- Trace2Skill (distils trajectory-local lessons into transferable skills): arXiv ID to verify
-- SkillClaw (collective skill evolution across users): arXiv ID to verify
+- EvoSkill (separates create from edit; uses an elite pool to bound growth): arXiv:2603.02766
+- Trace2Skill (distils trajectory-local lessons into transferable skills): arXiv:2603.25158
+- SkillClaw (collective skill evolution across users): arXiv:2604.08377
 
 ## Backfill
 

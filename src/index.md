@@ -34,7 +34,7 @@ If you have never touched Python or PyTorch, do that first — this book will no
 
 1. **Straight through.** The six parts are a ladder; each part assumes the one before. Chapter 2's MDP exercise comes back in Chapter 6, where you rewrite it.
 2. **As a checklist.** Every chapter ends with a deliverable and a "how you know you passed" list. Reading is not finishing — shipping the deliverable is.
-3. **As an index.** [The paper map](appendix/paper-map.md) files 76 papers on eight shelves, and Chapter 13 teaches you to use it. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
+3. **As an index.** [The paper map](appendix/paper-map.md) files 79 papers on eight shelves, and Chapter 13 teaches you to use it. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
 
 ## Book map
 
