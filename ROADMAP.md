@@ -60,8 +60,9 @@ Run records total 128; each names the code revision that produced it.
 1. **Chapter 13 (paper deep-dives)** is a stub and is the natural home for the results this project
    just produced: the flat-group arithmetic, calibration, and judge robustness.
 2. **Chapters 8-12** are skeletons with outlines only.
-3. **The RL update on the served policy** - putting the fine-tuned weights back into a training loop -
-   is not built; it belongs to Project 3 and Chapter 9.
+3. **The RL update exists in-process** (step A-C, with a held-out check) but not on the *served* policy:
+   pushing updated weights to an inference server between rounds is the weight-sync problem, and it
+   belongs to Project 3 and Chapter 9.
 4. **Projects 3-6** are README only.
 5. **The elective modules** have prose but no figure.
 <!-- /manual:open-decisions -->
