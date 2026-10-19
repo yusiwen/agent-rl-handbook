@@ -30,14 +30,14 @@
 
 | Project | State | Modules | Test functions | Check scripts | Run records |
 | --- | --- | --- | --- | --- | --- |
-| `p1-verifiers` | **built** | 4 | 190 | 4 | 113 |
-| `p2-reagent` | **built** | 13 | 87 | 8 | 15 |
+| `p1-verifiers` | **built** | 4 | 190 | 4 | 115 |
+| `p2-reagent` | **built** | 13 | 87 | 8 | 19 |
 | `p3-verl` | **README only** | 0 | 0 | 0 | 0 |
 | `p4-deepanalyze` | **README only** | 0 | 0 | 0 | 0 |
 | `p5-openclaw-rl` | **README only** | 0 | 0 | 0 | 0 |
 | `p6-memento-skills` | **README only** | 0 | 0 | 0 | 0 |
 
-Run records total 128; each names the code revision that produced it.
+Run records total 134; each names the code revision that produced it.
 
 ## Open decisions
 
