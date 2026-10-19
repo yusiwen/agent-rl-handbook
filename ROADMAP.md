@@ -6,7 +6,7 @@
 
 ## The book
 
-**7 of 15 units have their prose written, 6 are skeletons, 48,585 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**7 of 15 units have their prose written, 6 are skeletons, 48,659 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -15,7 +15,7 @@
 | `03-policy-gradient` | Chapter 3 · From Value Functions to Policy Gradients | `draft` | **written** | 3,843 | 6 | yes | yes |
 | `04-alignment-algorithms` | Chapter 4 · The Alignment Algorithm Family (and PPO in Full) | `draft` | **written** | 9,290 | 10 | yes | yes |
 | `05-reward-engineering` | Chapter 5 · Reward Engineering and Verifiers | `draft` | **written** | 6,598 | 9 | yes | yes |
-| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 6,628 | 6 | yes | yes |
+| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 6,702 | 6 | yes | yes |
 | `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
 | `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `stub` | **skeleton** | 433 | 6 | yes | no |
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `stub` | **skeleton** | 603 | 10 | yes | no |
@@ -30,14 +30,14 @@
 
 | Project | State | Modules | Test functions | Check scripts | Run records |
 | --- | --- | --- | --- | --- | --- |
-| `p1-verifiers` | **built** | 4 | 190 | 4 | 112 |
+| `p1-verifiers` | **built** | 4 | 190 | 4 | 113 |
 | `p2-reagent` | **built** | 13 | 87 | 8 | 15 |
 | `p3-verl` | **README only** | 0 | 0 | 0 | 0 |
 | `p4-deepanalyze` | **README only** | 0 | 0 | 0 | 0 |
 | `p5-openclaw-rl` | **README only** | 0 | 0 | 0 | 0 |
 | `p6-memento-skills` | **README only** | 0 | 0 | 0 | 0 |
 
-Run records total 127; each names the code revision that produced it.
+Run records total 128; each names the code revision that produced it.
 
 ## Open decisions
 
