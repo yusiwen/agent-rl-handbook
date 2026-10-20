@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 340" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="A log-scale bar chart of what one step costs: a simulator reset at 1.6 microseconds, a simulator step at 3.2 microseconds, a command inside a reused container at 60 milliseconds, a fresh container start at 234 milliseconds, a 1.7B model call at 141 milliseconds, and one training round of 60 rollouts at 27 seconds">
+  <style>
+    .fig-band  { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-t     { fill: var(--fg, #dce6f0); font-size: 12.5px; font-weight: 600; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-n     { fill: var(--sidebar-fg, #8fa6bd); font-size: 10.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-axis  { stroke: var(--quote-border, #274357); stroke-width: 1; fill: none; }
+    .fig-grid  { stroke: var(--quote-border, #274357); stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; }
+    .fig-a-cheap { fill: #3f8f6f; }
+    .fig-a-mid   { fill: #4d86b8; }
+    .fig-a-dear  { fill: #b8703f; }
+  </style>
+  <text class="fig-cap" x="24" y="20">WHAT ONE STEP COSTS - LOG SCALE, MEASURED ON ONE MACHINE</text>
+  <rect class="fig-band" x="150" y="38" width="610" height="252" rx="6"/>
+  <line class="fig-grid" x1="150" y1="38" x2="150" y2="290"/>
+  <line class="fig-grid" x1="226" y1="38" x2="226" y2="290"/>
+  <line class="fig-grid" x1="303" y1="38" x2="303" y2="290"/>
+  <line class="fig-grid" x1="379" y1="38" x2="379" y2="290"/>
+  <line class="fig-grid" x1="455" y1="38" x2="455" y2="290"/>
+  <line class="fig-grid" x1="531" y1="38" x2="531" y2="290"/>
+  <line class="fig-grid" x1="608" y1="38" x2="608" y2="290"/>
+  <line class="fig-grid" x1="684" y1="38" x2="684" y2="290"/>
+  <text class="fig-n" x="150" y="304" text-anchor="middle">1us</text>
+  <text class="fig-n" x="226" y="304" text-anchor="middle">10us</text>
+  <text class="fig-n" x="303" y="304" text-anchor="middle">100us</text>
+  <text class="fig-n" x="379" y="304" text-anchor="middle">1ms</text>
+  <text class="fig-n" x="455" y="304" text-anchor="middle">10ms</text>
+  <text class="fig-n" x="531" y="304" text-anchor="middle">100ms</text>
+  <text class="fig-n" x="608" y="304" text-anchor="middle">1s</text>
+  <text class="fig-n" x="684" y="304" text-anchor="middle">10s</text>
+  <text class="fig-n" x="752" y="304" text-anchor="middle">100s</text>
+  <text class="fig-s" x="142" y="67" text-anchor="end">simulator reset</text>
+  <rect class="fig-a-cheap" x="150" y="52" width="16" height="20" rx="3"/>
+  <text class="fig-n" x="172" y="67">1.6us</text>
+  <text class="fig-s" x="142" y="107" text-anchor="end">simulator step</text>
+  <rect class="fig-a-cheap" x="150" y="92" width="39" height="20" rx="3"/>
+  <text class="fig-n" x="195" y="107">3.2us</text>
+  <text class="fig-s" x="142" y="147" text-anchor="end">command, reused container</text>
+  <rect class="fig-a-mid" x="150" y="132" width="364" height="20" rx="3"/>
+  <text class="fig-n" x="520" y="147">60ms</text>
+  <text class="fig-s" x="142" y="187" text-anchor="end">fresh container start</text>
+  <rect class="fig-a-mid" x="150" y="172" width="409" height="20" rx="3"/>
+  <text class="fig-n" x="565" y="187">234ms</text>
+  <text class="fig-s" x="142" y="227" text-anchor="end">1.7B model call</text>
+  <rect class="fig-a-dear" x="150" y="212" width="393" height="20" rx="3"/>
+  <text class="fig-n" x="549" y="227">141ms</text>
+  <text class="fig-s" x="142" y="267" text-anchor="end">one training round, 60 rollouts</text>
+  <rect class="fig-a-dear" x="150" y="252" width="567" height="20" rx="3"/>
+  <text class="fig-n" x="723" y="267">27s</text>
+  <text class="fig-s" x="150" y="322">A simulator step is 44,000 times cheaper than a model call. Put a container in the step and the gap closes to about 1.5 times.</text>
+</svg>
