@@ -30,14 +30,14 @@
 
 | Project | State | Modules | Test functions | Check scripts | Run records |
 | --- | --- | --- | --- | --- | --- |
-| `p1-verifiers` | **built** | 4 | 190 | 4 | 120 |
-| `p2-reagent` | **built** | 13 | 87 | 8 | 20 |
-| `p3-verl` | **README only** | 0 | 0 | 1 | 0 |
+| `p1-verifiers` | **built** | 4 | 190 | 4 | 122 |
+| `p2-reagent` | **built** | 13 | 87 | 8 | 19 |
+| `p3-verl` | **env + checks** | 0 | 0 | 1 | 1 |
 | `p4-deepanalyze` | **README only** | 0 | 0 | 0 | 0 |
 | `p5-openclaw-rl` | **README only** | 0 | 0 | 0 | 0 |
 | `p6-memento-skills` | **README only** | 0 | 0 | 0 | 0 |
 
-Run records total 140; each names the code revision that produced it.
+Run records total 142; each names the code revision that produced it.
 
 ## Open decisions
 
@@ -64,7 +64,7 @@ Run records total 140; each names the code revision that produced it.
    Project 2 lacked: served sampling over HTTP, the gradient in the training process, and the adapter
    registered as the next round's policy in 12-13 ms (against 156 s for a restart). First measured run:
    11/30 to 25/30 in one update, then the groups went flat.
-4. **Projects 3-6** are no longer README only: `p3-verl` has an environment, a check script and a
-   measured run; projects 4-6 remain README only.
+4. **Projects 4-6** remain README only. `p3-verl` has no package but is not thin either: an
+   environment, a check and a measured run, which the table now labels `env + checks`.
 5. **The elective modules** have prose but no figure.
 <!-- /manual:open-decisions -->

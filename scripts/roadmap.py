@@ -91,12 +91,21 @@ def projects(root: Path) -> list[dict]:
     for directory in sorted(p for p in root.iterdir() if p.is_dir() and p.name.startswith("p") and p.name[1].isdigit()):
         readme = directory / "README.md"
         code = sorted((directory / "src").rglob("*.py")) if (directory / "src").exists() else []
+        # A project can be real without a package: p3's loop lives in env/ (a server script and a
+        # training script) and its measurement in checks/. Calling that "README only" would be the
+        # table lying about the thing it is meant to track, which is the failure this file exists to
+        # prevent, so the label distinguishes the three states it can actually see.
+        env_scripts = sorted((directory / "env").glob("*.py")) + sorted((directory / "env").glob("*.sh"))
         tests = sorted((directory / "tests").rglob("test_*.py")) if (directory / "tests").exists() else []
         checks = sorted((directory / "checks").glob("*.py")) if (directory / "checks").exists() else []
         rows.append(
             {
                 "name": directory.name,
-                "state": "built" if code else "README only",
+                "state": (
+                    "built"
+                    if code
+                    else ("env + checks" if (env_scripts or checks) else "README only")
+                ),
                 "modules": len(code),
                 "test_functions": sum(
                     len(re.findall(r"^\s+def test_", p.read_text(encoding="utf-8"), re.MULTILINE))
