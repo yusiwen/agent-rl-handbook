@@ -6,7 +6,7 @@
 
 ## The book
 
-**8 of 15 units have their prose written, 5 are skeletons, 53,061 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**8 of 15 units have their prose written, 5 are skeletons, 53,109 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -15,7 +15,7 @@
 | `03-policy-gradient` | Chapter 3 · From Value Functions to Policy Gradients | `draft` | **written** | 3,843 | 6 | yes | yes |
 | `04-alignment-algorithms` | Chapter 4 · The Alignment Algorithm Family (and PPO in Full) | `draft` | **written** | 9,290 | 10 | yes | yes |
 | `05-reward-engineering` | Chapter 5 · Reward Engineering and Verifiers | `draft` | **written** | 6,598 | 9 | yes | yes |
-| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 6,702 | 6 | yes | yes |
+| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 6,750 | 6 | yes | yes |
 | `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
 | `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `draft` | **written** | 4,835 | 6 | yes | yes |
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `stub` | **skeleton** | 603 | 10 | yes | no |
@@ -30,14 +30,14 @@
 
 | Project | State | Modules | Test functions | Check scripts | Run records |
 | --- | --- | --- | --- | --- | --- |
-| `p1-verifiers` | **built** | 4 | 190 | 4 | 117 |
-| `p2-reagent` | **built** | 13 | 87 | 8 | 19 |
+| `p1-verifiers` | **built** | 4 | 190 | 4 | 120 |
+| `p2-reagent` | **built** | 13 | 87 | 8 | 20 |
 | `p3-verl` | **README only** | 0 | 0 | 1 | 0 |
 | `p4-deepanalyze` | **README only** | 0 | 0 | 0 | 0 |
 | `p5-openclaw-rl` | **README only** | 0 | 0 | 0 | 0 |
 | `p6-memento-skills` | **README only** | 0 | 0 | 0 | 0 |
 
-Run records total 136; each names the code revision that produced it.
+Run records total 140; each names the code revision that produced it.
 
 ## Open decisions
 
@@ -60,9 +60,11 @@ Run records total 136; each names the code revision that produced it.
 1. **Chapter 13 (paper deep-dives)** is a stub and is the natural home for the results this project
    just produced: the flat-group arithmetic, calibration, and judge robustness.
 2. **Chapters 8-12** are skeletons with outlines only.
-3. **The RL update exists in-process** (step A-C, with a held-out check) but not on the *served* policy:
-   pushing updated weights to an inference server between rounds is the weight-sync problem, and it
-   belongs to Project 3 and Chapter 9.
-4. **Projects 3-6** are README only.
+3. **The RL update exists, both in-process and on the served policy.** `p3-verl` closes the loop that
+   Project 2 lacked: served sampling over HTTP, the gradient in the training process, and the adapter
+   registered as the next round's policy in 12-13 ms (against 156 s for a restart). First measured run:
+   11/30 to 25/30 in one update, then the groups went flat.
+4. **Projects 3-6** are no longer README only: `p3-verl` has an environment, a check script and a
+   measured run; projects 4-6 remain README only.
 5. **The elective modules** have prose but no figure.
 <!-- /manual:open-decisions -->
