@@ -95,6 +95,17 @@ Two details in that table are worth more than the numbers. First, the memory cap
 3. **Quarantine with backoff.** A sandbox that fails twice is not retried immediately; it is drained, destroyed and replaced. The pool's health is the number of *consecutive* failures per sandbox.
 4. **Backpressure.** When the queue outruns the pool, the correct behaviour is to slow the producer, not to start 200 containers and let the kernel's OOM killer pick winners.
 
+**What a missing cap costs.** *(measured, 2026-10-22)* A training loop in this project held one
+autograd graph per training pair and kept about 70 GB alive until a single backward. The host has
+unified memory, so the trainer, the inference server and the ssh session were all drawing from the
+same pool. `earlyoom` was running with a preference list naming `python3` and `vllm`, and it did fire -
+at two percent of memory left, thirteen seconds after the kernel had already begun killing. The kernel
+chose session processes first, because systemd gives them `oom_score_adj` 100 to 200 while a trainer
+runs at 0: the login session died, and the model server was killed alongside it. Capping the container
+at 48 GB (`--memory=48g --memory-swap=48g`, equal values meaning no swap) turns the same mistake into
+one dead process group. Verified rather than assumed: a container capped at 1 GB that allocates 2 GB
+exits 137, and the host's free memory does not move.
+
 None of this is specific to Docker. It is the same list you would write for a pool of VMs, a pool of remote browser sessions, or a fleet of API-backed environments. Docker just makes the costs small enough to measure in an afternoon.
 
 ### Lesson 3 · Reproducibility: controlling randomness, rolling state back, task seeds
