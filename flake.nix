@@ -23,10 +23,15 @@
       formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
 
       devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
+        # mkShellNoCC: this shell builds a static site, nothing compiles C.
+        default = pkgs.mkShellNoCC {
           packages = [
             pkgs.mdbook # the only tool the book actually needs
-            pkgs.git
+            # pkgs.git pulls python3, and python3's sysconfig data references
+            # clang-wrapper — that is how a ~1.2 GiB C toolchain gets into a shell
+            # that only renders markdown. Dropping python/perl severs it and keeps
+            # git's https + macOS keychain support (gitMinimal drops the latter).
+            (pkgs.git.override { pythonSupport = false; perlSupport = false; })
             pkgs.ripgrep # search across src/
             pkgs.fd # find a chapter by slug
             pkgs.jq
