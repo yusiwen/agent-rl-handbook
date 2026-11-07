@@ -155,9 +155,37 @@ What this is not: six held-out rows of the same six schemas is a schema-transfer
 
 That third row is the one that matters for training. A crashed program is the *model's* fault - it wrote code that does not run - but it is not evidence about the answer, and folding it into "wrong" teaches from a signal the task never gave. In the run of Lesson 2, six of six programs crashed for a reason the model could not have known (a missing library); training on that run would have taught the policy to avoid pandas.
 
-**Stage 3 - the RL update (not run here).** With the three verdicts in the record, the update is Chapter 6's machinery applied to a new reward: a group of attempts per task, an advantage from the group's spread, and a three-tier credit where a turn that produced a runnable program is positive even if the final answer is wrong. Two facts bound what this chapter can claim about it. The first is that the reward only has a gradient when the group's outcomes differ, and on six easy tasks a 1.7B model that solves four of them at temperature zero will produce groups with no spread at all - the same "0 of 60 rollouts" ceiling Chapter 11 measured, one project over. The second is that the training runtime is the one Chapter 9 could not start on this hardware, so the honest status of stage 3 is: designed, not run, with the missing piece named (`sm_121` rollout support) rather than described as a future improvement.
+**Stage 3 - the RL update (built, run, and it made the policy worse).** The runtime Chapter 9 could not start was a *framework* problem, and a single-machine loop does not need the framework: sample from the policy in process, score with the executor, take a policy-gradient step. That fits in one script, and it is split into three phases because three different machines are involved - `sample` needs the GPU, `reward` needs Docker (the training container has no socket), `update` needs the GPU again. Every program is re-executed in the real container before it becomes a reward, and the verdict that trains the policy is that one, not the subprocess verdict the rollouts were conditioned on.
 
-What can be claimed, and is enough for a first end-to-end system: **a policy, a server, a sandbox and a verifier are wired into one loop, the loop's numbers come from the executor rather than from a judge, and the record separates the three ways an attempt can end.** The measured difference between 1 of 6 and 4 of 6 belongs to the container, not to the model, and the chapter says so in the same sentence as the number.
+The reward is deliberately blunt: **1.0** if the report matches, **0.2** if a program ran and the answer was wrong, **0.0** otherwise. The advantage is the group mean subtracted, with no division by the standard deviation - dividing would make `[0.2, 0.2, 0.2, 0.0]` look like a stronger lesson than `[1.0, 0.2, 0.0, 0.0]`, which is backwards, and `max(std, epsilon)` hides it rather than fixing it.
+
+Then the measurement, which is the whole point. Twenty-four rollouts - six tasks, four samples each, temperature 0.8, from the cold-started policy:
+
+| group | solved | spread | contributes |
+| --- | --- | --- | --- |
+| `sales-north` | 4/4 | 0.0 | nothing |
+| `sales-top-product` | 4/4 | 0.0 | nothing |
+| `orders-biggest-month` | 4/4 | 0.0 | nothing |
+| `inventory-shortfall` | 4/4 | 0.0 | nothing |
+| `students-pass-rate` | 3/4 | 1.0 | 4 samples |
+| `temps-mean` | 2/4 | 1.0 | 4 samples |
+
+**Four of six groups taught nothing, because the cold start had already solved them**, and the update ran on the eight samples that were left. Three step sizes, same rollouts, evaluated on the held-out set:
+
+| update | held-out | code runs | sandbox errors |
+| --- | --- | --- | --- |
+| cold start, no RL | **6/6** | 6 | 0 |
+| lr 1e-5, 8 steps | **6/6** | 6 | 0 |
+| lr 5e-5, 8 steps | **4/6** | 16 | **12** |
+| lr 5e-5, positive advantage only, 5 steps | 5/6 | 11 | 6 |
+
+At 1e-5 the update is undetectable - the same six answers, the same six code runs. At 5e-5 it costs two tasks, and the transcripts say what it did: six consecutive programs failing with `AttributeError: 'DictReader' object has no attribute 'fields'`, then `'items'`, then `'keys'`, then `'next'`. The policy did not merely stop solving those tasks; it started inventing an API. That is what whole-reply REINFORCE does with a negative advantage: the sample that lost still contained a mostly correct program, and the gradient pushes *every* token of it away, `csv.DictReader` included. Keeping only the winners limits the damage to one task instead of two, so the sign is part of the mechanism - but not all of it: five steps at 5e-5 still cost a task, which says the step is too large for eight samples regardless of sign.
+
+The honest conclusion is the one Chapter 11 already argued from a different direction: **eight informative samples cannot support a conclusion, and they cannot support an update either.** What this stage needs is not a bigger learning rate sweep. It needs headroom - a task set the policy does not already solve, so that all six groups have spread - and two orders of magnitude more rollouts per group, which is what the framework in Chapter 9 exists to provide.
+
+What can be claimed, and is enough for a first end-to-end system: **a policy, a server, a sandbox and a verifier are wired into one loop, all four stages of the pipeline ran, and every number in this chapter came from executing code rather than from a judge.** The differences the chapter reports are attributable: 1 of 6 to 4 of 6 from the container, 4 of 6 to 5 of 6 from the harness, 5 of 6 to 6 of 6 from twelve supervised turns, and 6 of 6 back to 4 of 6 from one badly sized policy-gradient step.
+
+That last one is the honest end of the project rather than a failure to hide. A pipeline that can be measured well enough to show its own update hurting is more useful than one that reports an improvement it cannot attribute - and the reason it hurt is legible in a single line of the record: four of six groups had no spread, because the cold start had already solved them. The next experiment this project needs is a harder task set, not a better trainer.
 
 ## Platform notes (Spark)
 
