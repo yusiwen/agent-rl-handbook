@@ -59,7 +59,7 @@ Run records are not counted here. They live in `agent-rl-projects/runs/`, which 
 
 1. **Chapter 13 (paper deep-dives)** is a stub and is the natural home for the results this project
    just produced: the flat-group arithmetic, calibration, and judge robustness.
-2. **Chapters 9, 10, 12 and 13** are skeletons with outlines only; Chapter 11 is written.
+2. **Chapters 10, 12 and 13** are skeletons with outlines only; Chapters 9 and 11 are written.
 3. **The RL update exists, both in-process and on the served policy.** `p3-verl` closes the loop that
    Project 2 lacked: served sampling over HTTP, the gradient in the training process, and the adapter
    registered as the next round's policy in 12-13 ms (against 156 s for a restart). First measured run:
