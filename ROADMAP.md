@@ -6,7 +6,7 @@
 
 ## The book
 
-**11 of 15 units have their prose written, 2 are skeletons, 67,093 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**11 of 15 units have their prose written, 2 are skeletons, 67,549 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@
 | `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
 | `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `draft` | **written** | 4,996 | 6 | yes | yes |
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 5,466 | 10 | yes | yes |
-| `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `partial` | **written** | 3,182 | 9 | yes | no |
+| `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `partial` | **written** | 3,638 | 9 | yes | no |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `stub` | **skeleton** | 586 | 11 | yes | no |
 | `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `stub` | **skeleton** | 443 | 8 | yes | no |
@@ -33,7 +33,7 @@
 | `p1-verifiers` | **built** | 4 | 190 | 4 |
 | `p2-reagent` | **built** | 13 | 87 | 8 |
 | `p3-verl` | **env + checks** | 0 | 0 | 3 |
-| `p4-deepanalyze` | **built** | 7 | 31 | 2 |
+| `p4-deepanalyze` | **built** | 8 | 31 | 2 |
 | `p5-openclaw-rl` | **README only** | 0 | 0 | 0 |
 | `p6-memento-skills` | **README only** | 0 | 0 | 0 |
 
