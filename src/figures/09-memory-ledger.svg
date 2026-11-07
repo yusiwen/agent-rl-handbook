@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 300" width="100%" style="max-width:100%;height:auto"
+     role="img" aria-label="A stacked bar of the 34.4 gigabyte peak for a 1.7B full fine-tune: 6.41 gigabytes of sharded weights, 20.7 gigabytes of derived AdamW optimiser state, 7.3 gigabytes of activations and reserved slack, and 58.3 gigabytes of host memory shown separately on the same scale">
+  <style>
+    .fig-band  { fill: var(--table-alternate-bg, #0f2438); stroke: var(--quote-border, #274357); stroke-width: 1; }
+    .fig-s     { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; }
+    .fig-n     { fill: var(--sidebar-fg, #8fa6bd); font-size: 10.5px; }
+    .fig-cap   { fill: var(--sidebar-fg, #8fa6bd); font-size: 11.5px; letter-spacing: .10em; }
+    .fig-grid  { stroke: var(--quote-border, #274357); stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; }
+    .fig-a-cheap { fill: #3f8f6f; }
+    .fig-a-mid   { fill: #4d86b8; }
+    .fig-a-dear  { fill: #b8703f; }
+    .fig-in     { fill: var(--fg, #dce6f0); font-size: 10.5px; }
+  </style>
+  <text class="fig-cap" x="24" y="24">WHERE 1.7B FULL FINE-TUNING PUTS ITS MEMORY - GIGABYTES, ONE GPU</text>
+  <rect class="fig-band" x="236" y="40" width="504" height="190" rx="6"/>
+  <line class="fig-grid" x1="250" y1="40" x2="250" y2="230"/>
+  <text class="fig-n" x="250" y="248" text-anchor="middle">0</text>
+  <line class="fig-grid" x1="328" y1="40" x2="328" y2="230"/>
+  <text class="fig-n" x="328" y="248" text-anchor="middle">10</text>
+  <line class="fig-grid" x1="407" y1="40" x2="407" y2="230"/>
+  <text class="fig-n" x="407" y="248" text-anchor="middle">20</text>
+  <line class="fig-grid" x1="485" y1="40" x2="485" y2="230"/>
+  <text class="fig-n" x="485" y="248" text-anchor="middle">30</text>
+  <line class="fig-grid" x1="563" y1="40" x2="563" y2="230"/>
+  <text class="fig-n" x="563" y="248" text-anchor="middle">40</text>
+  <line class="fig-grid" x1="642" y1="40" x2="642" y2="230"/>
+  <text class="fig-n" x="642" y="248" text-anchor="middle">50</text>
+  <line class="fig-grid" x1="720" y1="40" x2="720" y2="230"/>
+  <text class="fig-n" x="720" y="248" text-anchor="middle">60</text>
+  <text class="fig-n" x="24" y="272">GB - the unified pool is 121.63 GB; one bar is what a step reserves, the other is host memory</text>
+  <text class="fig-s" x="228" y="100" text-anchor="end">peak at step 2</text>
+  <rect class="fig-a-cheap" x="250.0" y="82" width="50.2" height="26" rx="2"/>
+  <rect class="fig-a-mid" x="300.2" y="82" width="162.1" height="26" rx="2"/>
+  <rect class="fig-a-dear" x="462.4" y="82" width="57.0" height="26" rx="2"/>
+  <text class="fig-n" x="527" y="99">34.40 reserved</text>
+  <text class="fig-n" x="275" y="126" text-anchor="middle">weights 6.41</text>
+  <text class="fig-n" x="275" y="139" text-anchor="middle" opacity=".75">measured</text>
+  <text class="fig-n" x="381" y="126" text-anchor="middle">optimiser 20.70</text>
+  <text class="fig-n" x="381" y="139" text-anchor="middle" opacity=".75">derived</text>
+  <text class="fig-n" x="491" y="126" text-anchor="middle">activations 7.3</text>
+  <text class="fig-n" x="491" y="139" text-anchor="middle" opacity=".75">measured + slack</text>
+  <text class="fig-s" x="228" y="194" text-anchor="end">host memory</text>
+  <rect class="fig-a-mid" x="250.0" y="176" width="456.7" height="26" rx="2"/>
+  <text class="fig-in" x="697" y="193" text-anchor="end">58.3 GB - Ray and eight dataloader workers</text>
+</svg>
