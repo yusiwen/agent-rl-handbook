@@ -54,7 +54,7 @@ Four things travel along those arrows, and only one of them is text:
 - **The observation** is stdout and stderr plus an exit code and a timeout flag. It goes back into the conversation as text, which is the only way a language model can read a program's result.
 - **The verdict** is not produced by the model at all. It is a comparison between the number in `<report>` and a number stored in the fixture, and that separation is the whole reason this project is trainable: the reward comes from an executor, not from a judge.
 
-Measured end to end on the Spark on 2026-11-07, six tasks with Qwen3-1.7B served from a vLLM instance and a container as the executor: **6 code runs, 0 sandbox errors, 4 of 6 solved, 15.7 seconds of wall time** (`runs/p4-20261107-190831`, `code_sha git:62fc34e`). The same policy against a worse executor, twenty seconds earlier, produced **1 of 6 solved and 6 sandbox errors** (`runs/p4-20261107-190738`). Both numbers are real. Which one you publish depends on a single line in a Dockerfile, and Lesson 2 is about that line.
+Measured end to end on the Spark on 2026-11-07, six tasks with Qwen3-1.7B served from a vLLM instance and a container as the executor: **5 of 6 solved, 7 code runs, 0 sandbox errors, 17.3 seconds of wall time** (`runs/p4-20261107-204926`, `code_sha git:951a165`). The same policy against a worse executor, twenty minutes earlier, produced **1 of 6 solved and 6 sandbox errors** (`runs/p4-20261107-190738`). Both numbers are real. Which one you publish depends on a single line in a Dockerfile, and Lesson 2 is about that line.
 
 ### Lesson 2 · Deploying the data-science agent: the executor, the image, and what it is allowed to be
 
@@ -102,15 +102,24 @@ Exactly one action per reply. Zero actions ("I think the answer is 3"), two acti
 
 *The program answered a table where a number was asked for.* For the inventory shortfall the model computed `stock - reorder_level` (the sign the question did not ask for) across every item, and `print(result)` on a pandas Series produced four lines. The report took the first number it could see - `-80` - and the verifier, which reads the last number in the report, scored it against the expected **80**. Two errors compounded: a sign, and an aggregate that was never aggregated.
 
-Both failures point at the same missing turn: **a silent or malformed observation should be a first-class outcome, so the model gets a chance to repair it.** One line of harness code does that - if a program exits 0 with empty stdout, the observation says so in words:
+Both failures point at the same missing turn: **a silent or malformed observation should be a first-class outcome, so the model gets a chance to repair it.** That hypothesis was cheap to test, and it took three runs to settle - the table is the honest record of the harness changing, not the model:
 
-```
-<observation exit=0>
-(no output - printed nothing; use print(...))
-</observation>
-```
+| run | what changed in the harness | solved | lost turns | forced repairs | code runs |
+| --- | --- | --- | --- | --- | --- |
+| `p4-20261107-190831` | nothing: notes were not even printed | 4/6 | 0 (not counted) | 0 | 6 |
+| `p4-20261107-204715` | the observation says "printed nothing" / "printed 4 lines", and the episode counts it | **4/6** | 2 | 0 | 6 |
+| `p4-20261107-204827` | plus: the first report after a lost turn is refused once | **5/6** | 2 | 2 | 9 |
+| `p4-20261107-204926` | plus: the prompt says every program is a new process, six turns | **5/6** | 1 | 1 | 7 |
 
-and a program whose output is not a single line gets the same treatment before the model is allowed to answer. Whether that repairs these two episodes is a measurable question, and it is the next run this project needs, not a conclusion this chapter can claim.
+Three things were learned, and only the first was the hypothesis.
+
+**Telling the model is not the same as making it act.** With both warnings firing on exactly the two broken episodes, a 1.7B model read the note and reported anyway - 4 of 6, unchanged. A note in the observation is information; a refused report is a constraint. The constraint moved the month task from wrong to right.
+
+**"Separate process" has to be said out loud.** The repair turn for the inventory task began with a continuation of the previous program - `... < df["reorder_level"]]` - and died with `NameError: name 'df' is not defined`, because every program runs in a fresh container with an empty working set. The model assumed a notebook. Saying it in the prompt removed the class of error, and the run of `-204926` shows the month task solved in two turns, with no repair at all.
+
+**What survives is a real error.** The inventory task still fails, and now for a good reason: the program subtracts `stock - reorder_level` where the question asks how far *below* the reorder level the item is, and reports `-80` for `80`. No harness change fixes a sign error; that is the kind of failure a training signal is supposed to see, and it is a better failure to be left with than a missing library or an empty observation.
+
+The budget is now part of the finding too. With four turns, the repaired task consumed the episode's whole allowance and the other one died of `no report within 4 turns` - the run of `-204827` has one sandbox error and nine code runs for that reason. Six turns and a clearer prompt recovered the efficiency: seven code runs, one forced repair, and the same score. A harness that pays for a repair has to budget for it.
 
 ### Lesson 4 · SFT + RL + code sandbox: the cold start, and what the sandbox contributes to the reward
 
