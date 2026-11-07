@@ -28,16 +28,16 @@
 
 ## The companion projects
 
-| Project | State | Modules | Test functions | Check scripts | Run records |
-| --- | --- | --- | --- | --- | --- |
-| `p1-verifiers` | **built** | 4 | 190 | 4 | 142 |
-| `p2-reagent` | **built** | 13 | 87 | 8 | 19 |
-| `p3-verl` | **env + checks** | 0 | 0 | 1 | 2 |
-| `p4-deepanalyze` | **README only** | 0 | 0 | 0 | 0 |
-| `p5-openclaw-rl` | **README only** | 0 | 0 | 0 | 0 |
-| `p6-memento-skills` | **README only** | 0 | 0 | 0 | 0 |
+| Project | State | Modules | Test functions | Check scripts |
+| --- | --- | --- | --- | --- |
+| `p1-verifiers` | **built** | 4 | 190 | 4 |
+| `p2-reagent` | **built** | 13 | 87 | 8 |
+| `p3-verl` | **env + checks** | 0 | 0 | 1 |
+| `p4-deepanalyze` | **README only** | 0 | 0 | 0 |
+| `p5-openclaw-rl` | **README only** | 0 | 0 | 0 |
+| `p6-memento-skills` | **README only** | 0 | 0 | 0 |
 
-Run records total 163; each names the code revision that produced it.
+Run records are not counted here. They live in `agent-rl-projects/runs/`, which is gitignored, so a count of them describes one machine rather than the repository - and the gate cannot regenerate it from a clone. Each project's README names the runs behind its numbers.
 
 ## Open decisions
 

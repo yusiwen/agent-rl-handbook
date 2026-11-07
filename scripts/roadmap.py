@@ -116,18 +116,6 @@ def projects(root: Path) -> list[dict]:
     return rows
 
 
-def run_counts(root: Path) -> dict[str, int]:
-    counts: dict[str, int] = {}
-    for header in (root / "runs").glob("*/header.json"):
-        try:
-            payload = json.loads(header.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            continue
-        project = str(payload.get("project", "unknown"))
-        counts[project] = counts.get(project, 0) + 1
-    return counts
-
-
 def manual_block(existing: str | None) -> str:
     if existing and OPEN_BEGIN in existing and OPEN_END in existing:
         inner = existing.split(OPEN_BEGIN, 1)[1].split(OPEN_END, 1)[0]
@@ -140,7 +128,6 @@ def render(existing: str | None, projects_root: Path) -> str:
     # Guarded, not just guarded-for-display: CI checks out the book alone, and an eager call here
     # crashed the gate on a directory that does not exist there.
     project_rows = projects(projects_root) if projects_root.exists() else []
-    counts = run_counts(projects_root) if projects_root.exists() else {}
 
     written = sum(1 for row in chapters_rows if row["state"] == "written")
     skeleton = sum(1 for row in chapters_rows if row["state"] == "skeleton")
@@ -184,18 +171,20 @@ def render(existing: str | None, projects_root: Path) -> str:
         "",
         "## The companion projects",
         "",
-        "| Project | State | Modules | Test functions | Check scripts | Run records |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| Project | State | Modules | Test functions | Check scripts |",
+        "| --- | --- | --- | --- | --- |",
     ]
     for row in project_rows:
         lines.append(
             f"| `{row['name']}` | **{row['state']}** | {row['modules']} | {row['test_functions']} | "
-            f"{row['checks']} | {counts.get(row['name'], 0)} |"
+            f"{row['checks']} |"
         )
 
     lines += [
         "",
-        f"Run records total {sum(counts.values())}; each names the code revision that produced it.",
+        "Run records are not counted here. They live in `agent-rl-projects/runs/`, which is gitignored,"
+        " so a count of them describes one machine rather than the repository - and the gate cannot"
+        " regenerate it from a clone. Each project's README names the runs behind its numbers.",
         "",
         "## Open decisions",
         "",
