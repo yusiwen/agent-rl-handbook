@@ -6,7 +6,7 @@
 
 ## The book
 
-**8 of 15 units have their prose written, 5 are skeletons, 54,134 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**8 of 15 units have their prose written, 5 are skeletons, 54,618 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -15,7 +15,7 @@
 | `03-policy-gradient` | Chapter 3 · From Value Functions to Policy Gradients | `draft` | **written** | 3,843 | 6 | yes | yes |
 | `04-alignment-algorithms` | Chapter 4 · The Alignment Algorithm Family (and PPO in Full) | `draft` | **written** | 9,290 | 10 | yes | yes |
 | `05-reward-engineering` | Chapter 5 · Reward Engineering and Verifiers | `draft` | **written** | 6,598 | 9 | yes | yes |
-| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 7,614 | 6 | yes | yes |
+| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 8,098 | 6 | yes | yes |
 | `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
 | `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `draft` | **written** | 4,996 | 6 | yes | yes |
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `stub` | **skeleton** | 603 | 10 | yes | no |
