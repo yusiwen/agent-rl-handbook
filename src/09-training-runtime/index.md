@@ -161,9 +161,21 @@ The plan: install VeRL in its own environment, keep the environment's torch, avo
 3. **A default logger wants a network and a key.** `wandb` is the default tracker; with no API key the job dies before the first step. `WANDB_MODE=disabled` plus `trainer.logger=["console"]` are the offline settings.
 4. **A data-layer assertion that is also a warning.** The multi-turn dataset asserts that per-turn tokenisation equals whole-sequence tokenisation; here it does not, and the run stops unless `data.ignore_input_ids_mismatch=true`. Disabling it is a decision about the loss mask, and the warning it downgrades says so.
 
-**And the fifth, which is the one that matters.** `_ROLLOUT_REGISTRY` contains exactly `("vllm", "async")`, `("sglang", "async")`, `("trtllm", "async")`. There is no synchronous entry and no `hf`, so the plan's central avoidance - do not install vLLM - is not available in this version. Reaching a GRPO run needs a vLLM or SGLang build matching an NGC torch 2.14 on aarch64; `pip install --dry-run vllm` in this environment did not finish resolving inside seven minutes, and that is where the attempt stopped.
+**And the fifth, which is the one that matters.** `_ROLLOUT_REGISTRY` contains exactly `("vllm", "async")`, `("sglang", "async")`, `("trtllm", "async")`. There is no synchronous entry and no `hf`, so the plan's central avoidance - do not install vLLM - is not available in this version.
 
-**What remains for the reader.** A measured supervised run through the same runtime (Lesson 4), a filled ledger (Lesson 7), a precise statement of what a GRPO run would require on this hardware, and no claim about a loop that was not run. The alternative this repository does have is its own served loop, measured end to end in Chapter 6: smaller, fewer features, no multi-node story, and it answers the same system questions at 1.7B scale.
+**The second attempt, and where it stopped.** PyPI ships no aarch64 wheel for `vllm` (every release has two files, and neither names an arm build), so the route had to be the official image. `vllm/vllm-openai:v0.11.2` is published for arm64 and is the generation that matches verl 0.9.1's stack: torch 2.9.0+cu129, vllm 0.11.2, transformers 4.57.1, ray 2.51.1. Inside it, `verl 0.9.1` installs over the image's own torch, and **both imports succeed** - which is further than the first attempt got, and required two more undeclared dependencies: `transferqueue` (for the async data path) and the already-known `uvicorn`.
+
+Then the first line of the training log answers the question:
+
+```
+Found GPU0 NVIDIA GB10 which is of cuda capability 12.1.
+Minimum and Maximum cuda capability supported by this version of PyTorch is
+(8.0) - (12.0)
+```
+
+and the package's own arch list ends at `sm_120`. The Spark is `sm_121`. The vLLM generation that matches verl 0.9.1 cannot address this GPU; the generation that can (the server image already running on this machine, v0.31.0, with a torch from the 2.13/2.14 line) is the one verl 0.9.1's worker code was not written against. That is the no-go, and it is a hardware-and-version fact rather than a mistake in the configuration: there is no pair (verl 0.9.1, vLLM) that both runs on `sm_121` here and shares an API.
+
+**What remains for the reader.** A measured supervised run through the same runtime (Lesson 4), a filled ledger (Lesson 7), a precise statement of what a GRPO run would require on this hardware - a vLLM built for `sm_121` whose API also matches the pinned verl, which on this machine means waiting for the runtime to catch up with the GPU rather than the other way round - and no claim about a loop that was not run. The alternative this repository does have is its own served loop, measured end to end in Chapter 6: smaller, fewer features, no multi-node story, and it answers the same system questions at 1.7B scale.
 
 ### Lesson 10 · Project 3b: a preference-alignment run, and why the record is not the one the outline promised
 
