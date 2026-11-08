@@ -6,7 +6,7 @@
 
 ## The book
 
-**13 of 15 units have their prose written, 0 are skeletons, 78,737 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**15 of 15 units have their prose written, 0 are skeletons, 79,685 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -23,8 +23,8 @@
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |
 | `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `written` | **written** | 3,886 | 8 | yes | yes |
-| `electives` | Extra Modules (Optional) | `draft` | **partial** | 1,775 | 4 | yes | no |
-| `start` | Part 0 · Before You Start | `draft` | **partial** | 2,445 | 3 | yes | yes |
+| `electives` | Extra Modules (Optional) | `written` | **written** | 2,536 | 4 | yes | yes |
+| `start` | Part 0 · Before You Start | `draft` | **written** | 2,632 | 3 | yes | yes |
 
 ## The companion projects
 
@@ -57,7 +57,7 @@ Run records are not counted here. They live in `agent-rl-projects/runs/`, which 
 
 ### Open work, in the order that pays first
 
-1. **Every chapter is written.** Chapters 1 to 13 all have prose and their lesson sets; the last two
+1. **Every unit is written, including the optional ones.** Chapters 1 to 13 all have prose and their lesson sets; the last two
    to land were Chapter 12 (skills, eleven lessons, two figures, retrieval at three library sizes and
    an outcome table whose ceiling scored below its floor) and Chapter 13 (the judgement framework,
    seven questions, eight lessons, and the four-gate reproduction checklist).
@@ -74,5 +74,8 @@ Run records are not counted here. They live in `agent-rl-projects/runs/`, which 
    four-condition outcome table - and its admission gate is tested against ten decoys. `p3-verl` has
    no package but is not thin either: an environment, a check and a measured run, which the table
    now labels `env + checks`.
-5. **The elective modules** have prose but no figure.
+5. **Nothing is a skeleton any more.** All fifteen units - thirteen chapters, the electives page and
+   Part 0 - have prose, a lesson set, a reading list and a figure. What remains is the kind of work a
+   book does not finish: the empty slots on the paper map, and a reproduction of any of it on a
+   second machine.
 <!-- /manual:open-decisions -->

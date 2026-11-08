@@ -1,6 +1,6 @@
 # Extra Modules (Optional)
 
-> **Compute tier**: ✅ | **Status**: draft — four module outlines; each becomes a worked note when the plan reaches week 16
+> **Compute tier**: ✅ | **Status**: written — four modules, each with the measured analogue this repository already has (or an explicit note that it has none)
 > **Rule of this book**: these modules sit outside the numbered chapters, so they carry the same skeleton rather than a looser one. A reader deciding whether to spend a week here needs the same deliverable, the same pass criteria and the same source list as anywhere else — and, just as often, needs permission to answer "not for me".
 
 ## First, the gist
@@ -12,7 +12,11 @@ Four gaps that sit outside the main track: one or two lessons each, read on dema
 - **Domain agents** — software engineering and computer use: the two domains where checking an answer is unusually cheap, and what that does to reward design.
 - **Context management as a policy** — memory, compression, summarisation and retrieval are decisions too, and they can be trained rather than hand-coded.
 
-If you are working through the main line, the honest default is to skip all four on the first pass. Come back when one of them names the thing that is blocking you, and note that a "no" is a real answer — the [16-week plan](../appendix/schedule.md) puts the modules in week 16 for exactly that reason.
+If you are working through the main line, the honest default is to skip all four on the first pass. Come back when one of them names the thing that is blocking you, and note that a "no" is a real answer - the [16-week plan](../appendix/schedule.md) puts the modules in week 16 for exactly that reason.
+
+<figure class="book-figure">{{#include ../figures/electives-triage.svg}}</figure>
+
+*Figure E.1 - the four modules filed by the shape of the failure that sends you to them, with the first artefact to build in each case. The green dot is deliberate: every one of these modules is entered by building something small, not by reading a survey.*
 
 ## What you'll be able to do
 
@@ -23,10 +27,10 @@ If you are working through the main line, the honest default is to skip all four
 
 ## Lessons
 
-- [ ] 1. Environment-side safety: when the model exploits the world, not the judge
-- [ ] 2. Multi-agent RL: cooperative rewards, and who owns the failure
-- [ ] 3. Domain agents: software engineering and computer use
-- [ ] 4. Context management as a policy
+- [x] 1. Environment-side safety: when the model exploits the world, not the judge
+- [x] 2. Multi-agent RL: cooperative rewards, and who owns the failure
+- [x] 3. Domain agents: software engineering and computer use
+- [x] 4. Context management as a policy
 
 ### Lesson 1 · Environment-side safety
 
@@ -39,6 +43,8 @@ If you are working through the main line, the honest default is to skip all four
 
 **What it costs.** Auditing a training environment is a pipeline you own and maintain, and least privilege shrinks the set of tasks you can train on at all: the sandbox that stops the agent from writing outside its directory also stops it from demonstrating the file-management skill you wanted. *(my judgement)*
 
+**The measured analogue in this repository.** Project 4 ran its reward inside a container with no network and a memory ceiling, and the first run scored 1 of 6 because the image had no `pandas` - every failure was the *environment* talking, not the model *(Project 4, measured)*. Two lessons came out of it. First, a reward harness is a program, and a program has bugs: the same project's `no_output` case was a policy that computed the right answer and printed nothing, which the checker scored as wrong because `exit 0` with empty stdout was the only evidence it had. That is Lesson 1's "reward model with a bug in it", observed rather than cited. Second, the failure taxonomy is the safety mechanism: only because sandbox errors were counted separately from wrong answers could the environment be fixed instead of the policy being blamed. An environment audit that produces one number per episode has already lost the argument.
+
 ### Lesson 2 · Multi-agent RL
 
 **Why the shared reward is the hard part.** With one agent, the reward is about one policy. With several roles — planner and executor, writer and reviewer, seller and buyer — the outcome is shared, and a shared reward cannot say which role earned it. That is credit assignment ([Chapter 6](../06-credit-assignment/index.md)) with an extra axis: not only *which step*, but *whose step*. *(textbook fact)*
@@ -49,6 +55,8 @@ If you are working through the main line, the honest default is to skip all four
 
 **What it costs.** The rollout bill multiplies by the number of interacting roles, and the credit-assignment design is the deliverable — the training run is the easy half. *(my judgement)*
 
+**What this repository cannot tell you.** None of the six projects trains more than one policy, so this module has no measured analogue here, and the page says so rather than borrowing a number. The cheapest first experiment, if you have a multi-role system, is a per-role ablation: replace one role's policy with the oracle (or a scripted stand-in) and re-run the same instances. If the group's score does not move, that role's credit is zero in practice whatever the reward says, and the assignment design is what needs work - not the training.
+
 ### Lesson 3 · Domain agents: software engineering and computer use
 
 **Why these two domains, and not "agents" in general.** They are where verification is cheap: a test suite decides whether a patch is correct, and a rendered screen state decides whether a click landed. Cheap verification is what makes the RLVR (reinforcement learning with verifiable rewards) route ([Chapter 4](../04-alignment-algorithms/index.md), Lesson 8) affordable, and it is why these two domains matured first. *(my judgement, on top of the reported benchmarks below)*
@@ -57,7 +65,9 @@ If you are working through the main line, the honest default is to skip all four
 - Computer use: WebArena and AgentBench-style environments make the reward the goal state rather than the pixels *(paper results, reported and not reproduced — both in Reading)*.
 - How reward design and environment construction differ from general tasks: the verifier is an artefact you build and version, not a model you train.
 
-**What it costs.** The environment is the project. A test suite that passes on the solution you happen to have in mind is a specification bug, and the agent will find it (the coverage- is-the-ceiling argument from [Chapter 4](../04-alignment-algorithms/index.md), Lesson 8).
+**What it costs.** The environment is the project. A test suite that passes on the solution you happen to have in mind is a specification bug, and the agent will find it (the coverage-is-the-ceiling argument from [Chapter 4](../04-alignment-algorithms/index.md), Lesson 8).
+
+**The measured analogue in this repository.** Project 4 is a software-engineering agent in miniature - the policy writes a program, a container runs it, the verifier decides - and it produced the cleanest evidence for this module's central claim, that the *interface* is where most of the difficulty lives. Three changes, none of them to the model, moved the score: a container that could import `pandas` (1 of 6 to 4 of 6), a harness that refuses the first report after a turn that produced no output (4 of 6 to 5 of 6), and one system-prompt line saying that each program runs in a fresh process (five of six, with code runs down from nine to seven). Only then did a cold start on twelve demonstrations take it to 6 of 6. The interface is also where the reward quietly breaks: a checker compares the last printed value, so a program that prints a dataframe scores as wrong however correct the dataframe is.
 
 ### Lesson 4 · Context management as a policy
 
@@ -69,6 +79,10 @@ If you are working through the main line, the honest default is to skip all four
 - What long contexts do to rollout cost: every extra token is paid at every step of every episode, so context policy is a line in the compute budget ([Chapter 8](../08-environment-engineering/index.md)).
 
 **What it costs.** Training a memory policy needs a task where memory actually matters, and building that task is harder than the training. The cheaper first step is usually to fix the plumbing and measure. *(my judgement)*
+
+**The measured analogue in this repository.** Project 2 truncated a conversation with a ring buffer; Project 4 gave the agent six turns and measured how many it lost; Project 6 hit the sharpest version of the same wall. Its first outcome run allowed 96 tokens per reply, and **every condition scored zero** - the model spent the entire budget inside its reasoning and never answered. At 2,048 tokens, 40 of 100 replies still ended inside the reasoning block, and those rows had to be counted as harness errors rather than wrong answers. That is a context policy with a measurable consequence: not "the model forgot", but "the budget was allocated to thinking and the answer never happened". Before training anything, measure what your context does to the answer rate - the plumbing fix is usually the whole gain.
+
+**Where the four meet.** Three of them are the same problem seen from different sides: environment safety asks *who is allowed to move the goalposts*, multi-agent asks *whose decision moved them*, and domain agents ask *whether the thing that decides is the thing you meant to build*. Context management is the outlier - it is a compute question wearing a capability costume - which is why it pairs with Chapter 8's budget arithmetic rather than with the three above it. If you read only one module, read environment safety: it is the only one whose failure mode silently corrupts the reward that every other chapter depends on, and it is the cheapest to start because the audit is a checklist you can run against the environment you already have.
 
 ## Deliverable
 
@@ -98,7 +112,7 @@ Titles and arXiv IDs were checked against the arXiv API on 2026-10-09 (IDs marke
 - **Computer use as a benchmark** — Zhou et al., *WebArena: A Realistic Web Environment for Building Autonomous Agents*, arXiv:2307.13854, and Liu et al., *AgentBench: Evaluating LLMs as Agents*, arXiv:2308.03688 — both verified. Lesson 3.
 - **What a long context is actually used for** — Liu et al., *Lost in the Middle: How Language Models Use Long Contexts*, arXiv:2307.03172 — verified. Lesson 4.
 - **Memory as an operating system** — Packer et al., *MemGPT: Towards LLMs as Operating Systems*, arXiv:2310.08560 — verified. Lesson 4.
-- **Where the trained-in/external split is argued** — [Chapter 12](../12-skills/index.md)'s Reading, once that chapter is written.
+- **Where the trained-in/external split is argued** — [Chapter 12](../12-skills/index.md) now carries the measurement: a skill library's retrieval held at 0.800 under decoys, and its outcome table's ceiling condition scored below the floor. That is the evidence this module's Lesson 4 leans on.
 
 ## Backfill
 

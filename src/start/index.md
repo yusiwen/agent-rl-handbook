@@ -99,6 +99,8 @@ The second half of the book is about the difference between a method that works 
 2. **What exactly did it measure?** A benchmark score, a throughput number, a human preference vote — each is evidence for a different claim, and none of them generalises for free.
 3. **What would it cost me to reproduce?** Hardware, data, and hours, before you believe the result applies to your task.
 
+One worked example, because the questions only pay when they are applied to something you did not write. A release note says: *"our agent scores 62 per cent on a long-horizon benchmark, up from 41."* Question 1: which of the four questions does that answer? None of them, yet. Question 2: what was measured - a benchmark score, so the evidence is for "this system does better on tasks like that benchmark", and the benchmark's verifier, task distribution and length limits are now part of the claim. Question 3: what would it cost to reproduce - two numbers are missing before you can even price it: how many attempts per task the 62 per cent averages over, and whether the baseline was run on the same attempt budget. If the note gives neither, the honest verdict is *"promising, unmeasured"* and the next step is one afternoon on your own task set, not a rewrite of your pipeline. That is the whole habit: a number becomes a claim only when you can say what produced it, and a claim becomes a decision only when you have priced it.
+
 That framework is the actual deliverable of this book. The methods will churn — the field has rewritten its own default algorithm several times in a few years — and the four questions have not. *(my judgement)*
 
 The four questions, and the chapters that answer them:
