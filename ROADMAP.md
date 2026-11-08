@@ -6,7 +6,7 @@
 
 ## The book
 
-**15 of 15 units have their prose written, 0 are skeletons, 79,685 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**15 of 15 units have their prose written, 0 are skeletons, 80,111 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -18,7 +18,7 @@
 | `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 8,214 | 6 | yes | yes |
 | `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
 | `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `draft` | **written** | 4,996 | 6 | yes | yes |
-| `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 5,466 | 10 | yes | yes |
+| `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 5,892 | 10 | yes | yes |
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |

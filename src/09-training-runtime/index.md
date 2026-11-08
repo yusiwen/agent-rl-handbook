@@ -173,9 +173,30 @@ Minimum and Maximum cuda capability supported by this version of PyTorch is
 (8.0) - (12.0)
 ```
 
-and the package's own arch list ends at `sm_120`. The Spark is `sm_121`. The vLLM generation that matches verl 0.9.1 cannot address this GPU; the generation that can (the server image already running on this machine, v0.31.0, with a torch from the 2.13/2.14 line) is the one verl 0.9.1's worker code was not written against. That is the no-go, and it is a hardware-and-version fact rather than a mistake in the configuration: there is no pair (verl 0.9.1, vLLM) that both runs on `sm_121` here and shares an API.
+and the package's own arch list ends at `sm_120`.
 
-**What remains for the reader.** A measured supervised run through the same runtime (Lesson 4), a filled ledger (Lesson 7), a precise statement of what a GRPO run would require on this hardware - a vLLM built for `sm_121` whose API also matches the pinned verl, which on this machine means waiting for the runtime to catch up with the GPU rather than the other way round - and no claim about a loop that was not run. The alternative this repository does have is its own served loop, measured end to end in Chapter 6: smaller, fewer features, no multi-node story, and it answers the same system questions at 1.7B scale.
+**This paragraph used to claim a no-go, and it was wrong on all three counts.** The correction is worth reading as a case of the book's own rule, because each of the three sentences was an inference recorded as a measurement:
+
+- **The image was not the "generation that matches verl 0.9.1."** verl 0.9.1's `[vllm]` extra declares `vllm==0.24.0` (`torch==2.11.0`). `v0.11.2` is three release lines below what the package asks for, and it was chosen from the vLLM 0.11 era because that era looked like the right vintage.
+- **"The arch list ends at `sm_120`" explains nothing.** Every stack that works on this machine ends there: the training image's `torch 2.14.0a0+cu134`, the serving container's `2.13.0+cu130`, and the corrected image's `2.11.0+cu130`. CUDA runs `sm_120` cubins on `sm_121` hardware within the same major version, which is why a device capability of 12.1 is not a reason to refuse a build that stops at 12.0.
+- **"No pair exists" was never tested.** It followed from the two sentences above.
+
+What actually refused was **torch 2.9's device guard**, which raises when a device's capability exceeds the build's maximum - a property of that torch, not of the GPU and not of vLLM. The pair the package declares works: `vllm/vllm-openai:v0.24.0` (arm64, CUDA 13.0.2 base, `torch 2.11.0+cu130`) plus `verl 0.9.1` runs `main_ppo` to two completed steps on Qwen3-1.7B, eight prompts with two rollouts each, GRPO with no critic:
+
+| | step 1 | step 2 |
+| --- | --- | --- |
+| rewards (mean / max / min) | -0.125 / 1.0 / -1.0 | -0.375 / 1.0 / -1.0 |
+| advantage max | 0.707 | 0.707 |
+| actor loss | -0.0006 | 0.0120 |
+| gen / update_actor / update_weights | 6.37 / 12.20 / 2.34 s | 6.37 / 8.45 / 2.57 s |
+| step | 28.89 s | 19.81 s |
+| throughput | 141.6 tok/s | 215.5 tok/s |
+
+The rewards differ between the two steps because the first step's update changed the policy: a loop, not one forward pass. Four things sit between the image and a run, and each is a version fact rather than a hardware one: `transferqueue` (imported, undeclared), `HF_DATASETS_CACHE` (the HF mount is read-only), `attn_implementation=sdpa` (the FSDP path defaults to FlashAttention 2, which has no aarch64 wheel), and a `data_source` the reward loop recognises (in 0.9.1 it keys the reward on `data_source`, not on `custom_reward_function`). The run also needs the inference server stopped: step two holds 93.1 GB of CPU-side memory on a 121 GB machine, and with an 18 GB server up the dataloader is killed at the next step.
+
+The ledger entry for this lesson changes accordingly, and so does the honest summary of the project: a GRPO loop at 1.7B scale now runs on this hardware, two steps long, with no claim about convergence - which is the claim the earlier version of this section declined to make for a different reason.
+
+**What remains for the reader.** A measured supervised run through the same runtime (Lesson 4), a filled ledger (Lesson 7), and - now that the pair exists here - a GRPO run longer than two steps, on a task set with variance in it. Two steps answer "does the loop close"; they say nothing about whether it learns, and the rewards in the table above move in the wrong direction on a task set this small, which is a reason to run more steps rather than a reason to report a trend. The alternative this repository does have is its own served loop, measured end to end in Chapter 6: smaller, fewer features, no multi-node story, and it answers the same system questions at 1.7B scale.
 
 ### Lesson 10 · Project 3b: a preference-alignment run, and why the record is not the one the outline promised
 
