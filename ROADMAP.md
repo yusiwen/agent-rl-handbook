@@ -6,7 +6,7 @@
 
 ## The book
 
-**11 of 15 units have their prose written, 2 are skeletons, 70,677 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**12 of 15 units have their prose written, 1 are skeletons, 74,855 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,7 +21,7 @@
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 5,466 | 10 | yes | yes |
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
-| `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `stub` | **skeleton** | 586 | 11 | yes | no |
+| `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 4,764 | 11 | yes | no |
 | `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `stub` | **skeleton** | 443 | 8 | yes | no |
 | `electives` | Extra Modules (Optional) | `draft` | **partial** | 1,775 | 4 | yes | no |
 | `start` | Part 0 · Before You Start | `draft` | **partial** | 2,445 | 3 | yes | yes |
@@ -35,7 +35,7 @@
 | `p3-verl` | **env + checks** | 0 | 0 | 3 |
 | `p4-deepanalyze` | **built** | 9 | 36 | 2 |
 | `p5-openclaw-rl` | **built** | 4 | 17 | 2 |
-| `p6-memento-skills` | **README only** | 0 | 0 | 0 |
+| `p6-memento-skills` | **built** | 4 | 14 | 2 |
 
 Run records are not counted here. They live in `agent-rl-projects/runs/`, which is gitignored, so a count of them describes one machine rather than the repository - and the gate cannot regenerate it from a clone. Each project's README names the runs behind its numbers.
 
@@ -59,7 +59,7 @@ Run records are not counted here. They live in `agent-rl-projects/runs/`, which 
 
 1. **Chapter 13 (paper deep-dives)** is a stub and is the natural home for the results this project
    just produced: the flat-group arithmetic, calibration, and judge robustness.
-2. **Chapters 12 and 13** are skeletons with outlines only. **Chapter 10 is written**: both projects are measured, nine lessons, one figure. Chapters 9 and 11 are written.
+2. **Chapter 13** is the last skeleton with an outline only. Chapters 9, 10, 11 and 12 are written; Chapter 12 (skills) has eleven lessons and both measurements - retrieval at three library sizes, and an outcome table whose ceiling condition scored below its floor.
 3. **The RL update exists, both in-process and on the served policy.** `p3-verl` closes the loop that
    Project 2 lacked: served sampling over HTTP, the gradient in the training process, and the adapter
    registered as the next round's policy in 12-13 ms (against 156 s for a restart). First measured run:
