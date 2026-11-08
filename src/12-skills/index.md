@@ -91,6 +91,10 @@ Four routers, all standard library, measured on 60 queries (six instances per fa
 | fifty | 50 | 0.600 | 0.367 | 0.400 | **0.800** |
 | hundred | 100 | 0.600 | 0.367 | 0.400 | **0.800** |
 
+<figure class="book-figure">{{#include ../figures/12-retrieval-ladder.svg}}</figure>
+
+*Figure 12.1 - recall at 1 for four routers at three library sizes, from the same 60 queries. The step down happens when the ten on-topic decoys enter, not when the library grows. Two routers start at 1.00; the one that collapses to 0.40 is the one weighting the task's own words, and the one that holds at 0.80 is the one weighting rarity.*
+
 Three conclusions, each of which contradicts an intuition:
 
 **The size of the library is not the problem.** Fifty and a hundred documents score identically. What costs recall is *similarity*: ten adjacent skills do more damage than eighty unrelated ones. A team that budgets for "we will outgrow a naive router" is budgeting for the wrong variable.
@@ -150,6 +154,8 @@ Two facts about the harness belong in the result rather than in a footnote, beca
 
 The honest reading of the totals is a direction, not an effect. At a hundred instances the Wilson intervals are `bare` 25.5-43.7, `oracle-skill` 17.5-34.3, `keyword` 19.3-36.4 and `idf` 21.0-38.5; every pair overlaps, so "the library made it worse" is not a claim this sample size supports. Conditioning on the replies that were actually produced widens the gap - 56.7 per cent answered correctly in `bare` against 40.3 per cent in `idf` - and still does not settle it.
 
+**Where these numbers come from.** Two committed records, not a table typed from a notebook: `p6-memento-skills/fixtures/retrieval.json` (60 queries, three library sizes, four routers) and `p6-memento-skills/fixtures/outcome.json` (400 rows: four conditions times one hundred instances, each with the answer, the expected answer and any harness error). Both are recomputed by `p6-memento-skills/checks/p6_claims.py`, which the repository's gate runs on every change - including the two claims that are easy to lose in a proofread: that the ceiling condition scored below the floor, and that the four totals' Wilson intervals all overlap.
+
 What the run does settle is what it *rules out*: routing was not the bottleneck. The `idf` router put the right family on top for **100 rows out of 100**, so the difference between the conditions is the injection itself, not a wrong skill arriving.
 
 ### Lesson 7 · Project 6c: writing a skill that helps, and the one that unlearned a working habit
@@ -168,6 +174,10 @@ The per-family table is where the aggregate stops being noise and starts being a
 | unit-convert | 1 | 0 | 0 | 3 |
 | split-remainder | **10** | 2 | 4 | 3 |
 | schema-check | 2 | 2 | 2 | 2 |
+
+<figure class="book-figure">{{#include ../figures/12-outcome-per-family.svg}}</figure>
+
+*Figure 12.2 - the idf router measured against the question alone, family by family. The aggregate is a sum of this picture: one family gained four, two lost seven and five, four did not move. A total of 29 against 34 is exactly what these bars add up to, and it is the least informative number on the page.*
 
 **One family was fixed by being told the rule.** `pivot-counts` went from 0 to 4: the failure was that the model omitted pairs that never occurred, and the procedure's one sentence says to enumerate the grid and default the missing cells to zero. That is a skill doing exactly what a skill is for - naming a convention the model could not guess.
 

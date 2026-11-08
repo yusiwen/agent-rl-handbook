@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" role="img" aria-label="Against the bare condition the idf router gained four instances on pivot-counts and lost seven on split-remainder and five on dedupe-keep-last, which is why the aggregate hid both directions.">
+<style>
+  .t { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .label { font-size: 12px; fill: var(--fg, var(--foreground, #24313d)); }
+  .tick { font-size: 11px; fill: var(--muted-foreground, #8a949e); }
+  .title { font-size: 13px; font-weight: 600; fill: var(--fg, var(--foreground, #24313d)); }
+  .note { font-size: 11px; fill: var(--muted-foreground, #8a949e); }
+  .zero { stroke: var(--fg, var(--foreground, #24313d)); stroke-width: 1; opacity: .5; }
+  .grid { stroke: var(--fg, var(--foreground, #24313d)); stroke-width: 1; stroke-dasharray: 2 4; opacity: .16; }
+  .fig-a-up { fill: #3f8f6f; }
+  .fig-a-down { fill: #b06a5e; }
+  .fig-a-flat { fill: #7f8c99; opacity: .45; }
+</style>
+<text class="t title" x="16" y="24">What the idf router did to each family, against the question alone</text>
+<text class="t note" x="16" y="42">solved instances out of ten per family; the total moved from 34 to 29</text>
+<line class="grid" x1="278.0" y1="64" x2="278.0" y2="328"/>
+<text class="t tick" x="278.0" y="344" text-anchor="middle">-8</text>
+<line class="grid" x1="354.0" y1="64" x2="354.0" y2="328"/>
+<text class="t tick" x="354.0" y="344" text-anchor="middle">-4</text>
+<line class="grid" x1="430.0" y1="64" x2="430.0" y2="328"/>
+<text class="t tick" x="430.0" y="344" text-anchor="middle">0</text>
+<line class="grid" x1="506.0" y1="64" x2="506.0" y2="328"/>
+<text class="t tick" x="506.0" y="344" text-anchor="middle">+4</text>
+<line class="grid" x1="582.0" y1="64" x2="582.0" y2="328"/>
+<text class="t tick" x="582.0" y="344" text-anchor="middle">+8</text>
+<line class="zero" x1="430" y1="62" x2="430" y2="328"/>
+<text class="t label" x="270" y="85" text-anchor="end">pivot-counts</text>
+<rect class="fig-a-up" x="430.0" y="74" width="76.0" height="15" rx="2"/>
+<text class="t tick" x="600" y="85">0 to 4</text>
+<text class="t label" x="270" y="111" text-anchor="end">unit-convert</text>
+<rect class="fig-a-up" x="430.0" y="100" width="38.0" height="15" rx="2"/>
+<text class="t tick" x="600" y="111">1 to 3</text>
+<text class="t label" x="270" y="137" text-anchor="end">top-k-by</text>
+<rect class="fig-a-up" x="430.0" y="126" width="19.0" height="15" rx="2"/>
+<text class="t tick" x="600" y="137">5 to 6</text>
+<text class="t label" x="270" y="163" text-anchor="end">fill-forward</text>
+<rect class="fig-a-flat" x="429" y="152" width="3" height="15"/>
+<text class="t tick" x="600" y="163">0 to 0</text>
+<text class="t label" x="270" y="189" text-anchor="end">normalise-dates</text>
+<rect class="fig-a-flat" x="429" y="178" width="3" height="15"/>
+<text class="t tick" x="600" y="189">0 to 0</text>
+<text class="t label" x="270" y="215" text-anchor="end">round-currency</text>
+<rect class="fig-a-flat" x="429" y="204" width="3" height="15"/>
+<text class="t tick" x="600" y="215">3 to 3</text>
+<text class="t label" x="270" y="241" text-anchor="end">schema-check</text>
+<rect class="fig-a-flat" x="429" y="230" width="3" height="15"/>
+<text class="t tick" x="600" y="241">2 to 2</text>
+<text class="t label" x="270" y="267" text-anchor="end">sum-by-group</text>
+<rect class="fig-a-flat" x="429" y="256" width="3" height="15"/>
+<text class="t tick" x="600" y="267">3 to 3</text>
+<text class="t label" x="270" y="293" text-anchor="end">dedupe-keep-last</text>
+<rect class="fig-a-down" x="335.0" y="282" width="95.0" height="15" rx="2"/>
+<text class="t tick" x="600" y="293">10 to 5</text>
+<text class="t label" x="270" y="319" text-anchor="end">split-remainder</text>
+<rect class="fig-a-down" x="297.0" y="308" width="133.0" height="15" rx="2"/>
+<text class="t tick" x="600" y="319">10 to 3</text>
+<text class="t note" x="16" y="360">two families the model already solved ten of ten were the ones the procedure broke.</text>
+</svg>
