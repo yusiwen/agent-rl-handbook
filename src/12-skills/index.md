@@ -220,6 +220,17 @@ The decision procedure, in four questions:
 3. **Does the model fail because it does not know the convention, or because it cannot execute?** Convention goes outside; execution goes into the weights.
 4. **What is the rollback?** If the answer is "another training run", the cost of being wrong is high enough that the library is the better first experiment.
 
+**Worked once, end to end.** The capability: *every currency total this agent reports must round half up, to two decimals*. Four criteria, applied:
+
+| criterion | answer | leaning |
+|---|---|---|
+| data | a verifier is trivial - the checker compares strings, and the oracle already computes the expected value | either; weights are affordable |
+| latency | needed on every currency task, but that is one family out of ten | a skill, retrieved once per attempt |
+| reversibility | a wrong rounding rule is a one-line fix, and it must land today | a skill, removable as a diff |
+| measurability | the outcome is exact-match, so with and without is one run | either; the skill is the cheaper experiment first |
+
+The decision is a skill, then a measurement: inject the one sentence for the `round-currency` family, run held-out instances with and without, and keep it only if the gain survives the interval. In Project 6 that family moved from 3 to 3 - the skill did nothing, because the model's failure there was arithmetic, not convention - so the entry was not shipped, and the question went to the weights instead. **That is what the framework is for: it does not predict the answer, it tells you which experiment is cheapest to run first.**
+
 And one honest limit this chapter measured: with a 1.7B policy and these ten families, **the library could not be shown to help even when retrieval was perfect.** That is not an argument against skills. It is an argument against shipping a library without the `oracle-skill` row: without it, a negative result is indistinguishable from a broken router, and a positive one is indistinguishable from a lucky batch.
 
 ## Optional: the research zone

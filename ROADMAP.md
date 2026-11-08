@@ -6,7 +6,7 @@
 
 ## The book
 
-**12 of 15 units have their prose written, 1 are skeletons, 75,071 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**12 of 15 units have their prose written, 1 are skeletons, 75,294 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,7 +21,7 @@
 | `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 5,466 | 10 | yes | yes |
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
-| `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 4,980 | 11 | yes | yes |
+| `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |
 | `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `stub` | **skeleton** | 443 | 8 | yes | no |
 | `electives` | Extra Modules (Optional) | `draft` | **partial** | 1,775 | 4 | yes | no |
 | `start` | Part 0 · Before You Start | `draft` | **partial** | 2,445 | 3 | yes | yes |
