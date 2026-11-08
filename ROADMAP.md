@@ -6,7 +6,7 @@
 
 ## The book
 
-**12 of 15 units have their prose written, 1 are skeletons, 75,294 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**13 of 15 units have their prose written, 0 are skeletons, 78,737 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |
-| `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `stub` | **skeleton** | 443 | 8 | yes | no |
+| `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `written` | **written** | 3,886 | 8 | yes | yes |
 | `electives` | Extra Modules (Optional) | `draft` | **partial** | 1,775 | 4 | yes | no |
 | `start` | Part 0 · Before You Start | `draft` | **partial** | 2,445 | 3 | yes | yes |
 
@@ -57,15 +57,22 @@ Run records are not counted here. They live in `agent-rl-projects/runs/`, which 
 
 ### Open work, in the order that pays first
 
-1. **Chapter 13 (paper deep-dives)** is a stub and is the natural home for the results this project
-   just produced: the flat-group arithmetic, calibration, and judge robustness.
-2. **Chapter 13** is the last skeleton with an outline only. Chapters 9, 10, 11 and 12 are written; Chapter 12 (skills) has eleven lessons and both measurements - retrieval at three library sizes, and an outcome table whose ceiling condition scored below its floor.
+1. **Every chapter is written.** Chapters 1 to 13 all have prose and their lesson sets; the last two
+   to land were Chapter 12 (skills, eleven lessons, two figures, retrieval at three library sizes and
+   an outcome table whose ceiling scored below its floor) and Chapter 13 (the judgement framework,
+   seven questions, eight lessons, and the four-gate reproduction checklist).
+2. **What is left is not prose.** The empty slots on the paper map are the honest remaining reading
+   list, and three of them are now reachable with this repository's own instrument: reward-model
+   robustness under distribution shift, staleness-bounded async at a real tool latency, and a skill
+   library on tasks whose failures are convention-shaped rather than arithmetic.
 3. **The RL update exists, both in-process and on the served policy.** `p3-verl` closes the loop that
    Project 2 lacked: served sampling over HTTP, the gradient in the training process, and the adapter
    registered as the next round's policy in 12-13 ms (against 156 s for a restart). First measured run:
    11/30 to 25/30 in one update, then the groups went flat.
-4. **Projects 4 and 5** are built and measured (`p4-deepanalyze`, `p5-openclaw-rl`); **project 6**
-   remains README only. `p3-verl` has no package but is not thin either: an environment, a check and
-   a measured run, which the table now labels `env + checks`.
+4. **Projects 4, 5 and 6** are built and measured (`p4-deepanalyze`, `p5-openclaw-rl`,
+   `p6-memento-skills`); project 6 has both halves - retrieval at three library sizes and a
+   four-condition outcome table - and its admission gate is tested against ten decoys. `p3-verl` has
+   no package but is not thin either: an environment, a check and a measured run, which the table
+   now labels `env + checks`.
 5. **The elective modules** have prose but no figure.
 <!-- /manual:open-decisions -->
