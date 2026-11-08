@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 356" role="img" aria-label="Left: per-task solved counts are bimodal. Right: throughput comes from three workers, not from overlapping training with sampling.">
+<style>
+  .t { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  /* mdBook defines --fg and re-themes it; the desktop preview defines --foreground.  Both are
+     handled, and the bar colours are fixed so the figure reads on a white page and a dark one. */
+  .label { font-size: 12px; fill: var(--fg, var(--foreground, #24313d)); }
+  .title { font-size: 13px; font-weight: 600; fill: var(--fg, var(--foreground, #24313d)); }
+  .small { font-size: 11px; fill: #8a949e; }
+  .bar-solved { fill: #4a90d9; }
+  .bar-missed { fill: #8895a2; opacity: .45; }
+  .bar-tp { fill: #4a90d9; }
+  .bar-tp2 { fill: #4a90d9; }
+</style>
+<text class="t title" x="16" y="24">Each task, 18 sampled episodes</text>
+<text class="t small" x="16" y="42">synchronous run, 72 samples, temperature 1.0</text>
+<text class="t label" x="140" y="76" text-anchor="end">best-region</text>
+<rect class="bar-solved" x="150.0" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="65" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="65" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="76">8/8</text>
+<text class="t label" x="140" y="103" text-anchor="end">bulk-discount</text>
+<rect class="bar-solved" x="150.0" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="92" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="92" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="103">8/8</text>
+<text class="t label" x="140" y="130" text-anchor="end">discounted-order</text>
+<rect class="bar-solved" x="150.0" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="119" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="119" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="130">8/8</text>
+<text class="t label" x="140" y="157" text-anchor="end">growth-leader</text>
+<rect class="bar-solved" x="150.0" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="146" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="146" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="157">8/8</text>
+<text class="t label" x="140" y="184" text-anchor="end">north-minus-east</text>
+<rect class="bar-solved" x="150.0" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="173" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="173" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="184">8/8</text>
+<text class="t label" x="140" y="211" text-anchor="end">north-revenue</text>
+<rect class="bar-solved" x="150.0" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="200" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="200" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="211">8/8</text>
+<text class="t label" x="140" y="238" text-anchor="end">widget-order</text>
+<rect class="bar-solved" x="150.0" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="187.2" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="224.5" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="261.8" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="299.0" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="336.2" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="373.5" y="227" width="35.2" height="13" rx="2"/>
+<rect class="bar-solved" x="410.8" y="227" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="238">8/8</text>
+<text class="t label" x="140" y="265" text-anchor="end">total-revenue</text>
+<rect class="bar-missed" x="150.0" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="187.2" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="224.5" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="261.8" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="299.0" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="336.2" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="373.5" y="254" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="410.8" y="254" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="265">0/8</text>
+<text class="t label" x="140" y="292" text-anchor="end">units-gap</text>
+<rect class="bar-missed" x="150.0" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="187.2" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="224.5" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="261.8" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="299.0" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="336.2" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="373.5" y="281" width="35.2" height="13" rx="2"/>
+<rect class="bar-missed" x="410.8" y="281" width="35.2" height="13" rx="2"/>
+<text class="t small" x="458" y="292">0/8</text>
+<text class="t small" x="16" y="329">A task with no spread contributes nothing: seven teach nothing, two teach nothing.</text>
+<text class="t title" x="540" y="24">Samples per minute</text>
+<text class="t small" x="540" y="42">one machine, four rounds, 72 samples per run</text>
+<text class="t label" x="540" y="79">synchronous, 1 worker</text>
+<rect class="bar-tp" x="540" y="85" width="78.8" height="15" rx="2"/>
+<text class="t small" x="624.8" y="97">36.1</text>
+<text class="t small" x="540" y="114">staleness mean 0.04, max 1</text>
+<text class="t label" x="540" y="153">asynchronous, 1 worker</text>
+<rect class="bar-tp" x="540" y="159" width="78.3" height="15" rx="2"/>
+<text class="t small" x="624.3" y="171">35.9</text>
+<text class="t small" x="540" y="188">staleness mean 0.06, max 1</text>
+<text class="t label" x="540" y="227">asynchronous, 3 workers</text>
+<rect class="bar-tp2" x="540" y="233" width="236.1" height="15" rx="2"/>
+<text class="t small" x="782.1" y="245">108.2</text>
+<text class="t small" x="540" y="262">staleness mean 0.18, max 1</text>
+<text class="t small" x="540" y="298">The third bar is three workers, not the</text>
+<text class="t small" x="540" y="312">overlap: at one worker the two modes</text>
+<text class="t small" x="540" y="326">measure 36.1 and 35.9 per minute.</text>
+</svg>

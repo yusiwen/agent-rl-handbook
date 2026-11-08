@@ -1,6 +1,6 @@
 # Chapter 10 · End-to-End Project Cluster
 
-> **Compute tier**: ⚠️ (a 0.6B model runs end to end; 8B needs QLoRA and small batches) | **Status**: partial - Project 4 written and measured, Project 5 outlined
+> **Compute tier**: ⚠️ (a 0.6B model runs end to end; 8B needs QLoRA and small batches) | **Status**: written - both projects measured
 > **Projects**: [Project 4 · DeepAnalyze](../appendix/projects.md), [Project 5 · OpenClaw-RL](../appendix/projects.md)
 > **Why these are merged**: the source course splits them into two chapters with the same rhythm. Here they form one cluster, following a single storyline: **single-turn → multi-turn, synchronous → asynchronous**.
 
@@ -25,11 +25,11 @@ This is where the theory becomes a working system. Project 4 takes a small (8B) 
 
 **Project 5 · OpenClaw-RL (online RL for multi-turn tool callers)**
 
-- [ ] 5. How multi-turn agents should actually be trained: environment, data and the reward loop
-- [ ] 6. OpenClaw-RL dissected: next-state signals, the four-ring asynchronous architecture, three core algorithms
-- [ ] 7. Reading the core source: from sample to PPO loss to combined update
-- [ ] 8. The tool-call RL pipeline: how rollout, actor and PRM join into one line (loss masks, session headers, weight sync, sample freshness)
-- [ ] 9. A three-stage run on Qwen3-0.6B: ReTool-SFT → ReTool-RL → PRM process reward
+- [x] 5. How multi-turn agents should actually be trained: environment, data and the reward loop
+- [x] 6. OpenClaw-RL dissected: next-state signals, the four-ring asynchronous architecture, three core algorithms
+- [x] 7. Reading the core source: from sample to PPO loss to combined update
+- [x] 8. The tool-call RL pipeline: how rollout, actor and PRM join into one line (loss masks, session headers, weight sync, sample freshness)
+- [x] 9. A three-stage run: ReTool-style SFT, outcome RL, and a process reward that taught the wrong lesson
 
 ### Lesson 1 · The whole picture: architecture, capabilities and data flow
 
@@ -187,6 +187,109 @@ What can be claimed, and is enough for a first end-to-end system: **a policy, a 
 
 That last one is the honest end of the project rather than a failure to hide. A pipeline that can be measured well enough to show its own update hurting is more useful than one that reports an improvement it cannot attribute - and the reason it hurt is legible in a single line of the record: four of six groups had no spread, because the cold start had already solved them. The next experiment this project needs is a harder task set, not a better trainer.
 
+### Lesson 5 · How multi-turn agents should actually be trained: the world, the traces, the reward
+
+Project 4's agent ran one program and answered. Project 5's agent calls tools, reads what they return, and decides again - and that difference changes what the training machinery has to be.
+
+**The world owes you six things.** Reset must be free (otherwise you are measuring environment setup), every step must return an observation the model can read, the episode must end for a reason the record can name, every task must be solvable so a zero reward means the policy failed rather than the task being impossible, the tools must be the real ones the product uses, and the oracle must prove the last two by solving every task itself. This project's world is six tasks over five documents with four tools (`search`, `open`, `calc`, `submit`), a reset measured in microseconds, and an oracle that opens the documents the task names, computes when the question needs arithmetic, and submits.
+
+**Two of those six are usually skipped, and both cost you the measurement.** A task set that is not provably solvable turns a broken fixture into a policy regression, and a world whose reset is slow makes every staleness number about your filesystem instead of your loop.
+
+**The task set needs headroom, and the demonstrations must not fill it.** The cold start is trained on six of the nine tasks - the ones a trace can plausibly teach - and the loop trains on all nine. The three held-back tasks need two or three documents and a calculation. The gate asserts that split (`test_the_demonstrations_cover_six_tasks_and_leave_three`), because the headroom is the only thing that can make an update non-zero, and it is exactly what a helpful colleague deletes first when the training data looks thin.
+
+**The demonstration is a trajectory, not a transcript of one.** Twenty supervised turns, each the state before a call and the call itself, with the observation the world actually returned. Same discipline as Project 4: build them by running the oracle, and let `--check` fail when the world changes underneath them. What they teach is the format (one JSON object per reply, or the protocol refuses it) and the habit (submit the value the question asked for). What they cannot teach is search strategy - six traces do not contain a policy for "which document do I need", which is exactly the part stage 2 is supposed to learn and, on this world, could not.
+
+**The reward has to name the failure, not just count it.** Four outcomes are recorded separately, because they are four different problems: a **protocol error** (the reply was not a tool call), a **tool error** (the call was malformed or referred to a document that does not exist), a **wrong answer**, and a **turn budget exhausted**. Lesson 9 shows what happens when they are collapsed: a policy that learned to call tools forever and never submit looks identical to one that is thinking hard.
+
+### Lesson 6 · OpenClaw-RL dissected: next-state signals and the four rings
+
+The reference design this project is named after is an *asynchronous* agent trainer, and its shape is worth understanding even where this repository implements only part of it. Four rings:
+
+| ring | what it does | where it blocks |
+| --- | --- | --- |
+| serving | holds the weights and generates | on the model |
+| rollout | plays episodes against the tools | on the model and the tools |
+| judge | scores outcomes (and, in the third algorithm, partial traces) | on the judge |
+| trainer | consumes samples and produces weights | on the GPU |
+
+In a synchronous loop these four run one after another: generate a batch, score it, train, publish, repeat. Every ring waits for the one before it, so the GPU is idle while the model generates and the model is idle while the GPU trains. The asynchronous architecture lets rollout and training overlap, and pays for it in one currency: **the samples a trainer sees were produced by a policy that is no longer current.**
+
+That is why the reference design's central data structure is not the trajectory but the **transition** - the state, the action, and the next state. A trajectory-level trainer has to hold a whole episode before it can compute anything; a transition-level one can train on the part of the episode that has already happened, which is what makes overlap possible and what makes the staleness bookkeeping mandatory.
+
+The three algorithms in the outline are three answers to "what is a reward here":
+
+- **outcome RL** (ReTool-style): the episode ends, the answer is checked, the reward is 1 or 0. Cheap, blunt, and only as good as the variance in the task set;
+- **a process reward**: a model (or a rule) scores partial traces, so a step that moved toward the answer is rewarded before the answer exists. This is the algorithm that can, in principle, learn from failure - and Lesson 9 shows the version that learns the wrong thing;
+- **asynchronous PPO**: the same outcome reward, with the ratio computed against the behaviour policy that actually produced each sample, and a staleness bound so the ratio does not describe a policy from three updates ago.
+
+What this repository implements, measured, is: the rollout ring, the trainer ring, the judge as a rule, weight sync over HTTP, and staleness recorded per sample. What it does not implement: a learned process reward model, a separate judge service, and more than one machine. The chapter says so rather than borrowing the reference design's numbers.
+
+### Lesson 7 · Reading the core source: from sample to masked loss to combined update
+
+The most useful thing to learn from any agent-RL implementation is *where to look*, because the same four decisions are made in every one of them, and each is a place where a bug hides silently.
+
+**1. Where the mask is applied.** In this repository, `_turn_losses` builds `labels = [-100] * len(prompt_ids) + reply_ids`. Everything before the assistant's own tokens is -100, so the loss covers the reply and nothing else. A trainer that supervises the prompt learns to reproduce the prompt: on this project that means a model that writes the system prompt back instead of calling a tool, and the loss curve looks *better* while it happens.
+
+**2. Where the baseline comes from.** `train_step` groups the batch by `task_id`, computes the mean reward per group, and subtracts it. That is the whole of GRPO's idea, and the failure mode is group size: a group of one sample has mean equal to itself, so its advantage is zero and the sample is silently discarded. The loop records `singleton_groups` per round for exactly this reason - asynchronous workers produce them constantly (two to four per round here), and a run that "trains" on nothing looks no different from one that trains.
+
+**3. Where the version is stamped.** Every sample carries the adapter name that generated it (`p5-v3`), and `credit.partition` converts that into an age against the current one. Without the stamp, staleness is unknowable and the run is uninterpretable; with it, `--stale-bound` can drop the too-old samples *and count them*.
+
+**4. Where the weights are published.** `load_adapter` posts the new adapter to the server; workers pick up the new name on their next episode. This is the cheapest possible weight sync - an adapter is tens of megabytes, and the base weights never move - and it is also where this project's three silent failures lived (Lesson 8).
+
+The reading exercise, in one line: find the sample record, find the mask, find the baseline, find the version, find the publish. If any of the five is missing from the *record* (not from the code), the run cannot be debugged later, and the person debugging it will be you.
+
+### Lesson 8 · The pipeline measured: throughput, freshness, and three bugs that looked like health
+
+Same nine tasks, same starting adapter, four rounds, 72 samples per run, one machine, the served model on the same GPU as the trainer:
+
+| run | workers | samples / min | sample staleness (mean / max) | samples with an advantage | dropped |
+| --- | --- | --- | --- | --- | --- |
+| synchronous | 1 | 36.1 | 0.04 / 1 | 0 | 0 |
+| asynchronous | 1 | 35.9 | 0.06 / 1 | 2 | 0 |
+| asynchronous | 3 | **108.2** | 0.18 / 1 | 3 | 0 |
+
+<figure class="book-figure">{{#include ../figures/10-p5-bimodal-and-throughput.svg}}</figure>
+
+*Figure 10.1 - the two measurements Project 5 is built on. On the left, each task's eighteen sampled episodes: seven solved every time, two never, and none in between - which is why the outcome loops found three samples worth training on out of seventy-two. On the right, the same four rounds under three configurations: the two one-worker runs measure almost the same throughput, so the third bar is three workers rather than the reward of overlap.*
+
+**Asynchrony on its own bought nothing.** At one worker the two modes are within 0.2 samples per minute of each other, because the bottleneck is the served model, not the trainer: the trainer's step takes a couple of seconds, the generation it waits for takes thirty. What the third row shows is not the value of overlap but the value of *permission* - once sampling does not block training, you can run three workers, and the throughput triples.
+
+**The staleness bound never bit, and that is the honest reading.** Maximum age stayed at 1 in every run: a worker completes an episode in about a second and a half, a round takes about thirty, so at most one version boundary is crossed. With slower tools - a container, a browser, a real API - the same configuration would produce ages of three or four, and the bound would start discarding. The number to publish is not "staleness of at most 1 is fine"; it is "this world is too fast to make staleness expensive, and here is the measurement that shows it".
+
+**Three bugs, all of which produced a healthy-looking run:**
+
+- *The starting adapter was not served.* Workers got 404s, died in their threads, and the loop waited for samples that never came. The summary said `rounds: 0` - which reads like "the run did nothing", not like "the run could not start". Fixed with a preflight that lists the served models and refuses to start.
+- *The served path was hardcoded* (`/models/p5-v<N>/adapter`) while the save path followed the run's prefix. A run with its own prefix published its weights to one directory and loaded another experiment's from a different one - and the eval still returned a number, because a LoRA adapter of the same rank loads without complaint.
+- *`load_inplace: true` left the registry name unregistered.* The server accepted the load, replaced the weights, and kept serving the old name; `/v1/models` stopped growing, and every version after the first pointed at nothing. Fixed by unloading and loading, which is one extra round trip and no ambiguity.
+
+The general lesson is the one this book keeps arriving at from different directions: **a quiet loop looks exactly like a working one.** Throughput, loss and wall clock were all normal in every one of these failures. What caught them was a record that names the served model, the saved path and the version - and a check that fails when they disagree.
+
+### Lesson 9 · A three-stage run: SFT, outcome RL, and a process reward that taught the wrong lesson
+
+**Stage 1 - supervised fine-tuning.** Twenty demonstrations, 30 steps, LoRA rank 16 on 0.372% of the parameters, loss 2.74 → 0.0008 in 47.8 seconds, peak 22.8 GB. Greedy evaluation on all nine tasks: **7 of 9 solved**, one protocol error, 31 steps, 13.3 seconds.
+
+**Stage 2 - outcome reinforcement.** Three loops (synchronous, asynchronous with one worker, asynchronous with three) on 72 samples each, and the reward found almost nothing to work with. The reason is in the per-task counts, and it is the cleanest statement of a rule this book has now made three times in three costumes:
+
+| task | solved | why |
+| --- | --- | --- |
+| seven tasks | 8/8 | the cold start generalises: same skill, different numbers |
+| `total-revenue` | **0/8** | one wrong program, reproduced every time |
+| `units-gap` | **0/8** | one protocol error, reproduced every time |
+
+**A task solved every time and a task failed every time contribute exactly the same amount to an update: nothing.** Variance is the resource. A deterministic failure is not a signal; it is a constant, and constants have no gradient. The loops recorded 0, 2 and 3 samples with a non-zero advantage out of 72, and the evaluation after each was unchanged at 7 of 9 - which is what a nearly-zero update should produce.
+
+**Stage 3 - a process reward.** Same loop, same samples, with step-level credit: +1 for the answer, +0.1 per valid tool call (up to three), -0.3 per tool error. The number of samples carrying an advantage jumped from 3 to **21** - a real effect, and the mechanism the reference design is after: a failure can still teach something if its *steps* are scored.
+
+The policy then failed the evaluation in a new way: **3 of 9 solved, 28 tool errors, 5 episodes out of turns, 44 steps** where the baseline used 31. It had learned to call tools. Each valid call paid 0.1 whether or not it moved toward the answer, the answer paid 1.0 and was rarely reached, so the gradient pointed at tool calls - and the episodes spent their budget crawling through documents and never submitting.
+
+That is not a bug in the loop; it is a bug in the reward, and it is the most useful result in this project:
+
+> **A process reward that pays for valid steps without a hard requirement on the outcome is a licence to farm steps.** The step term has to be a shaping term, not an objective.
+
+Two honest limits before leaving it. First, this process reward is a *rule*, not a learned model - the reference design's PRM is scored by a reward model trained on partial traces, and a learned one would not pay for a useless call. Second, nine tasks and four rounds is a demonstration of the machinery, not a measurement of a method: the numbers above say what this pipeline did, and nothing about what a PRM would do at scale.
+
+What the three stages did establish, and what this project owes the reader: a multi-turn agent can be trained end to end on one machine, with generation out of process, weight sync over HTTP, staleness recorded per sample, and every number in the record recomputable from the samples. The interesting failures were in the environment, the reward and the adapter registry - never in the idea.
+
 ## Platform notes (Spark)
 
 | Step | Risk | What actually happened on the Spark (2026-11-07) |
@@ -198,7 +301,10 @@ That last one is the honest end of the project rather than a failure to hide. A 
 | Attention backend | FlashAttention has no sm_121 support | SDPA is the default and was never the bottleneck at this size |
 | Building from source | high parallelism can exhaust the shared memory | not needed for either image; cap `MAX_JOBS` if you try |
 
-The executor row is the one this chapter is about. The others are the same lesson at a larger
+| Serving adapters for a loop | every version needs a name the server knows, and `load_inplace` keeps the old one | unload then load; verify with `GET /v1/models` before starting the loop (`p5-openclaw-rl/env/loop.py` preflights this) |
+| Weight sync | a full merged restart costs minutes | publishing an adapter costs one round trip (~16 ms measured in Chapter 9) and the base weights never move |
+
+The executor row is the one that changed a score. The others are the same lesson at a larger
 scale: an image is a decision about what the machine can do, and a run record that does not name
 the image cannot tell you which decision produced its numbers.
 
