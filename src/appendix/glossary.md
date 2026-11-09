@@ -1,6 +1,6 @@
 # Glossary
 
-Maintained in the order terms appear in the book. Definitions follow this book's usage; the "In plain words" column is my own phrasing and is not necessarily how a paper says it.
+Maintained in the order terms appear in the book, with one exception: the measurement terms that keep recurring across chapters (held-out set, truncation, interval, ablation) sit together under Data and tasks, where the rest of the measurement vocabulary already lives. Definitions follow this book's usage; the "In plain words" column is my own phrasing and is not necessarily how a paper says it.
 
 ## Foundations
 
@@ -20,6 +20,7 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Clip ratio (probability ratio) | The new policy's probability of an action divided by the sampling policy's | How much the policy has moved since the data was collected; the thing PPO clips |
 | PPO | Proximal policy optimisation: a clipped surrogate objective plus a KL penalty | The general-purpose optimiser of this field, and the expensive one; the objective lives in [Chapter 4](../04-alignment-algorithms/index.md) |
 | Pass@k | The probability that at least one of $k$ samples is correct | The precondition for learning: RL amplifies what already happens sometimes |
+| Group (of rollouts) | The $n$ samples drawn from one prompt at one temperature, compared against their own mean | GRPO's unit of learning. With $n$ samples the smallest non-zero pass rate you can measure is $1/n$, which is why $n=2$ cannot tell 0.5 from 0.75 |
 
 ## Alignment algorithms
 
@@ -86,13 +87,17 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | Term | What it formally means | In plain words / notes |
 |---|---|---|
 | Task family | A group of items that share a task shape and a scorer | Word problems, code tasks and logic puzzles are three families with three verifiers ([Chapter 7](../07-data-and-tasks/index.md)) |
-| Trainable band | The pass-rate region where a policy sometimes succeeds and sometimes fails | 0.1 to 0.9 by convention, and the edge is set by your sample count; both ends give a gradient of zero |
+| Trainable band | The pass-rate region where a policy sometimes succeeds and sometimes fails | 0.1 to 0.9 by convention, and the edge is set by your sample count; both ends give a gradient of zero. An item is *in band* when its measured rate falls inside this region |
 | Pass-rate filtering | Keeping the items whose pass rate falls inside the trainable band | The measured counterpart of Chapter 4's zero-variance group ([Chapter 7](../07-data-and-tasks/index.md), Lesson 4) |
 | Cold start | A small supervised stage that teaches the shape of a scorable attempt before RL starts | RL learns nothing from a policy that never produces a scoreable answer, because every group is flat |
 | Label protocol | What the verifier accepts as a declared answer, written down next to the reward | Part of the reward, not the prompt: in Project 1's numeric verifier the answer must be declared, and the final line carries exactly one number |
 | Rejection sampling | Sampling several attempts per task and keeping the ones the verifier passes | Cheap supervised data, and biased toward the tasks and styles the policy already handles |
 | Self-play data | The attempts are regenerated from the current policy each round, on a fixed task set | A loop rather than a corpus; it needs an automatic scorer, or it is a diary ([Chapter 6](../06-credit-assignment/index.md), Lesson 6) |
 | Decontamination | Measuring and removing the overlap between a training set and the evaluation set | A script you can re-run, never a visual inspection: a checker that has never been shown to fire has not been verified |
+| Held-out set | Items from the same families as the training data that are never sampled against during training, measured before the first update | Without a number on this set you have a training number, not a result: the set has to exist before you look at any curve |
+| Truncation | An attempt that stopped at the token cap instead of finishing | Counted apart from wrong: a truncated attempt is usually unfinished rather than mistaken, which is why the score tables carry it as its own column |
+| Wilson interval | A confidence interval for a proportion, used here in place of a normal approximation because $n$ is small | The reporting rule the book follows: when two intervals overlap, the chapter does not get to claim a difference |
+| Ablation | Removing or changing one component to see whether it carried the effect | One change, one comparison, a kill criterion written down before the run |
 
 ## Systems and engineering
 
@@ -101,7 +106,7 @@ Maintained in the order terms appear in the book. Definitions follow this book's
 | rollout | Sampling trajectories from the current policy | The most expensive step in RL, often costlier than the training update itself |
 | DataProto | The data-exchange protocol used by VeRL | Half of why distributed training can look like one process |
 | loss mask | A flag marking which tokens contribute to the gradient | Decides whether multi-turn samples can be trained correctly at all |
-| Sample freshness | How far an asynchronously collected sample is from the current policy | Older means more biased; the trade-off against throughput |
+| Sample freshness (staleness) | How far an asynchronously collected sample is from the current policy, counted in policy versions | Older means more biased; the trade-off against throughput. The chapters report it under the shorter name, *staleness* |
 | Weight sync | Pushing updated weights to the sampling side in an async setup | How often you do it decides how stable training is |
 | Verifier | A program that marks an answer correct or incorrect | A rulebook, not a judge with taste |
 | Internalise vs externalise | Train a capability into the weights, or keep it in an external library | Decided across four criteria: data, latency, scenario, ecosystem |
