@@ -4,7 +4,7 @@
 
 | Dimension | Specification | What it means for studying |
 |---|---|---|
-| Memory | 128 GB **unified** (shared between CPU and GPU) | ⚠️ *Corrected 2026-10-14.* The pool is large, and 0.6-3B full fine-tuning is comfortable in it: a 3B policy costs about 42 GB of weights, gradients and optimiser state on Chapter 4's ledger of roughly 14 GB per billion parameters. What this row used to claim — that an **8B full fine-tune** fits — is wrong by that same ledger: an 8B policy is about 112 GB, close to 119 GB with an fp32 master copy, before activations, the operating system and any service you left running (the vLLM container alone measured 3.9 GiB on this machine). Eight billion parameters is a LoRA or QLoRA target here, not a full fine-tune, and offloading to CPU memory buys nothing on a machine whose CPU and GPU share one pool. The enduring win is serving: four 8B-class models at bf16 are roughly 60 GB of weights and fit at once — impossible on a 24 GB card |
+| Memory | 128 GB **unified** (shared between CPU and GPU) | The pool is large, and 0.6-3B full fine-tuning is comfortable in it: a 3B policy costs about 42 GB of weights, gradients and optimiser state on Chapter 4's ledger of roughly 14 GB per billion parameters. An **8B full fine-tune** does not fit it: an 8B policy is about 112 GB, close to 119 GB with an fp32 master copy, before activations, the operating system and any service still running (the vLLM container alone takes 3.9 GiB). Eight billion parameters is a LoRA or QLoRA target here, not a full fine-tune, and offloading to CPU memory buys nothing on a machine whose CPU and GPU share one pool. The enduring win is serving: four 8B-class models at bf16 are roughly 60 GB of weights and fit at once — impossible on a 24 GB card |
 | Bandwidth | ≈ 273 GB/s (LPDDR5X; NVIDIA has not published an official figure) | ⚠️ The real bottleneck. An H100 is 3.35 TB/s and a 4090 is 1 TB/s. RL is rollout-heavy, so throughput lands an order of magnitude lower |
 | Architecture | **aarch64 + sm_121** | ⚠️ The awkward zone: official images are mostly x86_64, so you need native aarch64 installs or GB10-specific images |
 | OS | DGX OS (Ubuntu 24.04 LTS) | GPU access from Docker goes through CDI (`/var/run/cdi/nvidia.yaml`) |
@@ -23,7 +23,7 @@ Reference throughput (NVIDIA's own SFT benchmarks): Llama 3.2 3B full fine-tune 
 
 | Component | Problem | Workaround |
 |---|---|---|
-| vLLM | ⚠️ *Corrected 2026-11-08.* This row used to say upstream has no sm_121 / aarch64 support and that standard images fail with `SM121 not supported`. That was wrong for current images and right for one old one: `vllm/vllm-openai:v0.11.2` (torch 2.9.0+cu129) refuses the device because torch 2.9's guard stops at compute 12.0, while images on torch 2.11 / CUDA 13.0.x run — `v0.24.0` trained eight GRPO steps on this box and `v0.31.0` serves on `:8003`. `torch.cuda.get_arch_list()` still ends at `sm_120`; the `sm_121` device runs those kernels through same-major-version forward compatibility | pin the image to a torch 2.11+ / CUDA 13.0.x build. Read `get_arch_list()` to see which kernels were compiled, not to decide whether the device is supported |
+| vLLM | The arch list ending at `sm_120` is not a verdict on the device, and a `SM121 not supported` error means the build is old: torch 2.9's guard stops at compute 12.0, while images on torch 2.11 / CUDA 13.0.x run on `sm_121` through same-major-version forward compatibility — `v0.24.0` trains, `v0.31.0` serves | pin the image to a torch 2.11+ / CUDA 13.0.x build. Read `torch.cuda.get_arch_list()` to see which kernels were compiled, not to decide whether the device is supported |
 | FlashAttention | no sm_121 wheel, and building from source does not work either; CUTLASS MoE kernels and CUDA-graph capture break with it | set the attention backend to `sdpa`, or use FlashInfer |
 | Building from source | aggressive parallelism exhausts the shared memory | cap `MAX_JOBS` (for example 4) |
 | NGC containers | mostly x86_64 | install natively for aarch64, or build your own image |
@@ -39,7 +39,7 @@ Reference throughput (NVIDIA's own SFT benchmarks): Llama 3.2 3B full fine-tune 
 - Reward infrastructure and sandbox environments (Chapters 5, 8)
 - Evaluation services and regression tests (Chapter 11)
 - The skill-evolution service, running 24/7 (Chapter 12)
-- Single-GPU GRPO through verl, measured here on 2026-11-08: eight steps, 93.1 GB of CPU-side memory at step 2 and a 118 GB container cap that ends the run at step 8 (Chapter 9)
+- Single-GPU GRPO through verl, measured on this machine: eight steps, 93.1 GB of CPU-side memory at step 2 and a 118 GB container cap that ends the run at step 8 (Chapter 9)
 
 **Rented by the hour:**
 
