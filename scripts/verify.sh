@@ -34,8 +34,11 @@ echo "== 2. English only: nothing outside ASCII and Latin-1, apart from the allo
 #            and every script outside Latin apart from those notation letters: Cyrillic, Arabic,
 #            CJK and friends.
 allowlist='—–…→↔►▲─│┌┐└┘✅⚠️❌≈γλδπθβτ'
+# LICENSE is excluded: it is the Creative Commons legal code, verbatim. Its curly quotes are the
+# license's own typography, and editing them to satisfy a prose rule is not ours to do.
 if rg -n --hidden "[^\x00-\x7F\x{A1}-\x{AC}\x{AE}-\x{FF}${allowlist}]" \
-     -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' -g '!mathjax/**' . ; then
+     -g '!book/**' -g '!result/**' -g '!.direnv/**' -g '!.git/**' -g '!mathjax/**' \
+     -g '!LICENSE' . ; then
   echo "FAIL: character found outside ASCII and Latin-1 (and not on the allowlist above)" >&2
   echo "      In a table or heading this is usually full-width punctuation pasted by accident." >&2
   exit 1

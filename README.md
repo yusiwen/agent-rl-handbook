@@ -71,4 +71,9 @@ The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+**The text, the figures and the code listings in this book are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — see [LICENSE](LICENSE). You may read, quote, adapt and redistribute them with attribution, for non-commercial purposes; an adaptation has to carry the same license.
+
+Two boundaries are worth stating plainly, because the book ships next to a repository:
+
+- **The companion code repository is MIT, not this license.** `github.com/yusiwen/agent-rl-handbook-projects` is software: MIT, usable commercially. A listing as it appears *in a chapter* is covered by the CC license above; the same code *in the repository* is MIT.
+- **Third-party material keeps its own terms.** Papers, quotations and reproduced figures belong to their authors. The book cites them; it does not relicense them.
