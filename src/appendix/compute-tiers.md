@@ -23,7 +23,7 @@ Reference throughput (NVIDIA's own SFT benchmarks): Llama 3.2 3B full fine-tune 
 
 | Component | Problem | Workaround |
 |---|---|---|
-| vLLM | upstream has no sm_121 / aarch64 support; standard images fail with `SM121 not supported` | use a GB10-patched image, or fall back to Ollama / SGLang |
+| vLLM | ⚠️ *Corrected 2026-11-08.* This row used to say upstream has no sm_121 / aarch64 support and that standard images fail with `SM121 not supported`. That was wrong for current images and right for one old one: `vllm/vllm-openai:v0.11.2` (torch 2.9.0+cu129) refuses the device because torch 2.9's guard stops at compute 12.0, while images on torch 2.11 / CUDA 13.0.x run — `v0.24.0` trained eight GRPO steps on this box and `v0.31.0` serves on `:8003`. `torch.cuda.get_arch_list()` still ends at `sm_120`; the `sm_121` device runs those kernels through same-major-version forward compatibility | pin the image to a torch 2.11+ / CUDA 13.0.x build. Read `get_arch_list()` to see which kernels were compiled, not to decide whether the device is supported |
 | FlashAttention | no sm_121 wheel, and building from source does not work either; CUTLASS MoE kernels and CUDA-graph capture break with it | set the attention backend to `sdpa`, or use FlashInfer |
 | Building from source | aggressive parallelism exhausts the shared memory | cap `MAX_JOBS` (for example 4) |
 | NGC containers | mostly x86_64 | install natively for aarch64, or build your own image |
@@ -39,6 +39,7 @@ Reference throughput (NVIDIA's own SFT benchmarks): Llama 3.2 3B full fine-tune 
 - Reward infrastructure and sandbox environments (Chapters 5, 8)
 - Evaluation services and regression tests (Chapter 11)
 - The skill-evolution service, running 24/7 (Chapter 12)
+- Single-GPU GRPO through verl, measured here on 2026-11-08: eight steps, 93.1 GB of CPU-side memory at step 2 and a 118 GB container cap that ends the run at step 8 (Chapter 9)
 
 **Rented by the hour:**
 

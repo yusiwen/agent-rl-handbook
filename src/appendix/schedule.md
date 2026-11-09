@@ -9,7 +9,7 @@ Seven to eight hours a week: about two hours of reading and derivation, five to 
 | 4–5 | Chapter 5 + Project 1 | A new verifier marking answers end to end, with its failure boundaries written down |
 | 6–7 | Chapter 6 + Project 2 | A GRPO training log + a credit-assignment design document |
 | 8 | Chapters 7–8 | A pass-rate report for your task set + a minimal reproducible environment |
-| 9–10 | Chapter 9 + Project 3 | A memory ledger + DPO/GRPO configs that reproduce on the Spark |
+| 9–10 | Chapter 9 + Project 3 | A memory ledger + a GRPO config that reproduces on the Spark (DPO has no trainer in verl 0.9.1 — see the chapter, and treat it as reading) |
 | 11–12 | Chapter 10 + Projects 4 and 5 | Two end-to-end run logs (0.6B scale) |
 | 13 | Chapter 11 | An evaluation report template + a regression script |
 | 14–15 | Chapter 12 + Project 6 | A skill service running continuously on the Spark |

@@ -178,7 +178,7 @@ And the discipline that makes the notebook worth keeping: **a healthy share of v
 A "pinboard notebook" you maintain yourself - one line per paper: where it sits, follow or not, and which of the seven questions decided the verdict.
 
 ```text
-[GRPO family] Title (arXiv:xxxx) - patches the normalisation bias of group baselines
+[GRPO family] Understanding R1-Zero-Like Training: A Critical Perspective (arXiv:2503.20783) - patches the normalisation bias of group baselines
 Verdict: follow. Why: directly relevant to my verifiable task, cheap to implement (loss change only).
 Question 3 decides: at my n of 100, their reported gain is outside the interval.
 ```

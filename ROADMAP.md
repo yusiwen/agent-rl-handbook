@@ -6,7 +6,7 @@
 
 ## The book
 
-**15 of 15 units have their prose written, 0 are skeletons, 80,340 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**15 of 15 units have their prose written, 0 are skeletons, 80,345 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
 | `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |
-| `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `written` | **written** | 3,886 | 8 | yes | yes |
+| `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `written` | **written** | 3,891 | 8 | yes | yes |
 | `electives` | Extra Modules (Optional) | `written` | **written** | 2,536 | 4 | yes | yes |
 | `start` | Part 0 · Before You Start | `draft` | **written** | 2,632 | 3 | yes | yes |
 

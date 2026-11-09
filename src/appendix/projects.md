@@ -51,7 +51,7 @@ The chapters hold the deliverable and the pass criteria. These lines are the act
 
 - Follow one full path: from the launch command through DataProto, the worker groups, the rollout loop and the reward loop.
 - Set breakpoints at the actor loss, the advantage computation and the KL term, and explain in your own words what the parameters do between them.
-- Fill in the chapter's memory ledger with measured numbers, and get one configuration that reproduces on your own machine. Do the DPO run first — it is the lighter of the two.
+- Fill in the chapter's memory ledger with measured numbers, and get one configuration that reproduces on your own machine. Start with the GRPO run — it is the one this repository has measured end to end (eight steps, a held-out number, a 118 GB memory ceiling). DPO is not available here: verl 0.9.1 ships no DPO trainer, so that half of the chapter is a reading exercise until you pin a version that has one or write the loss yourself.
 
 ### Project 4 · DeepAnalyze
 
