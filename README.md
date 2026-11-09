@@ -71,7 +71,7 @@ The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
 ## License
 
-**The text, the figures and the code listings in this book are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — see [LICENSE](LICENSE). You may read, quote, adapt and redistribute them with attribution, for non-commercial purposes; an adaptation has to carry the same license.
+Copyright (c) 2026 Siwen Yu. **The text, the figures and the code listings in this book are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — the full legal code is [LICENSE](LICENSE). You may read, quote, adapt and redistribute them with attribution, for non-commercial purposes; an adaptation has to carry the same license.
 
 Two boundaries are worth stating plainly, because the book ships next to a repository:
 
