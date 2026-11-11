@@ -62,6 +62,18 @@ Every push to `main` builds the site and publishes it to GitHub Pages (`.github/
 
 The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
+## The companion repository
+
+Every measured number in Chapters 5–12 is recomputed from a public companion repository: **<https://github.com/yusiwen/agent-rl-handbook-projects>**, pinned in this build at commit `19152ea`. It contains the six projects (P1–P6), the fixtures the numbers derive from, and the gate that re-derives each claim:
+
+```bash
+git clone https://github.com/yusiwen/agent-rl-handbook-projects
+cd agent-rl-handbook-projects
+uv run --frozen bash scripts/verify.sh
+```
+
+The book is not a course transcript and the repository is not a submission box: the code is there so a reader can check a number rather than trust it.
+
 ## Working on it
 
 - Currently **everything is in English**, and the build enforces it: `scripts/verify.sh` rejects any character that is not English — that is, anything outside ASCII and Latin-1 except the typographic marks the book itself uses (em dash, arrows, the ✅/⚠️/❌ tier marks). Accented Latin letters (`é`, `ü`, `ñ`) are allowed, so no contributor gets tripped up by a name. If you would like to help with a translation, open an issue first: the toolchain has to change before translated text can be merged.

@@ -2,7 +2,7 @@
 
 Ordered along one line: **where the reward comes from → how credit is assigned → the system → end to end → asynchronous online → no weight updates at all**.
 
-**What this page is, and what it is not.** It is a specification: what each project is, what you produce, and how you know it worked. No reference implementation ships with this book today; if one is published later it will be linked here, project by project, with the chapter and a tag. Everything you write goes into that project's own note file, against the template below.
+**What this page is, and what it is not.** It is a specification: what each project is, what you produce, and how you know it worked. The reference implementation lives in a companion repository, **`github.com/yusiwen/agent-rl-handbook-projects`**, pinned in this build at commit `19152ea`; each project has its own directory there (P1–P6), with the fixtures and checks that back the numbers quoted in the chapters. Everything *you* write goes into your own note file, against the template below - the repository is a reference, not a submission box.
 
 ## The six at a glance
 

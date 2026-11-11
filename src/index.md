@@ -36,6 +36,18 @@ If you have never touched Python or PyTorch, do that first — this book will no
 2. **As a checklist.** Every chapter ends with a deliverable and a "how you know you passed" list. Reading is not finishing — shipping the deliverable is.
 3. **As an index.** [The paper map](appendix/paper-map.md) files 79 papers on eight shelves, and Chapter 13 teaches you to use it. The [project index](appendix/projects.md) tells you which chapter a given piece of technology lives in.
 
+## Where the code lives
+
+Every measured number in Chapters 5–12 comes from a companion repository: **`github.com/yusiwen/agent-rl-handbook-projects`**. This build describes commit `19152ea` of it; later commits exist on `main`, and where a number in a chapter has moved, the chapter that quotes it is the one to update.
+
+The repository holds the six projects, the fixtures the numbers are recomputed from, twenty-one check scripts and four claim recomputers. It verifies itself the way this book does:
+
+```bash
+uv run --frozen bash scripts/verify.sh
+```
+
+That gate re-derives each published claim from the committed inputs, so a number that drifts fails instead of surviving. If you want to see how a figure in this book was produced, the fixture path in the chapter is the entry point.
+
 ## Book map
 
 | Part | Chapter | Lessons | Compute | Deliverable |
