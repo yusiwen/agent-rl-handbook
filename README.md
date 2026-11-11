@@ -62,6 +62,8 @@ Every push to `main` builds the site and publishes it to GitHub Pages (`.github/
 
 The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
+**A release is a tag.** A tag starting with `v` runs `.github/workflows/release.yml`: the same gate, the same deployment, plus a GitHub Release whose notes are generated from the commits since the previous tag. The workflow refuses a tag that is not on `main`, because publishing an old commit over the current site would be a silent rollback. To retry one without moving the tag: `gh workflow run release.yml --ref v0.1`.
+
 ## The companion repository
 
 Every measured number in Chapters 5–12 is recomputed from a public companion repository: **<https://github.com/yusiwen/agent-rl-handbook-projects>**, pinned in this build at commit `19152ea`. It contains the six projects (P1–P6), the fixtures the numbers derive from, and the gate that re-derives each claim:
