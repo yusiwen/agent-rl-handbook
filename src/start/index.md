@@ -1,6 +1,6 @@
 # Part 0 · Before You Start
 
-> **Compute tier**: ✅ | **Status**: draft — the three lessons are written; the map gains a pointer or two as the later chapters settle
+> **Compute tier**: ✅ | **Status**: written — the three lessons and the map; a pointer is added when a later chapter earns one, which is the map doing its job rather than the page being unfinished
 
 ## First, the gist
 

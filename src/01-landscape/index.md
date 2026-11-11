@@ -1,7 +1,7 @@
 # Chapter 1 · The Big Picture and How to Choose an Algorithm
 
 > **Compute tier**: ✅ (this chapter trains nothing; it is reading and deciding)
-> **Status**: draft — all four lessons have prose, no numbers measured on hardware yet
+> **Status**: written — all four lessons have prose; no number here is measured on hardware, by design: the chapter argues from published work and from the arithmetic it derives
 > **Rule of this book**: this chapter only **chooses**. What each algorithm *means* is explained once, in [Chapter 4](../04-alignment-algorithms/index.md). What a runtime does with them is [Chapter 9](../09-training-runtime/index.md). Neither is repeated here.
 
 ## First, the gist

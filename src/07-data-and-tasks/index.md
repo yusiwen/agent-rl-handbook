@@ -1,6 +1,6 @@
 # Chapter 7 · Data and Task Engineering
 
-> **Compute tier**: ⚠️ (generating and filtering needs inference; small scale is fine on the Spark) | **Status**: draft — all six lessons have prose, every measured number in them carries the configuration that produced it, the contamination row is filled in (0 of 21 items share a 13-word run with the evaluation set, with its limits stated), and the set itself has now been measured end to end (21 of 21 items, eight samples at each of two temperatures, the two `unit_test` items judged by a container); what remains open is the set's composition, which the verdict names: only 3 of the 21 items are inside the trainable band under both sampling settings.
+> **Compute tier**: ⚠️ (generating and filtering needs inference; small scale is fine on the Spark) | **Status**: written — all six lessons have prose, every measured number in them carries the configuration that produced it, the contamination row is filled in (0 of 21 items share a 13-word run with the evaluation set, with its limits stated), and the set itself has now been measured end to end (21 of 21 items, eight samples at each of two temperatures, the two `unit_test` items judged by a container); what remains open is the set's composition, which the verdict names: only 3 of the 21 items are inside the trainable band under both sampling settings.
 > **Why this chapter exists**: the source course has no standalone data chapter, yet bad data is the most common reason "I swapped the algorithm and nothing improved".
 
 ## First, the gist

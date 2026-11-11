@@ -1,6 +1,6 @@
 # Chapter 11 · Evaluation and Shipping Validation
 
-> **Compute tier**: ✅ (an evaluation harness is cheap; the Spark can run it around the clock) | **Status**: draft
+> **Compute tier**: ✅ (an evaluation harness is cheap; the Spark can run it around the clock) | **Status**: written — the harness, the score tables and the interval rule come from six project runs in the companion repository; every number is regenerated from a run record that names its code revision, and every score is reported beside its compliance column. Nothing in the chapter is a published benchmark result.
 > **Why this chapter exists, and why it matters most**: without it, every training run you do degrades into "it looks better".
 
 ## First, the gist

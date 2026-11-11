@@ -1,6 +1,6 @@
 # Chapter 4 · The Alignment Algorithm Family (and PPO in Full)
 
-> **Compute tier**: ✅ | **Status**: draft — all ten lessons have prose; no number in this chapter was measured on hardware
+> **Compute tier**: ✅ | **Status**: written — all ten lessons have prose; no number in this chapter was measured on hardware, by design: it is a reading of the literature plus the PPO derivation, and the measured counterparts are in Chapters 6, 9 and 10
 > **Rule of this book**: the *meaning* of every algorithm is explained here, once. [Chapter 9](../09-training-runtime/index.md) only covers how a runtime switches between and extends them — it does not repeat the objectives.
 
 ## First, the gist

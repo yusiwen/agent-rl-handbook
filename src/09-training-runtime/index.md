@@ -1,6 +1,6 @@
 # Chapter 9 · The Industrial Training Runtime
 
-> **Compute tier**: ⚠️ (single-GPU small models are fine; multi-node and Megatron routes need rented hardware) | **Status**: draft
+> **Compute tier**: ⚠️ (single-GPU small models are fine; multi-node and Megatron routes need rented hardware) | **Status**: written — the loop closes and the number moves, both measured on one DGX Spark: two steps to show the gradient path, eight steps at n=6 on 24 prompts to show a held-out gain (0.667 to 0.859). One machine, one seed, eight steps: a transmission check, not a convergence result, and the run ends at the 118 GB memory cap.
 > **Project**: [Project 3 · The VeRL training runtime](../appendix/projects.md)
 > **Rule of this book**: this chapter is about **system implementation only**; the meaning of the algorithms is in [Chapter 4](../04-alignment-algorithms/index.md).
 

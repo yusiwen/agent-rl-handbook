@@ -1,7 +1,7 @@
 # Chapter 2 · From MDP to LLM Post-Training
 
 > **Compute tier**: ✅ (this chapter trains nothing; it is notation and definition)
-> **Status**: draft — all four lessons have prose, no numbers measured on hardware yet
+> **Status**: written — all four lessons have prose; no number here is measured on hardware, by design: the chapter argues from published work and from the arithmetic it derives
 > **Rule of this book**: this chapter builds the **shared language**. The value functions and the Bellman equation that use it are [Chapter 3](../03-policy-gradient/index.md). The algorithms that optimise it are [Chapter 4](../04-alignment-algorithms/index.md).
 
 ## First, the gist

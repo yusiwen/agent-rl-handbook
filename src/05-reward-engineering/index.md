@@ -1,6 +1,6 @@
 # Chapter 5 · Reward Engineering and Verifiers
 
-> **Compute tier**: ✅ | **Status**: draft — all nine lessons have prose; the project has since been built and run (four verifiers, 21 of 21 tasks covered, marking deterministic on every gate run, the two code tasks judged by a real container), and the numbers it produced are in Lesson 9 and the project README.
+> **Compute tier**: ✅ | **Status**: written — all nine lessons have prose; the project has since been built and run (four verifiers, 21 of 21 tasks covered, marking deterministic on every gate run, the two code tasks judged by a real container), and the numbers it produced are in Lesson 9 and the project README.
 > **Project**: [Project 1 · Verifiable-reward infrastructure](../appendix/projects.md)
 > **Rule of this book**: [Chapter 4](../04-alignment-algorithms/index.md) settled *where* a score comes from. This chapter is about designing that score so it measures the goal, and building the machinery that produces it.
 

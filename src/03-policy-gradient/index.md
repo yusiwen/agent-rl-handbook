@@ -1,7 +1,7 @@
 # Chapter 3 · From Value Functions to Policy Gradients
 
 > **Compute tier**: ✅ (this chapter trains nothing; it is derivation on paper)
-> **Status**: draft — all six lessons have prose, no numbers measured on hardware yet
+> **Status**: written — all six lessons have prose; no number here is measured on hardware, by design: the derivations are worked from the literature, and the numbers that need a run appear in Chapters 6 and 10
 > **Note**: the full PPO (proximal policy optimisation) objective is **not** here — it lives in [Chapter 4](../04-alignment-algorithms/index.md). This chapter stops at GAE (generalised advantage estimation) and answers one question: *where does the gradient come from?*
 > **Rule of this book**: the meaning of every algorithm is explained once, in [Chapter 4](../04-alignment-algorithms/index.md). This chapter is the machinery underneath them.
 

@@ -1,6 +1,6 @@
 # Chapter 8 · Environment Engineering and Rollout Infrastructure
 
-> **Compute tier**: ✅ (a laptop runs the simulator in this chapter; one GPU host runs the container measurements) | **Status**: draft — all six lessons have prose, and the pool, quota, isolation, reset and cost numbers in them were measured on 2026-10-20 on one machine (a DGX Spark: aarch64, Docker, a cached `python:3.13-alpine` image), with the commands written into the lessons; what remains open is named at the end of Lesson 6, and it is the reason this is a draft rather than a claim.
+> **Compute tier**: ✅ (a laptop runs the simulator in this chapter; one GPU host runs the container measurements) | **Status**: written — all six lessons have prose, and the pool, quota, isolation, reset and cost numbers in them were measured on 2026-10-20 on one machine (a DGX Spark: aarch64, Docker, a cached `python:3.13-alpine` image), with the commands written into the lessons; the limit is one machine and one image, which is why the chapter states what it measured instead of generalising.
 > **Why this chapter exists**: in agent RL, the bottleneck is usually the *environment*, not the algorithm.
 
 ## First, the gist

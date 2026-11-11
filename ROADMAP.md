@@ -6,25 +6,25 @@
 
 ## The book
 
-**15 of 15 units have their prose written, 0 are skeletons, 80,366 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
+**15 of 15 units have their prose written, 0 are skeletons, 80,560 words in total.** `written` means a long chapter with its lessons; `partial` means prose without the full lesson set; `skeleton` means the outline only.
 
 | Unit | Chapter | Status | State | Words | Lessons | Reading | Figure |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `01-landscape` | Chapter 1 · The Big Picture and How to Choose an Algorithm | `draft` | **written** | 3,595 | 4 | yes | yes |
-| `02-mdp` | Chapter 2 · From MDP to LLM Post-Training | `draft` | **written** | 3,575 | 4 | yes | yes |
-| `03-policy-gradient` | Chapter 3 · From Value Functions to Policy Gradients | `draft` | **written** | 3,843 | 6 | yes | yes |
-| `04-alignment-algorithms` | Chapter 4 · The Alignment Algorithm Family (and PPO in Full) | `draft` | **written** | 9,290 | 10 | yes | yes |
-| `05-reward-engineering` | Chapter 5 · Reward Engineering and Verifiers | `draft` | **written** | 6,598 | 9 | yes | yes |
-| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `draft` | **written** | 8,214 | 6 | yes | yes |
-| `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `draft` | **written** | 7,725 | 6 | yes | yes |
-| `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `draft` | **written** | 4,996 | 6 | yes | yes |
-| `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `draft` | **written** | 6,142 | 10 | yes | yes |
+| `01-landscape` | Chapter 1 · The Big Picture and How to Choose an Algorithm | `written` | **written** | 3,610 | 4 | yes | yes |
+| `02-mdp` | Chapter 2 · From MDP to LLM Post-Training | `written` | **written** | 3,590 | 4 | yes | yes |
+| `03-policy-gradient` | Chapter 3 · From Value Functions to Policy Gradients | `written` | **written** | 3,866 | 6 | yes | yes |
+| `04-alignment-algorithms` | Chapter 4 · The Alignment Algorithm Family (and PPO in Full) | `written` | **written** | 9,314 | 10 | yes | yes |
+| `05-reward-engineering` | Chapter 5 · Reward Engineering and Verifiers | `written` | **written** | 6,598 | 9 | yes | yes |
+| `06-credit-assignment` | Chapter 6 · Credit Assignment: From Token to Turn | `written` | **written** | 8,214 | 6 | yes | yes |
+| `07-data-and-tasks` | Chapter 7 · Data and Task Engineering | `written` | **written** | 7,725 | 6 | yes | yes |
+| `08-environment-engineering` | Chapter 8 · Environment Engineering and Rollout Infrastructure | `written` | **written** | 4,992 | 6 | yes | yes |
+| `09-training-runtime` | Chapter 9 · The Industrial Training Runtime | `written` | **written** | 6,201 | 10 | yes | yes |
 | `10-end-to-end-projects` | Chapter 10 · End-to-End Project Cluster | `written` | **written** | 6,766 | 9 | yes | yes |
-| `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `draft` | **written** | 5,360 | 8 | yes | yes |
+| `11-evaluation` | Chapter 11 · Evaluation and Shipping Validation | `written` | **written** | 5,410 | 8 | yes | yes |
 | `12-skills` | Chapter 12 · Skills: Capability Libraries and Self-Evolution | `written` | **written** | 5,203 | 11 | yes | yes |
 | `13-papers` | Chapter 13 · Paper Deep-Dives and a Judgement Framework | `written` | **written** | 3,891 | 8 | yes | yes |
 | `electives` | Extra Modules (Optional) | `written` | **written** | 2,536 | 4 | yes | yes |
-| `start` | Part 0 · Before You Start | `draft` | **written** | 2,632 | 3 | yes | yes |
+| `start` | Part 0 · Before You Start | `written` | **written** | 2,644 | 3 | yes | yes |
 
 ## The companion projects
 
