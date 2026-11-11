@@ -4,7 +4,7 @@ A plain-English study handbook for **Agent RL** — using reinforcement learning
 
 The book is not a course transcript and is not affiliated with any vendor. It takes the topic list of a professional Agent RL course and re-orders it so a beginner can follow: every acronym is explained at first use, plain language always comes before a formula, and every method gets a "what it costs" sentence.
 
-**Status: complete draft, early access.** All fifteen units have their prose — thirteen chapters, the electives page and the appendices — and nothing is a skeleton. Chapters 1–4 argue from published work and state no hardware measurement; Chapters 5–12 carry measured numbers, each with the run that produced it. What the book does not yet claim is named per unit in [ROADMAP.md](ROADMAP.md).
+**Status: complete draft, early access - v0.1, 9 November 2026.** All fifteen units have their prose — thirteen chapters, the electives page and the appendices — and nothing is a skeleton. Chapters 1–4 argue from published work and state no hardware measurement; Chapters 5–12 carry measured numbers, each with the run that produced it. What the book does not yet claim is named per unit in [ROADMAP.md](ROADMAP.md).
 
 ## The four questions this book answers
 

@@ -2,6 +2,8 @@
 
 This is not a course transcript. It is a **study handbook written for myself and for anyone starting from zero** — the same ideas as a professional Agent RL course, but re-ordered so a beginner can actually follow them, with every piece of jargon explained in plain words before it is used.
 
+> **This build**: v0.1 (early access), 9 November 2026 — thirteen chapters, four elective modules, six appendices. Measured claims are in Chapters 5–12, and each chapter names what it did not measure. The three open items that need more work are tracked as issues #1–#3 of the [companion repository](https://github.com/yusiwen/agent-rl-handbook-projects/issues).
+
 The whole book circles four questions. They are also the acceptance test: if you can answer them about *your own* project, you learned something.
 
 > 1. **When should I reach for RL at all?** (Supervised fine-tuning, DPO, GRPO, PPO, skills and evaluation each fit a different stage.)
