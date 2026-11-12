@@ -40,7 +40,7 @@ If you have never touched Python or PyTorch, do that first — this book will no
 
 ## Where the code lives
 
-Every measured number in Chapters 5–12 comes from a companion repository: **`github.com/yusiwen/agent-rl-handbook-projects`**. This build describes commit `19152ea` of it; later commits exist on `main`, and where a number in a chapter has moved, the chapter that quotes it is the one to update.
+Every measured number in Chapters 5–12 comes from a companion repository: **`github.com/yusiwen/agent-rl-handbook-projects`**. This build describes commit `277c860` of it; later commits exist on `main`, and where a number in a chapter has moved, the chapter that quotes it is the one to update.
 
 The repository holds the six projects, the fixtures the numbers are recomputed from, twenty-one check scripts and four claim recomputers. It verifies itself the way this book does:
 

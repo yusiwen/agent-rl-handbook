@@ -66,7 +66,7 @@ The site is served at **https://yusiwen.cn/agent-rl-handbook/** .
 
 ## The companion repository
 
-Every measured number in Chapters 5–12 is recomputed from a public companion repository: **<https://github.com/yusiwen/agent-rl-handbook-projects>**, pinned in this build at commit `19152ea`. It contains the six projects (P1–P6), the fixtures the numbers derive from, and the gate that re-derives each claim:
+Every measured number in Chapters 5–12 is recomputed from a public companion repository: **<https://github.com/yusiwen/agent-rl-handbook-projects>**, pinned in this build at commit `277c860`. It contains the six projects (P1–P6), the fixtures the numbers derive from, and the gate that re-derives each claim:
 
 ```bash
 git clone https://github.com/yusiwen/agent-rl-handbook-projects
